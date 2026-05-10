@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Carla's Cloud Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+<script>
+tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']},colors:{navy:{900:'#0f172a',800:'#1e293b',700:'#334155'},azure:{50:'#e6f2ff',100:'#cce5ff',200:'#99cbff',300:'#66b0ff',400:'#3396ff',500:'#0078D4',600:'#0063b1',700:'#004e8c',800:'#003a68',900:'#002544'},surface:{50:'#ffffff',100:'#f8fafc',200:'#f1f5f9',300:'#e2e8f0',400:'#cbd5e1',500:'#94a3b8'},status:{planned:'#94a3b8',progress:'#f59e0b',complete:'#22c55e',plannedbg:'#f1f5f9',progressbg:'#fffbeb',completebg:'#f0fdf4'},violet:{50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#7C3AED',600:'#6d28d9',700:'#5b21b6',800:'#4c1d95',900:'#3b0764'}}}}}
+</script>
+<style>
+:root{--navy:#0f172a;--azure:#0078D4;--azure-hover:#0063b1;--planned:#94a3b8;--progress:#f59e0b;--complete:#22c55e;--violet:#7C3AED}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:radial-gradient(ellipse at center,#0d1b2a 0%,#050a0f 100%);color:#e2e8f0;min-height:100vh}
+
+/* Global starfield — always visible */
+#global-starfield{position:fixed;inset:0;z-index:0;pointer-events:none}
+.star-layer{position:absolute;inset:0}
+
+.card{background:rgba(13,27,42,0.85);backdrop-filter:blur(8px);border:1px solid rgba(0,120,212,0.2);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,120,212,0.15)}
+
+.badge{display:inline-flex;align-items:center;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500}
+.badge-planned{background:rgba(148,163,184,0.15);color:#94a3b8}
+.badge-progress{background:rgba(245,158,11,0.15);color:#fbbf24}
+.badge-complete{background:rgba(34,197,94,0.15);color:#4ade80}
+.tag-pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:500;background:rgba(0,120,212,0.2);color:#66b0ff}
+.progress-bar{height:8px;border-radius:9999px;background:rgba(255,255,255,0.1);overflow:hidden}
+.progress-fill{height:100%;border-radius:9999px;transition:width 1s ease}
+.entry-card{border-left:4px solid #94a3b8}
+.entry-card[data-status="In Progress"]{border-left-color:#f59e0b}
+.entry-card[data-status="Complete"]{border-left-color:#22c55e}
+.tab-btn{padding:6px 16px;border-radius:9999px;font-size:13px;font-weight:500;color:#cbd5e1;cursor:pointer;white-space:nowrap;border:none;background:transparent;transition:background .15s,color .15s}
+.tab-btn.active{background:#0078D4;color:#fff}
+.tab-btn:hover:not(.active){background:rgba(255,255,255,0.1);color:#fff}
+.showcase-star{cursor:pointer;transition:transform .2s}
+.showcase-star.active{color:#f59e0b;transform:scale(1.2)}
+.showcase-star:not(.active){color:#475569}
+@keyframes twinkle{0%,100%{opacity:.3}50%{opacity:.9}}
+.star-field{position:absolute;inset:0;overflow:hidden}
+.constellation-card{background:rgba(13,27,42,0.85);backdrop-filter:blur(8px);border:1px solid rgba(0,120,212,0.2);border-radius:12px;padding:16px}
+.credit-ring{filter:drop-shadow(0 0 4px rgba(0,120,212,0.5))}
+.nav-header{position:fixed;top:0;left:0;right:0;z-index:100;background:#0f172a;height:56px;display:flex;align-items:center;padding:0 16px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.main-content{padding-top:64px;position:relative;z-index:1}
+
+.form-input{width:100%;padding:8px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;background:rgba(255,255,255,0.07);color:#f1f5f9;transition:border-color .15s,box-shadow .15s}
+.form-input:focus{outline:none;border-color:#0078D4;box-shadow:0 0 0 3px rgba(0,120,212,0.25)}
+.form-input option{background:#1e293b;color:#f1f5f9}
+.form-input::placeholder{color:#64748b}
+
+.btn-primary{background:#0078D4;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s}
+.btn-primary:hover{background:#0063b1}
+.btn-secondary{background:transparent;color:#e2e8f0;border:1px solid rgba(255,255,255,0.3);padding:8px 16px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s,border-color .15s}
+.btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.5)}
+.btn-danger{background:rgba(124,58,237,0.15);color:#c4b5fd;border:1px solid rgba(196,181,253,0.3);padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-danger:hover{background:rgba(124,58,237,0.25)}
+.portfolio-view-btn{border:1px solid rgba(255,255,255,0.4);color:#fff;background:transparent;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s,color .15s}
+.portfolio-view-btn:hover{background:rgba(255,255,255,0.1)}
+.download-app-btn{border:1px solid rgba(255,255,255,0.4);color:#fff;background:transparent;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s,color .15s}
+.download-app-btn:hover{background:rgba(255,255,255,1);color:#0f172a}
+.mobile-tabs-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.mobile-tabs-scroll::-webkit-scrollbar{display:none}
+.date-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;color:#94a3b8;line-height:1}
+.degree-pill{display:inline-flex;padding:2px 8px;border-radius:9999px;font-size:10px;font-weight:500;background:rgba(0,120,212,0.15);color:#66b0ff}
+.filter-pill{padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid rgba(255,255,255,0.15);background:transparent;color:#94a3b8;transition:all .15s}
+.filter-pill.active{background:#0078D4;color:#fff;border-color:#0078D4}
+.cert-thumb{width:100%;height:140px;object-fit:cover;border-radius:12px 12px 0 0}
+.cert-placeholder{width:100%;height:100px;display:flex;align-items:center;justify-content:center;font-size:36px;border-radius:12px 12px 0 0}
+.avatar-circle{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer}
+.avatar-circle .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;border-radius:50%;color:#fff;font-size:11px;gap:2px}
+.avatar-circle:hover .overlay{opacity:1}
+.check-pill{display:inline-flex;align-items:center;padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid rgba(255,255,255,0.15);background:transparent;color:#94a3b8;transition:all .15s}
+.check-pill.checked{background:rgba(0,120,212,0.2);color:#66b0ff;border-color:rgba(0,120,212,0.4)}
+
+/* ===== DASHBOARD SPACE THEME ===== */
+.dash-space-bg{position:relative;min-height:calc(100vh - 64px)}
+.dash-glass-card{background:rgba(13,27,42,0.85)!important;backdrop-filter:blur(8px);border:1px solid rgba(0,120,212,0.25)!important;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform .2s,box-shadow .2s}
+.dash-glass-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,120,212,0.15)}
+.dash-progress-bar{height:8px;border-radius:9999px;background:rgba(255,255,255,0.1);overflow:hidden}
+.dash-tag-pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:500;background:rgba(0,120,212,0.2);color:#66b0ff}
+
+/* Dashboard domain card accent borders */
+.dash-domain-card{background:rgba(13,27,42,0.85)!important;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.08)!important;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform .2s,box-shadow .2s}
+.dash-domain-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.25)}
+
+/* PDF thumbnail placeholder */
+.pdf-thumb-placeholder{width:100%;height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:12px 12px 0 0;background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%)}
+.pdf-thumb-placeholder .pdf-emoji{font-size:2.5rem;line-height:1}
+.pdf-thumb-placeholder .pdf-filename{color:#fff;font-size:0.75rem;max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center}
+.pdf-view-pill{display:inline-flex;align-items:center;gap:4px;background:#0078D4;color:#fff;border:none;padding:4px 12px;border-radius:9999px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s}
+.pdf-view-pill:hover{background:#0063b1}
+
+/* PDF form preview */
+.pdf-form-preview{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:8px;border:1px solid rgba(255,255,255,0.1)}
+.pdf-form-preview .pdf-icon{font-size:1.5rem}
+.pdf-form-preview .pdf-info{flex:1;min-width:0}
+.pdf-form-preview .pdf-info .pdf-name{font-size:13px;font-weight:500;color:#e2e8f0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pdf-form-preview .pdf-info .pdf-size{font-size:11px;color:#94a3b8}
+.pdf-form-preview .pdf-actions{display:flex;gap:6px;align-items:center}
+
+/* Violet text utility */
+.text-violet{color:#c4b5fd}
+.text-violet-light{color:#a78bfa}
+.hover-text-violet:hover{color:#ddd6fe}
+
+/* PDF modal overlay */
+.pdf-modal-overlay-style{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.pdf-modal-container{width:90vw;height:90vh;display:flex;flex-direction:column;background:#1e293b;border-radius:12px;overflow:hidden}
+.pdf-modal-header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#0f172a}
+.pdf-modal-header span{color:white;font-weight:600}
+.pdf-modal-close-btn{color:white;background:rgba(255,255,255,0.1);border:none;border-radius:6px;padding:4px 12px;cursor:pointer;font-size:14px}
+.pdf-modal-close-btn:hover{background:rgba(255,255,255,0.2)}
+
+/* PDF toast */
+.pdf-toast{position:fixed;bottom:24px;right:24px;background:#1e293b;color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;z-index:10000;box-shadow:0 4px 16px rgba(0,0,0,0.3);max-width:340px;line-height:1.4;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s}
+.pdf-toast.visible{opacity:1;transform:translateY(0)}
+
+/* Dark theme overrides for bg-surface classes used in profile */
+.bg-surface-100-dark{background:rgba(255,255,255,0.05)!important}
+
+/* Footer */
+footer{position:relative;z-index:1}
+
+/* ===== NEXT CHAPTER TEASER CARD ===== */
+@keyframes violetPulse{
+  0%,100%{border-left-color:rgba(124,58,237,0.5);box-shadow:-4px 0 12px rgba(124,58,237,0.1)}
+  50%{border-left-color:rgba(139,92,246,1);box-shadow:-4px 0 18px rgba(139,92,246,0.35)}
+}
+.next-chapter-card{
+  background:rgba(13,27,42,0.85);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(0,120,212,0.2);
+  border-radius:12px;
+  border-left:4px solid #7C3AED;
+  animation:violetPulse 3s ease-in-out infinite;
+  position:relative;
+  transition:box-shadow .3s;
+}
+.next-chapter-card:hover{
+  box-shadow:0 6px 24px rgba(124,58,237,0.2),-4px 0 20px rgba(139,92,246,0.25);
+}
+.next-chapter-tooltip{
+  visibility:hidden;opacity:0;
+  position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);
+  background:#1e293b;color:#cbd5e1;
+  font-size:12px;line-height:1.5;
+  padding:10px 14px;border-radius:8px;
+  width:320px;max-width:90vw;
+  box-shadow:0 4px 16px rgba(0,0,0,0.4);
+  border:1px solid rgba(124,58,237,0.3);
+  pointer-events:none;
+  transition:opacity .2s,visibility .2s;
+  z-index:10;
+}
+.next-chapter-tooltip::after{
+  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:6px solid transparent;border-top-color:#1e293b;
+}
+.next-chapter-card:hover .next-chapter-tooltip{
+  visibility:visible;opacity:1;
+}
+
+@media print{.no-print{display:none!important}}
+</style>
+</head>
+<body data-id="0">
+<app-icon data-id="1" hidden data-icon="cloud" data-palette="Blue"></app-icon>
+
+<!-- GLOBAL STARFIELD -->
+<div data-id="2" id="global-starfield"></div>
+
+<!-- NAV HEADER -->
+<header data-id="3" class="nav-header no-print" id="main-header">
+  <div data-id="4" class="flex items-center gap-2 flex-shrink-0">
+    <span data-id="5" class="text-white font-bold text-base">☁️ Cloud Portfolio</span>
+  </div>
+  <div data-id="6" class="flex-1 flex justify-center mx-4">
+    <div data-id="7" class="mobile-tabs-scroll hidden md:flex items-center gap-1" id="desktop-tabs"></div>
+  </div>
+  <div data-id="8" class="flex items-center gap-2 flex-shrink-0">
+    <button data-id="9" class="download-app-btn hidden md:inline-flex items-center gap-1" id="download-app-btn">⬇️ Download App</button>
+    <button data-id="10" class="portfolio-view-btn hidden md:inline-flex items-center gap-1" id="portfolio-btn">📋 Portfolio View</button>
+    <button data-id="11" class="md:hidden p-2 text-white" id="mobile-menu-btn"><i data-id="12" data-lucide="menu" class="w-6 h-6"></i></button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<nav data-id="13" id="mobile-menu" class="hidden fixed inset-0 bg-navy-900 z-[200] flex flex-col p-4 no-print" style="background:#0f172a">
+  <div data-id="14" class="flex justify-between items-center mb-6">
+    <span data-id="15" class="text-white font-bold">☁️ Cloud Portfolio</span>
+    <button data-id="16" id="mobile-menu-close" class="p-2 text-white"><i data-id="17" data-lucide="x" class="w-6 h-6"></i></button>
+  </div>
+  <div data-id="18" class="flex flex-col gap-2" id="mobile-tabs"></div>
+  <button data-id="19" class="download-app-btn mt-4 w-full text-center" id="download-app-btn-mobile">⬇️ Download App</button>
+  <button data-id="20" class="portfolio-view-btn mt-2 w-full text-center" id="portfolio-btn-mobile">📋 Portfolio View</button>
+</nav>
+
+<main data-id="21" class="main-content pb-8" id="app-main">
+  <!-- Content injected by JS -->
+</main>
+
+<footer data-id="22" class="py-6 text-center no-print">
+  <p data-id="23" class="text-xs text-surface-500">Made by Copilot</p>
+</footer>
+
+<script>
+// ============ GLOBAL STARFIELD ============
+function initGlobalStarfield(){
+  const container=document.getElementById('global-starfield');
+  let stars='';for(let i=0;i<150;i++){const x=Math.random()*100,y=Math.random()*100,s=Math.random()>0.93?3:Math.random()>0.8?2:1,o=(Math.random()*0.6+0.3).toFixed(2);stars+=`${x}vw ${y}vh 0 ${s-1}px rgba(255,255,255,${o}),`;}
+  stars=stars.slice(0,-1);
+  let bigStars='';for(let i=0;i<8;i++){const x=Math.random()*90+5,y=Math.random()*80+10;bigStars+=`${x}vw ${y}vh 0 2px rgba(255,255,255,0.8),`;}bigStars=bigStars.slice(0,-1);
+  container.innerHTML=`<div class="star-layer" style="box-shadow:${stars}"></div><div class="star-layer" style="box-shadow:${bigStars};animation:twinkle 4s ease-in-out infinite"></div>`;
+}
+initGlobalStarfield();
+
+// ============ DOWNLOAD APP FUNCTION ============
+function downloadApp(){
+  var html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+  var blob=new Blob([html],{type:'text/html'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  a.href=url;
+  a.download='cloud-portfolio.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ============ PDF TOAST HELPER ============
+function showPdfToast(msg){
+  var existing=document.getElementById('pdf-popup-toast');
+  if(existing)existing.remove();
+  var toast=document.createElement('div');
+  toast.id='pdf-popup-toast';
+  toast.className='pdf-toast';
+  toast.textContent=msg;
+  document.body.appendChild(toast);
+  requestAnimationFrame(function(){requestAnimationFrame(function(){toast.classList.add('visible');});});
+  setTimeout(function(){toast.classList.remove('visible');setTimeout(function(){if(toast.parentNode)toast.remove();},350);},4000);
+}
+
+// ============ OPEN PDF DATA ============
+function openPdfData(dataUri){
+  try{
+    var byteString=atob(dataUri.split(',')[1]);
+    var ab=new ArrayBuffer(byteString.length);
+    var ia=new Uint8Array(ab);
+    for(var i=0;i<byteString.length;i++)ia[i]=byteString.charCodeAt(i);
+    var blob=new Blob([ab],{type:'application/pdf'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url;
+    a.target='_blank';
+    a.rel='noopener';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url);},3000);
+    showPdfToast("If the PDF didn\u2019t open, check your browser\u2019s popup blocker and allow popups for this site.");
+  }catch(e){
+    var existing=document.getElementById('pdf-modal-overlay');
+    if(existing)existing.remove();
+    var overlay=document.createElement('div');
+    overlay.id='pdf-modal-overlay';
+    overlay.className='pdf-modal-overlay-style';
+    var container=document.createElement('div');
+    container.className='pdf-modal-container';
+    var header=document.createElement('div');
+    header.className='pdf-modal-header';
+    var title=document.createElement('span');
+    title.textContent='\uD83D\uDCC4 Certificate Viewer';
+    var closeBtn=document.createElement('button');
+    closeBtn.className='pdf-modal-close-btn';
+    closeBtn.textContent='\u2715 Close';
+    closeBtn.addEventListener('click',function(){
+      var el=document.getElementById('pdf-modal-overlay');
+      if(el)el.remove();
+    });
+    header.appendChild(title);
+    header.appendChild(closeBtn);
+    var embedObj=document.createElement('object');
+    embedObj.setAttribute('data',dataUri);
+    embedObj.setAttribute('type','application/pdf');
+    embedObj.style.cssText='flex:1;border:none;width:100%;height:100%;';
+    var fallbackMsg=document.createElement('p');
+    fallbackMsg.style.cssText='color:#94a3b8;text-align:center;padding:40px;';
+    fallbackMsg.textContent='Your browser cannot display this PDF inline. Try downloading it instead.';
+    embedObj.appendChild(fallbackMsg);
+    container.appendChild(header);
+    container.appendChild(embedObj);
+    overlay.appendChild(container);
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click',function(ev){
+      if(ev.target===overlay){overlay.remove();}
+    });
+  }
+}
+
+// ============ DATA & CONSTANTS ============
+const DATA_VERSION='v6';
+const TABS=['Dashboard','Cloud Projects','Linux','Azure Labs','AI Work','Cybersecurity','CSU','🥇 Badges','👤 Profile'];
+const TAB_ICONS=['layout-dashboard','cloud','terminal','flask-conical','brain','shield','graduation-cap','award','user'];
+const DOMAIN_SLUGS=['cloudProjects','linux','azureLabs','aiWork','cybersecurity'];
+const DOMAIN_NAMES=['Cloud Projects','Linux','Azure Labs','AI Work','Cybersecurity'];
+const DOMAIN_ICONS=['cloud','terminal','flask-conical','brain','shield'];
+const DOMAIN_DESCS=['Cloud architecture, deployment & DevOps projects','Linux administration, scripting & system management','Microsoft Azure certification labs & hands-on exercises','AI integration, machine learning & prompt engineering','Network security, compliance & identity management'];
+const CSU_CATEGORIES=['General Education','Core Courses','AI & Azure','Agile & Project Management','Graduate — MS IT Management'];
+const DEGREE_TRACKS=['Transfer Credits','General Education','Social Science','Electives','BS Agile Project Management','BS Azure Specialization','Master of IT Management','Master Cybersecurity Specialization'];
+const DEGREE_TRACK_ICONS=['🪐','🌍','🌙','⭐','🚀','☁️','🛰️','🔐'];
+const DEGREE_TRACK_ABBREV={'Transfer Credits':'Transfer','General Education':'Gen Ed','Social Science':'Social Sci','Electives':'Electives','BS Agile Project Management':'BS Agile','BS Azure Specialization':'BS Azure','Master of IT Management':'MS IT Mgmt','Master Cybersecurity Specialization':'MS CyberSec'};
+const BADGE_CATEGORIES=['Certification','LinkedIn Learning','Course Completion','Module','Badge','Other'];
+const BADGE_CAT_EMOJI={'Certification':'🏅','LinkedIn Learning':'💼','Course Completion':'🎓','Module':'📦','Badge':'⭐','Other':'📋'};
+const BADGE_CAT_COLOR={'Certification':'#0078D4','LinkedIn Learning':'#0A66C2','Course Completion':'#4f46e5','Module':'#64748b','Badge':'#f59e0b','Other':'#9ca3af'};
+const DOMAIN_ACCENT_COLORS=['#0078D4','#f97316','#6366f1','#f59e0b','#7C3AED','#10b981'];
+
+let currentTab=0;
+let portfolioMode=false;
+let editingEntry=null;
+let editingBadge=null;
+
+// ============ SEED DATA ============
+function getDefaultEntries(){
+return {
+cloudProjects:[
+{id:genId(),title:"Multi-Tier Web App on Azure",description:"Deploy a 3-tier web application using Azure App Service, Azure SQL, and VNet peering.",status:"Planned",tags:["Azure","App Service","SQL","Networking"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Serverless Event Pipeline",description:"Event-driven pipeline using Azure Functions triggered by Event Grid with Cosmos DB backend.",status:"In Progress",tags:["Azure Functions","Event Grid","Cosmos DB"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Infrastructure as Code with Bicep",description:"Provision full Azure environments using Bicep templates.",status:"Planned",tags:["Bicep","ARM","Azure","IaC"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Azure Cost Optimization Audit",description:"Analyze a mock Azure subscription and produce a cost optimization report.",status:"Planned",tags:["Azure Monitor","Cost Management"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"CI/CD Pipeline with Azure DevOps",description:"Complete CI/CD pipeline for a web app with automated testing and deployment stages.",status:"Planned",tags:["Azure DevOps","GitHub Actions","YAML"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()}
+],
+linux:[
+{id:genId(),title:"Linux File System & Permissions Lab",description:"Exercises covering file permissions, ownership, and ACLs in a Linux environment.",status:"Complete",tags:["Linux","Bash","chmod","Security"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Shell Scripting Automation",description:"Bash scripts for system monitoring, log rotation, and scheduled backups using cron.",status:"In Progress",tags:["Bash","Scripting","Cron"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Linux Networking Fundamentals",description:"Configure network interfaces, routing tables, and basic firewall rules on Ubuntu Server.",status:"Planned",tags:["Linux","Networking","TCP/IP","iptables"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"LAMP Stack Deployment",description:"Manually configure a full LAMP stack on an Ubuntu VM and host a simple web application.",status:"Planned",tags:["Linux","Apache","MySQL","PHP"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"SSH Hardening & Key Management",description:"Implement SSH key-based authentication, disable password login, and configure fail2ban.",status:"Planned",tags:["SSH","Linux","Security","Keys"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()}
+],
+azureLabs:[
+{id:genId(),title:"AZ-900 Fundamentals Labs",description:"Completed all Microsoft Learn hands-on labs for the AZ-900 certification track.",status:"Complete",tags:["Azure","AZ-900","Fundamentals"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"AZ-104 Administrator Labs",description:"Working through the AZ-104 lab series covering VMs, storage, networking, and identity.",status:"In Progress",tags:["Azure","AZ-104","VMs","Networking"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Virtual Network Peering Lab",description:"Configure VNet-to-VNet peering and test connectivity across subnets with NSG rules.",status:"Planned",tags:["Azure","VNet","Peering","NSG"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Azure Active Directory & RBAC",description:"Set up users, groups, and role assignments in Microsoft Entra ID with conditional access policies.",status:"Planned",tags:["Azure AD","RBAC","Identity","Entra"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Azure Monitor & Log Analytics",description:"Configure diagnostics, create alerts, and write KQL queries in Log Analytics workspace.",status:"Planned",tags:["Azure Monitor","KQL","Log Analytics"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()}
+],
+aiWork:[
+{id:genId(),title:"QuickBooks AI Integration Analysis",description:"Analyzed AI features within QuickBooks Omni across 5 task modules — automation, categorization, and reporting.",status:"Complete",tags:["AI","Bookkeeping","QuickBooks"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Azure AI Services Lab",description:"Use Azure Cognitive Services (Vision, Language, Speech) to build a demo multi-modal app.",status:"Planned",tags:["Azure AI","Cognitive Services","Python"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"AI-Assisted Data Pipeline",description:"Pipeline that uses Azure AI to classify and route incoming data automatically.",status:"Planned",tags:["Azure AI","Data Factory","Python"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Prompt Engineering for Productivity",description:"Document and test prompting strategies for Copilot and other tools in real work scenarios.",status:"In Progress",tags:["AI","Prompt Engineering","Copilot"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Azure Machine Learning Workspace",description:"Create an AML workspace, train a simple classification model, and deploy it as an endpoint.",status:"Planned",tags:["Azure ML","Python","Jupyter"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()}
+],
+cybersecurity:[
+{id:genId(),title:"Network Security Fundamentals",description:"Coursework covering OSI model, common attack vectors, firewall rules, and threat categories.",status:"In Progress",tags:["Networking","Firewalls","TCP/IP","Security"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Azure Security Center Lab",description:"Configure Microsoft Defender for Cloud, review security posture scores, and set up alerts.",status:"Planned",tags:["Azure Defender","Security Center","SIEM"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Identity & Access Management",description:"Design and document a Zero Trust access model for a hypothetical organization using Entra ID.",status:"Planned",tags:["IAM","MFA","Zero Trust","Entra"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Vulnerability Scanning with Nessus",description:"Run a vulnerability scan in a lab environment and produce a remediation report.",status:"Planned",tags:["Nessus","Vulnerability","Scanning"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),title:"Security Compliance Documentation",description:"Map cloud controls to NIST 800-53 and produce a compliance checklist for an Azure environment.",status:"Planned",tags:["Compliance","NIST","Documentation"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()}
+]
+};
+}
+function getDefaultCSU(){return [
+{id:genId(),code:"ENG 101",title:"Composition I",status:"Complete",credits:2.67,degreeTrack:["Transfer Credits","General Education"],tags:["Transfer Credit","Writing"],description:"Transferred composition credit.",category:"General Education",startDate:"",endDate:"",showcase:false,link:"",notes:"Transfer credit applied.",createdAt:new Date().toISOString()},
+{id:genId(),code:"TR SOC",title:"Social Science",status:"Complete",credits:2.67,degreeTrack:["Transfer Credits","Social Science"],tags:["Transfer Credit","Social Science"],description:"Transferred social science credit.",category:"General Education",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"TR ART",title:"Arts & Humanities",status:"Complete",credits:5.34,degreeTrack:["Transfer Credits","General Education"],tags:["Transfer Credit","Humanities"],description:"Transferred arts & humanities credit.",category:"General Education",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"TR ELEC",title:"Electives",status:"Complete",credits:12.32,degreeTrack:["Transfer Credits","Electives"],tags:["Transfer Credit","Elective"],description:"Transferred elective credits.",category:"General Education",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"SOPH 0005",title:"Introduction to Statistics",status:"Planned",credits:3,degreeTrack:["General Education"],tags:["Sophia","Math","Statistics"],description:"Sophia Learning — completes math GE requirement.",category:"General Education",startDate:"",endDate:"",showcase:false,link:"",notes:"Completes M",createdAt:new Date().toISOString()},
+{id:genId(),code:"SOPH 0009",title:"Introduction to Nutrition",status:"Planned",credits:3,degreeTrack:["General Education"],tags:["Sophia","Natural Science"],description:"Sophia Learning — natural science GE.",category:"General Education",startDate:"",endDate:"",showcase:false,link:"",notes:"3 of 7, NS",createdAt:new Date().toISOString()},
+{id:genId(),code:"SOPH 0022",title:"U.S. History I",status:"Planned",credits:3,degreeTrack:["General Education"],tags:["Sophia","History"],description:"Sophia Learning — completes history GE.",category:"General Education",startDate:"",endDate:"",showcase:false,link:"",notes:"Completes H",createdAt:new Date().toISOString()},
+{id:genId(),code:"SOPH 0027",title:"Ancient Greek Philosophers",status:"Planned",credits:3,degreeTrack:["General Education"],tags:["Sophia","Arts & Humanities"],description:"Sophia Learning — completes Arts & Humanities GE.",category:"General Education",startDate:"",endDate:"",showcase:false,link:"",notes:"Completes A&H",createdAt:new Date().toISOString()},
+{id:genId(),code:"SOPH 0048",title:"Introduction to Psychology",status:"Planned",credits:3,degreeTrack:["General Education","Social Science"],tags:["Sophia","Social Science"],description:"Sophia Learning — completes social science GE.",category:"General Education",startDate:"",endDate:"",showcase:false,link:"",notes:"Completes SS",createdAt:new Date().toISOString()},
+{id:genId(),code:"SOPH 0049",title:"Workplace Writing II",status:"Planned",credits:3,degreeTrack:["General Education"],tags:["Sophia","Writing"],description:"Sophia Learning — completes English GE.",category:"General Education",startDate:"",endDate:"",showcase:false,link:"",notes:"Completes ENG",createdAt:new Date().toISOString()},
+{id:genId(),code:"SOPH 0058",title:"Intro to Python",status:"Planned",credits:3,degreeTrack:["Electives"],tags:["Sophia","Python","Programming"],description:"Sophia Learning Python intro.",category:"General Education",startDate:"",endDate:"",showcase:false,link:"",notes:"Maybe, deciding",createdAt:new Date().toISOString()},
+{id:genId(),code:"SOPH 0095",title:"Introduction to Physics",status:"Planned",credits:0,degreeTrack:["General Education"],tags:["Sophia","Natural Science","Physics"],description:"Potential Sophia path for physics NS requirement.",category:"General Education",startDate:"",endDate:"",showcase:false,link:"",notes:"Potentially Complete NS",createdAt:new Date().toISOString()},
+{id:genId(),code:"ORG 300",title:"Applying Leadership Principles",status:"In Progress",credits:3,degreeTrack:["BS Azure Specialization","BS Agile Project Management"],tags:["CSU","Leadership","Management"],description:"Leadership principles applied to organizational contexts.",category:"Core Courses",startDate:"2026-01-15",endDate:"2026-05-15",showcase:false,link:"",notes:"Currently enrolled — class code 46184",createdAt:new Date().toISOString()},
+{id:genId(),code:"MGT 300",title:"Principles of Management",status:"Planned",credits:3,degreeTrack:["BS Agile Project Management"],tags:["CSU","Management","Business"],description:"Foundational management theory and practice.",category:"Core Courses",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"MIS 300",title:"Information Systems Design and Management",status:"Planned",credits:3,degreeTrack:["BS Azure Specialization","Electives"],tags:["CSU","Information Systems","Design"],description:"Design and management of enterprise information systems.",category:"Core Courses",startDate:"",endDate:"",showcase:false,link:"",notes:"Elective",createdAt:new Date().toISOString()},
+{id:genId(),code:"ITS 315",title:"Database Concepts, Intro to Networks",status:"Planned",credits:3,degreeTrack:["BS Azure Specialization"],tags:["CSU","Databases","Networking"],description:"Foundational database and networking concepts.",category:"Core Courses",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"ITS 320",title:"Basic Programming",status:"In Progress",credits:3,degreeTrack:["BS Azure Specialization"],tags:["CSU","Programming","Code"],description:"Introductory programming concepts and exercises.",category:"Core Courses",startDate:"2026-01-15",endDate:"2026-05-15",showcase:false,link:"",notes:"Currently enrolled — class code 46184",createdAt:new Date().toISOString()},
+{id:genId(),code:"ITS 420",title:"Advanced Networking Systems",status:"Planned",credits:3,degreeTrack:["BS Azure Specialization"],tags:["CSU","Linux","Networking","Linux+"],description:"Advanced networking and Linux systems administration. Prepares for Linux+ certification.",category:"Core Courses",startDate:"",endDate:"",showcase:false,link:"",notes:"Prepares for Linux+ cert.",createdAt:new Date().toISOString()},
+{id:genId(),code:"ITS 441",title:"Cloud Technology Fundamentals",status:"Planned",credits:3,degreeTrack:["BS Azure Specialization"],tags:["CSU","Cloud","Azure"],description:"Foundations of cloud technology, architecture, and deployment models.",category:"Core Courses",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"CSC 410",title:"Artificial Intelligence",status:"Planned",credits:3,degreeTrack:["BS Azure Specialization"],tags:["CSU","AI","Machine Learning"],description:"Introduction to AI concepts. Prerequisite for CSC 425.",category:"Core Courses",startDate:"",endDate:"",showcase:false,link:"",notes:"PreReq for CSC 425",createdAt:new Date().toISOString()},
+{id:genId(),code:"CSC 425",title:"Principles of Machine Learning",status:"Planned",credits:3,degreeTrack:["BS Azure Specialization"],tags:["CSU","Machine Learning","AI","Python"],description:"Core ML principles, algorithms, and practical applications.",category:"AI & Azure",startDate:"",endDate:"",showcase:false,link:"",notes:"Requires CSC 410 first",createdAt:new Date().toISOString()},
+{id:genId(),code:"CSC 486",title:"Introduction to Azure & AI Services",status:"Planned",credits:3,degreeTrack:["BS Azure Specialization"],tags:["CSU","Azure","AI","Cloud"],description:"Introduction to Microsoft Azure platform and AI service offerings.",category:"AI & Azure",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"CSC 487",title:"AI Automation with Azure Cognitive Services",status:"Planned",credits:3,degreeTrack:["BS Azure Specialization"],tags:["CSU","Azure","Cognitive Services","AI"],description:"Building AI-powered automation using Azure Cognitive Services.",category:"AI & Azure",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"CSC 488",title:"Automating AI Workflows with Azure and DevOps",status:"Planned",credits:3,degreeTrack:["BS Azure Specialization"],tags:["CSU","Azure DevOps","AI","Automation"],description:"Integrating AI workflows into Azure DevOps pipelines.",category:"AI & Azure",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"CSC 489",title:"Building Intelligent Bots with Azure Bot Services",status:"Planned",credits:3,degreeTrack:["BS Azure Specialization"],tags:["CSU","Azure","Bot Service","AI"],description:"Design and deploy intelligent bots using Azure Bot Services.",category:"AI & Azure",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"CSC 450",title:"Advanced Topics in AI and Azure",status:"Planned",credits:3,degreeTrack:["BS Azure Specialization"],tags:["CSU","Azure","AI","Advanced"],description:"Capstone-level advanced AI and Azure architecture topics.",category:"AI & Azure",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"PJM 405",title:"Fundamentals of Agile Framework",status:"Planned",credits:3,degreeTrack:["BS Agile Project Management"],tags:["CSU","Agile","Project Management"],description:"Core Agile principles, values, and framework overview.",category:"Agile & Project Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"PJM 420",title:"Mastering Agile Methodologies",status:"Planned",credits:3,degreeTrack:["BS Agile Project Management"],tags:["CSU","Agile","Scrum"],description:"Deep dive into Agile methodologies.",category:"Agile & Project Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"PJM 422",title:"Agile Planning, Estimating & Performance Reporting",status:"Planned",credits:3,degreeTrack:["BS Agile Project Management"],tags:["CSU","Agile","Planning"],description:"Techniques for Agile sprint planning, estimation, and KPI reporting.",category:"Agile & Project Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"PJM 423",title:"Agile Project Execution & Value Delivery",status:"Planned",credits:3,degreeTrack:["BS Agile Project Management"],tags:["CSU","Agile","Delivery"],description:"Executing Agile projects and ensuring continuous value delivery.",category:"Agile & Project Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"PJM 425",title:"Agile Team Leadership & Coaching",status:"Planned",credits:3,degreeTrack:["BS Agile Project Management"],tags:["CSU","Agile","Leadership"],description:"Leading and coaching high-performing Agile teams.",category:"Agile & Project Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"PJM 426",title:"Managing Risk, Quality & Change in Agile",status:"Planned",credits:3,degreeTrack:["BS Agile Project Management"],tags:["CSU","Agile","Risk","Quality"],description:"Risk management, quality assurance, and change control in Agile.",category:"Agile & Project Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"PJM 427",title:"Managing Agile Software Development",status:"Planned",credits:3,degreeTrack:["BS Agile Project Management"],tags:["CSU","Agile","Software Dev"],description:"Agile methodologies applied to software development lifecycles.",category:"Agile & Project Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"PJM 428",title:"Integrating Emerging Technologies with Agile",status:"Planned",credits:3,degreeTrack:["BS Agile Project Management"],tags:["CSU","Agile","AI","Emerging Tech"],description:"Incorporating AI and emerging technologies into Agile frameworks.",category:"Agile & Project Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"PJM 429",title:"Mastering Scrum Principles & Practices",status:"Planned",credits:3,degreeTrack:["BS Agile Project Management"],tags:["CSU","Agile","Scrum"],description:"Advanced Scrum framework — sprints, retrospectives, and Scrum Master skills.",category:"Agile & Project Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"PJM 430",title:"Capstone: Agile Project Management",status:"Planned",credits:3,degreeTrack:["BS Agile Project Management"],tags:["CSU","Agile","Capstone"],description:"Capstone course synthesizing all Agile PM coursework.",category:"Agile & Project Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"ISM 501",title:"IT Management",status:"Planned",credits:3,degreeTrack:["Master of IT Management"],tags:["CSU","Graduate","IT Management"],description:"Graduate-level IT management strategies and frameworks.",category:"Graduate — MS IT Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"ISM 511",title:"Managing Virtualized and Cloud Systems",status:"Planned",credits:3,degreeTrack:["Master of IT Management"],tags:["CSU","Graduate","Cloud","Virtualization"],description:"Management of virtualized infrastructure and cloud-based systems.",category:"Graduate — MS IT Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"ISM 521",title:"Managing Enterprise Resource Planning (ERP) Systems",status:"Planned",credits:3,degreeTrack:["Master of IT Management"],tags:["CSU","Graduate","ERP","Enterprise"],description:"ERP system selection, implementation, and management.",category:"Graduate — MS IT Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
+{id:genId(),code:"ISM 525",title:"Ethical Considerations in Managing IT",status:"Planned",credits:3,degreeTrack:["Master of IT Management","Master Cybersecurity Specialization"],tags:["CSU","Graduate","Ethics","IT Management"],description:"Ethical, legal, and policy considerations in IT management.",category:"Graduate — MS IT Management",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()}
+];}
+function getDefaultBadges(){return [
+{id:genId(),title:"Microsoft Azure Fundamentals",issuer:"Microsoft",category:"Certification",dateEarned:"",expirationDate:"",credentialId:"",credentialUrl:"",tags:["Azure","Cloud","AZ-900"],notes:"Target cert",showcase:true,photoData:"",fileName:"",fileType:""},
+{id:genId(),title:"Introduction to Cloud Computing",issuer:"LinkedIn Learning",category:"LinkedIn Learning",dateEarned:"",expirationDate:"",credentialId:"",credentialUrl:"",tags:["Cloud","Azure","Fundamentals"],notes:"",showcase:false,photoData:"",fileName:"",fileType:""},
+{id:genId(),title:"Linux Command Line Basics",issuer:"LinkedIn Learning",category:"LinkedIn Learning",dateEarned:"",expirationDate:"",credentialId:"",credentialUrl:"",tags:["Linux","Bash","CLI"],notes:"",showcase:false,photoData:"",fileName:"",fileType:""},
+{id:genId(),title:"Agile Foundations",issuer:"LinkedIn Learning",category:"LinkedIn Learning",dateEarned:"",expirationDate:"",credentialId:"",credentialUrl:"",tags:["Agile","Scrum","Project Management"],notes:"",showcase:false,photoData:"",fileName:"",fileType:""}
+];}
+function getDefaultProfile(){return {name:"Carla Bailey",title:"Azure Solutions Architect Candidate",location:"Cortez, CO",email:"carla.bailey0314@outlook.com",phone:"",linkedin:"https://www.linkedin.com/in/carla0314/",github:"https://github.com/cbailey0314",website:"",aboutMe:"I'm an IT professional and CSU student pursuing a career as an Azure Solutions Architect. My background spans cloud infrastructure, Linux systems, AI integration, and agile project management. I'm passionate about building scalable, secure cloud solutions and continuously expanding my technical skill set.",targetRole:"Azure Solutions Architect",targetTimeline:"2027",currentFocus:"AZ-104 Certification · CSU Coursework · Portfolio Building",avatarPhoto:"",certifications:[{id:1,name:"AZ-900: Azure Fundamentals",issuer:"Microsoft",date:"",status:"Planned"},{id:2,name:"AZ-104: Azure Administrator",issuer:"Microsoft",date:"",status:"Planned"},{id:3,name:"AZ-305: Azure Solutions Architect Expert",issuer:"Microsoft",date:"",status:"Planned"},{id:4,name:"Linux+ (CompTIA)",issuer:"CompTIA",date:"",status:"Planned"}],skills:["Azure","Linux","Bash","Python","Networking","SQL","IaC / Bicep","Azure DevOps","AI/ML","Agile / Scrum","Cost Management","Azure Monitor","KQL","Entra ID / RBAC","TCP/IP","Git","GitHub"],education:[{id:1,institution:"Colorado State University",degree:"BS — Azure Specialization & Agile Project Management",status:"In Progress",years:"2025 – Present"},{id:2,institution:"Colorado State University",degree:"MS — IT Management",status:"Planned",years:"Planned"}]};}
+function getDefaultGoals(){return {"Transfer Credits":23,"General Education":36,"Social Science":6,"Electives":15,"BS Agile Project Management":30,"BS Azure Specialization":36,"Master of IT Management":12,"Master Cybersecurity Specialization":9};}
+
+// ============ HELPERS ============
+function genId(){return Math.random().toString(36).substr(2,9)}
+function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function load(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}
+function fmtDate(d){if(!d)return '';const dt=new Date(d+'T00:00:00');return dt.toLocaleDateString('en-US',{month:'short',year:'numeric'})}
+function fmtDateFull(d){if(!d)return '';const dt=new Date(d+'T00:00:00');return dt.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}
+function monthDiff(a,b){if(!a||!b)return 0;const da=new Date(a+'T00:00:00'),db=new Date(b+'T00:00:00');return Math.max(1,Math.round((db-da)/(1000*60*60*24*30)))}
+function statusBadge(s){const c=s==='Complete'?'badge-complete':s==='In Progress'?'badge-progress':'badge-planned';return `<span class="${c} badge">${s}</span>`}
+function tagPills(tags){return (tags||[]).map(t=>`<span class="tag-pill">${esc(t)}</span>`).join('')}
+function dashTagPills(tags){return (tags||[]).map(t=>`<span class="dash-tag-pill">${esc(t)}</span>`).join('')}
+function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function today(){return '2026-05-10'}
+function fmtFileSize(bytes){if(!bytes||bytes<=0)return '';if(bytes<1024)return bytes+' B';if(bytes<1048576)return (bytes/1024).toFixed(1)+' KB';return (bytes/1048576).toFixed(1)+' MB';}
+function resolveFileType(entry){
+  if(entry.fileType)return entry.fileType;
+  if(!entry.photoData)return '';
+  if(entry.fileName&&entry.fileName.toLowerCase().endsWith('.pdf'))return 'pdf';
+  if(entry.photoData&&entry.photoData.startsWith('data:application/pdf'))return 'pdf';
+  return 'image';
+}
+
+// ============ INIT DATA ============
+function initData(){
+if(localStorage.getItem('portfolioDataVersion')!==DATA_VERSION){
+['portfolioEntries','badgesCredentials','portfolioProfile','degreeGoals','portfolioDataVersion'].forEach(k=>localStorage.removeItem(k));
+save('portfolioEntries',getDefaultEntries());
+const csu=getDefaultCSU();
+const entries=load('portfolioEntries');
+entries.csu=csu;
+save('portfolioEntries',entries);
+save('badgesCredentials',getDefaultBadges());
+save('portfolioProfile',getDefaultProfile());
+save('degreeGoals',getDefaultGoals());
+localStorage.setItem('portfolioDataVersion',DATA_VERSION);
+}
+}
+function getEntries(){return load('portfolioEntries')||{};}
+function getBadges(){return load('badgesCredentials')||[];}
+function getProfile(){return load('portfolioProfile')||getDefaultProfile();}
+function getGoals(){return load('degreeGoals')||getDefaultGoals();}
+
+// ============ NAV ============
+function buildNav(){
+const dt=document.getElementById('desktop-tabs');
+const mt=document.getElementById('mobile-tabs');
+dt.innerHTML='';mt.innerHTML='';
+TABS.forEach((t,i)=>{
+const b=document.createElement('button');
+b.className='tab-btn'+(i===currentTab?' active':'');
+b.textContent=t;
+b.dataset.tab=i;
+dt.appendChild(b);
+const mb=document.createElement('button');
+mb.className='tab-btn w-full text-left py-3'+(i===currentTab?' active':'');
+mb.textContent=t;
+mb.dataset.tab=i;
+mt.appendChild(mb);
+});
+dt.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{currentTab=parseInt(b.dataset.tab);portfolioMode=false;render();}));
+mt.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{currentTab=parseInt(b.dataset.tab);portfolioMode=false;document.getElementById('mobile-menu').classList.add('hidden');render();}));
+}
+
+// ============ STARFIELD GENERATOR ============
+function generateStarfield(){
+let stars='';for(let i=0;i<120;i++){const x=Math.random()*100,y=Math.random()*100,s=Math.random()>0.93?3:Math.random()>0.8?2:1,o=(Math.random()*0.6+0.3).toFixed(2);stars+=`${x}vw ${y}vh 0 ${s-1}px rgba(255,255,255,${o}),`;}
+stars=stars.slice(0,-1);
+let bigStars='';for(let i=0;i<6;i++){const x=Math.random()*90+5,y=Math.random()*80+10;bigStars+=`${x}vw ${y}vh 0 2px rgba(255,255,255,0.8),`;}bigStars=bigStars.slice(0,-1);
+return {stars,bigStars};
+}
+
+// ============ NEXT CHAPTER TEASER ============
+function renderNextChapter(){
+let html=`<div class="next-chapter-card p-5 md:p-6 mt-6">`;
+html+=`<div class="next-chapter-tooltip">The next build. BITE brings operational calm to small business accounting — built entirely on Azure.</div>`;
+html+=`<div class="flex flex-col gap-3">`;
+html+=`<span class="text-xs font-semibold tracking-widest uppercase" style="color:#c4b5fd;letter-spacing:0.1em">🔭 Next Chapter</span>`;
+html+=`<h3 class="text-xl md:text-2xl font-bold text-white"><span style="color:#0D9488">B.I.T.E.<sup style="color:#0D9488;font-size:0.55em">\u2122</sup></span> Platform</h3>`;
+html+=`<p class="text-sm" style="color:#94a3b8">Azure-native operational ecosystem for food &amp; beverage businesses.</p>`;
+html+=`<p class="text-xs" style="color:#64748b">Currently in architecture phase under Nightfield LLC.</p>`;
+html+=`<div class="flex flex-wrap gap-2 mt-1">`;
+html+=`<span class="badge" style="background:rgba(245,158,11,0.15);color:#fbbf24">🏗️ Architecture Phase</span>`;
+html+=`<span class="badge" style="background:rgba(0,120,212,0.15);color:#66b0ff">☁️ Azure-Native</span>`;
+html+=`</div>`;
+html+=`</div></div>`;
+return html;
+}
+
+// ============ DASHBOARD ============
+function renderDashboard(){
+const entries=getEntries();
+const allDomains=[...DOMAIN_SLUGS,'csu'];
+const allNames=[...DOMAIN_NAMES,'CSU'];
+const allIcons=[...DOMAIN_ICONS,'graduation-cap'];
+let html=`<div class="relative">`;
+html+=`<div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-6">`;
+html+='<h2 class="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-2"><i data-lucide="layout-dashboard" class="w-6 h-6 inline text-azure-400"></i>Dashboard</h2>';
+html+='<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">';
+let totalComplete=0,totalAll=0,totalShowcase=0;
+allDomains.forEach((slug,i)=>{
+const items=slug==='csu'?(entries.csu||[]):(entries[slug]||[]);
+const complete=items.filter(e=>e.status==='Complete').length;
+const inProg=items.filter(e=>e.status==='In Progress').length;
+const planned=items.filter(e=>e.status==='Planned').length;
+const total=items.length;
+const pct=total?Math.round(complete/total*100):0;
+totalComplete+=complete;totalAll+=total;
+totalShowcase+=items.filter(e=>e.showcase&&e.status==='Complete').length;
+const accent=DOMAIN_ACCENT_COLORS[i];
+const accentBg=accent+'20';
+html+=`<div class="dash-domain-card p-5" style="border-left:4px solid ${accent}!important"><div class="flex items-center gap-3 mb-3"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:${accentBg}"><i data-lucide="${allIcons[i]}" class="w-5 h-5" style="color:${accent}"></i></div><span class="font-semibold text-white">${allNames[i]}</span><span class="ml-auto text-xs font-medium" style="color:${accent}">${pct}%</span></div>`;
+html+=`<div class="dash-progress-bar mb-3"><div class="progress-fill" style="width:0%;background:${accent}" data-target="${pct}"></div></div>`;
+html+=`<div class="flex gap-4 text-xs"><span class="flex items-center gap-1 text-slate-300"><span class="w-2 h-2 rounded-full inline-block" style="background:#94a3b8"></span> ${planned} Planned</span><span class="flex items-center gap-1 text-slate-300"><span class="w-2 h-2 rounded-full inline-block" style="background:#f59e0b"></span> ${inProg} In Progress</span><span class="flex items-center gap-1 text-slate-300"><span class="w-2 h-2 rounded-full inline-block" style="background:#22c55e"></span> ${complete} Complete</span></div></div>`;
+});
+html+='</div>';
+const totalPct=totalAll?Math.round(totalComplete/totalAll*100):0;
+let quote='Every expert started here.';
+if(totalPct>=25&&totalPct<50)quote='Momentum is building.';
+else if(totalPct>=50&&totalPct<75)quote="You're becoming the architect.";
+else if(totalPct>=75&&totalPct<100)quote='Almost there — polish and publish.';
+else if(totalPct>=100)quote='Portfolio complete. Go get that role.';
+html+=`<div class="dash-glass-card p-5 mb-6"><div class="flex flex-col md:flex-row md:items-center gap-4"><div class="flex-1"><div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold text-white">Total Portfolio Progress</span><span class="text-sm font-bold text-azure-400">${totalPct}%</span></div><div class="dash-progress-bar"><div class="progress-fill" style="width:0%;background:#0078D4" data-target="${totalPct}"></div></div></div><div class="flex items-center gap-4"><span class="badge" style="background:rgba(245,158,11,0.15);color:#fbbf24">⭐ Showcase Ready: ${totalShowcase}</span><span class="text-sm italic" style="color:#94a3b8">"${quote}"</span></div></div></div>`;
+html+=renderConstellation();
+html+=renderNextChapter();
+html+='</div></div>';
+return html;
+}
+function renderConstellation(){
+const entries=getEntries();
+const csu=entries.csu||[];
+const goals=getGoals();
+
+let html=`<div class="relative">`;
+html+=`<div class="relative z-10"><div class="mb-6"><h3 class="text-white font-bold text-lg">🛸 Degree Constellation</h3><p class="text-slate-400 text-sm">Track your credits across each program</p></div>`;
+html+=`<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">`;
+let totalLogged=0;
+DEGREE_TRACKS.forEach((track,i)=>{
+const goal=goals[track]||0;
+let earned=0,inProg=0,planned=0;
+csu.forEach(c=>{if((c.degreeTrack||[]).includes(track)){if(c.status==='Complete')earned+=c.credits||0;else if(c.status==='In Progress')inProg+=c.credits||0;else planned+=c.credits||0;}});
+totalLogged+=earned+inProg+planned;
+const pct=goal?Math.min(100,Math.round(earned/goal*100)):0;
+const r=28,circ=2*Math.PI*r,offset=circ-(pct/100)*circ;
+html+=`<div class="constellation-card"><div class="flex items-center gap-2 mb-3"><span class="text-xl">${DEGREE_TRACK_ICONS[i]}</span><div class="flex-1 min-w-0"><div class="text-white font-semibold text-sm truncate">${track}</div><div class="text-azure-300 text-xs font-medium">${earned.toFixed(1)} / ${goal} cr</div></div></div>`;
+html+=`<div class="flex justify-center mb-3"><svg width="70" height="70" class="credit-ring"><circle cx="35" cy="35" r="${r}" stroke="#1e293b" stroke-width="5" fill="none"/><circle cx="35" cy="35" r="${r}" stroke="#0078D4" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="${circ}" stroke-dashoffset="${offset}" transform="rotate(-90 35 35)"/><text x="35" y="38" text-anchor="middle" fill="white" font-size="13" font-weight="bold">${pct}%</text></svg></div>`;
+const eW=goal?(earned/goal*100):0,iW=goal?(inProg/goal*100):0,pW=goal?(planned/goal*100):0;
+html+=`<div class="h-2 rounded-full overflow-hidden flex mb-2" style="background:#1e293b"><div style="width:${Math.min(eW,100)}%;background:#22c55e" class="h-full"></div><div style="width:${Math.min(iW,100-eW)}%;background:#f59e0b" class="h-full"></div><div style="width:${Math.min(pW,100-eW-iW)}%;background:#475569" class="h-full"></div></div>`;
+html+=`<div class="text-xs text-slate-400">${earned.toFixed(1)} earned · ${inProg.toFixed(1)} in progress · ${planned.toFixed(1)} planned</div>`;
+html+=`<div class="mt-2 flex items-center gap-1 text-xs"><span class="text-slate-400">🎯 Goal:</span><span class="text-white font-medium goal-val" data-track="${track}">${goal} cr</span><button class="text-azure-400 hover:text-azure-300 ml-1 edit-goal-btn" data-track="${track}" title="Edit goal"><i data-lucide="pencil" class="w-3 h-3"></i></button></div>`;
+html+=`</div>`;
+});
+html+=`</div>`;
+html+=`<p class="text-center text-slate-500 text-sm mt-6">Total Credits Logged: ${totalLogged.toFixed(1)} cr across all programs</p>`;
+html+=`</div></div>`;
+return html;
+}
+
+// ============ DOMAIN TAB ============
+function renderDomainTab(domainIdx){
+const slug=DOMAIN_SLUGS[domainIdx];
+const name=DOMAIN_NAMES[domainIdx];
+const icon=DOMAIN_ICONS[domainIdx];
+const desc=DOMAIN_DESCS[domainIdx];
+const entries=getEntries();
+const items=entries[slug]||[];
+let html=`<div class="max-w-7xl mx-auto px-4 md:px-6 py-6">`;
+html+=`<div class="flex flex-col md:flex-row md:items-center gap-3 mb-6"><div class="flex items-center gap-3"><i data-lucide="${icon}" class="w-6 h-6 text-azure-400"></i><div><h2 class="text-xl md:text-2xl font-bold text-white">${name}</h2><p class="text-sm text-slate-400">${desc}</p></div></div><button class="btn-primary flex items-center gap-1 ml-auto add-entry-btn" data-domain="${slug}"><i data-lucide="plus" class="w-4 h-4"></i> Add Entry</button></div>`;
+html+=`<div id="form-area-${slug}"></div>`;
+if(!items.length){
+html+=`<div class="card p-12 text-center"><i data-lucide="inbox" class="w-12 h-12 text-slate-500 mx-auto mb-3"></i><p class="text-slate-400">No entries yet — add your first ${name.toLowerCase()} entry!</p></div>`;
+}else{
+html+=`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
+items.forEach(e=>{html+=renderEntryCard(e,slug);});
+html+=`</div>`;
+}
+html+=`</div>`;
+return html;
+}
+function renderEntryCard(e,domain){
+let html=`<div class="card entry-card p-4" data-status="${e.status}"><div class="flex items-start justify-between mb-2"><h3 class="font-semibold text-white text-sm">${esc(e.title)}</h3><button class="showcase-star ${e.showcase?'active':''}" data-id="${e.id}" data-domain="${domain}" title="Toggle showcase">★</button></div>`;
+html+=`<p class="text-xs text-slate-400 mb-3">${esc(e.description)}</p>`;
+html+=`<div class="flex flex-wrap items-center gap-2 mb-3">${statusBadge(e.status)}</div>`;
+if(e.tags&&e.tags.length)html+=`<div class="flex flex-wrap gap-1 mb-3">${tagPills(e.tags)}</div>`;
+if(e.link)html+=`<div class="text-xs mb-2"><a href="${esc(e.link)}" target="_blank" class="text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="external-link" class="w-3 h-3"></i> ${esc(e.link)}</a></div>`;
+if(e.notes)html+=`<details class="mb-2"><summary class="text-xs text-slate-400 cursor-pointer">Notes</summary><p class="text-xs text-slate-400 mt-1">${esc(e.notes)}</p></details>`;
+html+=`<div class="flex gap-2 mt-2 pt-2 border-t" style="border-color:rgba(255,255,255,0.08)"><button class="btn-secondary text-xs py-1 px-3 edit-entry-btn" data-id="${e.id}" data-domain="${domain}"><i data-lucide="pencil" class="w-3 h-3 inline"></i> Edit</button><button class="btn-danger text-xs py-1 px-3 del-entry-btn" data-id="${e.id}" data-domain="${domain}"><i data-lucide="trash-2" class="w-3 h-3 inline"></i> Delete</button></div></div>`;
+return html;
+}
+
+// ============ ENTRY FORM ============
+function showEntryForm(domain,entry=null){
+const area=document.getElementById('form-area-'+domain);
+if(!area)return;
+const e=entry||{title:'',description:'',status:'Planned',tags:[],link:'',notes:'',showcase:false};
+area.innerHTML=`<div class="card p-5 mb-6 border-l-4" style="border-left-color:#0078D4"><h3 class="font-semibold text-white mb-4">${entry?'Edit':'Add'} Entry</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Title</label><input class="form-input" id="ef-title" value="${esc(e.title)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Status</label><select class="form-input" id="ef-status"><option ${e.status==='Planned'?'selected':''}>Planned</option><option ${e.status==='In Progress'?'selected':''}>In Progress</option><option ${e.status==='Complete'?'selected':''}>Complete</option></select></div></div>
+<div class="mb-4"><label class="text-xs font-medium text-slate-400 mb-1 block">Description</label><textarea class="form-input" id="ef-desc" rows="2">${esc(e.description)}</textarea></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Tags (comma-separated)</label><input class="form-input" id="ef-tags" value="${(e.tags||[]).join(', ')}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Link (URL)</label><input class="form-input" id="ef-link" value="${esc(e.link)}"></div></div>
+<div class="mb-4"><label class="text-xs font-medium text-slate-400 mb-1 block">Notes</label><textarea class="form-input" id="ef-notes" rows="2">${esc(e.notes)}</textarea></div>
+<div class="flex items-center gap-2 mb-4"><label class="text-xs font-medium text-slate-400">Showcase</label><input type="checkbox" id="ef-showcase" ${e.showcase?'checked':''}></div>
+<div class="flex gap-2"><button class="btn-primary" id="ef-save">Save</button><button class="btn-secondary" id="ef-cancel">Cancel</button></div></div>`;
+document.getElementById('ef-save').addEventListener('click',()=>{
+const entries=getEntries();
+const list=entries[domain]||[];
+const newE={id:entry?entry.id:genId(),title:document.getElementById('ef-title').value,description:document.getElementById('ef-desc').value,status:document.getElementById('ef-status').value,tags:document.getElementById('ef-tags').value.split(',').map(t=>t.trim()).filter(Boolean),link:document.getElementById('ef-link').value,notes:document.getElementById('ef-notes').value,showcase:document.getElementById('ef-showcase').checked,createdAt:entry?entry.createdAt:new Date().toISOString()};
+if(entry){const idx=list.findIndex(x=>x.id===entry.id);if(idx>=0)list[idx]=newE;}else list.push(newE);
+entries[domain]=list;save('portfolioEntries',entries);render();
+});
+document.getElementById('ef-cancel').addEventListener('click',()=>{area.innerHTML='';});
+}
+
+// ============ CSU TAB ============
+function renderCSU(){
+const entries=getEntries();
+const csu=entries.csu||[];
+const complete=csu.filter(e=>e.status==='Complete').length;
+const inProg=csu.filter(e=>e.status==='In Progress').length;
+const planned=csu.filter(e=>e.status==='Planned').length;
+let html=`<div class="max-w-7xl mx-auto px-4 md:px-6 py-6">`;
+html+=`<div class="flex flex-col md:flex-row md:items-center gap-3 mb-4"><div class="flex items-center gap-3"><i data-lucide="graduation-cap" class="w-6 h-6 text-azure-400"></i><div><h2 class="text-xl md:text-2xl font-bold text-white">🎓 CSU</h2><p class="text-sm text-slate-400">${csu.length} courses</p></div></div><button class="btn-primary flex items-center gap-1 ml-auto add-csu-btn"><i data-lucide="plus" class="w-4 h-4"></i> Add Course</button></div>`;
+html+=`<div class="flex flex-wrap gap-3 mb-4 text-sm"><span class="badge badge-planned">Total: ${csu.length}</span><span class="badge badge-complete">✅ Complete: ${complete}</span><span class="badge badge-progress">🔄 In Progress: ${inProg}</span><span class="badge badge-planned">📋 Planned: ${planned}</span></div>`;
+html+=`<div class="flex flex-wrap gap-2 mb-6"><label class="text-xs font-medium text-slate-400 mr-2 self-center">Sort:</label><button class="filter-pill active csu-sort-btn" data-sort="category">Default (Category)</button><button class="filter-pill csu-sort-btn" data-sort="startDate">By Start Date</button><button class="filter-pill csu-sort-btn" data-sort="endDate">By End Date</button><button class="filter-pill csu-sort-btn" data-sort="status">By Status</button></div>`;
+html+=`<div id="csu-form-area"></div>`;
+html+=`<div id="csu-list"></div></div>`;
+return html;
+}
+function renderCSUList(sortBy='category'){
+const entries=getEntries();
+let csu=[...(entries.csu||[])];
+const container=document.getElementById('csu-list');
+if(!container)return;
+if(sortBy==='startDate')csu.sort((a,b)=>(a.startDate||'9').localeCompare(b.startDate||'9'));
+else if(sortBy==='endDate')csu.sort((a,b)=>(a.endDate||'9').localeCompare(b.endDate||'9'));
+else if(sortBy==='status'){const so={Complete:0,'In Progress':1,Planned:2};csu.sort((a,b)=>so[a.status]-so[b.status]);}
+let html='';
+if(sortBy==='category'){
+CSU_CATEGORIES.forEach(cat=>{
+const items=csu.filter(c=>c.category===cat);
+if(!items.length)return;
+html+=`<div class="mb-6"><div class="flex items-center gap-2 mb-3 pb-2 border-b" style="border-color:rgba(255,255,255,0.1)"><h3 class="font-semibold text-slate-200 text-base">${cat}</h3><span class="text-xs text-slate-500">(${items.length})</span></div>`;
+html+=`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
+items.forEach(c=>{html+=renderCSUCard(c);});
+html+=`</div></div>`;
+});
+}else{
+html+=`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
+csu.forEach(c=>{html+=renderCSUCard(c);});
+html+=`</div>`;
+}
+container.innerHTML=html;
+lucide.createIcons();
+bindCSUEvents();
+}
+function renderCSUCard(c){
+let html=`<div class="card entry-card p-4" data-status="${c.status}"><div class="flex items-start justify-between mb-2"><div class="flex-1 min-w-0"><div class="flex items-center gap-2 flex-wrap"><span class="text-xs font-mono px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.08);color:#cbd5e1">${esc(c.code)}</span><h3 class="font-semibold text-white text-sm">${esc(c.title)}</h3></div></div><button class="showcase-star ${c.showcase?'active':''}" data-id="${c.id}" data-domain="csu" title="Toggle showcase">★</button></div>`;
+html+=`<p class="text-xs text-slate-400 mb-2">${esc(c.description)}</p>`;
+html+=`<div class="flex flex-wrap items-center gap-2 mb-2">${statusBadge(c.status)}<span class="badge" style="background:rgba(0,120,212,0.15);color:#66b0ff">${(c.credits||0).toFixed(c.credits%1?2:0)} cr</span></div>`;
+if(c.degreeTrack&&c.degreeTrack.length)html+=`<div class="flex flex-wrap gap-1 mb-2">${c.degreeTrack.map(t=>`<span class="degree-pill">${DEGREE_TRACK_ABBREV[t]||t}</span>`).join('')}</div>`;
+if(c.tags&&c.tags.length)html+=`<div class="flex flex-wrap gap-1 mb-2">${tagPills(c.tags)}</div>`;
+if(c.startDate||c.endDate){
+const dur=monthDiff(c.startDate,c.endDate);
+let dot='🔵',dotLabel='Upcoming';
+const td=today();
+if(c.endDate&&c.endDate<td&&c.status==='Complete'){dot='🟢';dotLabel='Finished';}
+else if(c.endDate&&c.endDate<td&&c.status!=='Complete'){dot='🔴';dotLabel='Overdue';}
+else if(c.startDate&&c.startDate<=td&&(!c.endDate||c.endDate>=td)){dot='🟡';dotLabel='Active';}
+html+=`<div class="text-xs text-slate-400 mb-2 flex items-center gap-2 flex-wrap">📅 ${fmtDate(c.startDate)} → ${fmtDate(c.endDate)}<span class="badge badge-planned">${dur} months</span><span title="${dotLabel}">${dot} ${dotLabel}</span></div>`;
+}else{
+html+=`<div class="text-xs text-slate-500 italic mb-2">Dates not set</div>`;
+}
+html+=`<div class="flex gap-2 mt-2 pt-2 border-t" style="border-color:rgba(255,255,255,0.08)"><button class="btn-secondary text-xs py-1 px-3 edit-csu-btn" data-id="${c.id}"><i data-lucide="pencil" class="w-3 h-3 inline"></i> Edit</button><button class="btn-danger text-xs py-1 px-3 del-csu-btn" data-id="${c.id}"><i data-lucide="trash-2" class="w-3 h-3 inline"></i> Delete</button></div></div>`;
+return html;
+}
+function showCSUForm(entry=null){
+const area=document.getElementById('csu-form-area');
+if(!area)return;
+const e=entry||{code:'',title:'',description:'',status:'Planned',credits:3,degreeTrack:[],tags:[],link:'',notes:'',showcase:false,category:'General Education',startDate:'',endDate:''};
+let trackChecks='';
+DEGREE_TRACKS.forEach(t=>{
+const checked=(e.degreeTrack||[]).includes(t);
+trackChecks+=`<label class="check-pill ${checked?'checked':''}" data-track="${t}"><input type="checkbox" class="hidden dt-check" value="${t}" ${checked?'checked':''}> ${DEGREE_TRACK_ABBREV[t]||t}</label>`;
+});
+area.innerHTML=`<div class="card p-5 mb-6 border-l-4" style="border-left-color:#0078D4"><h3 class="font-semibold text-white mb-4">${entry?'Edit':'Add'} Course</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Course Code</label><input class="form-input" id="cf-code" value="${esc(e.code)}"></div><div class="md:col-span-2"><label class="text-xs font-medium text-slate-400 mb-1 block">Title</label><input class="form-input" id="cf-title" value="${esc(e.title)}"></div></div>
+<div class="mb-4"><label class="text-xs font-medium text-slate-400 mb-1 block">Description</label><textarea class="form-input" id="cf-desc" rows="2">${esc(e.description)}</textarea></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Status</label><select class="form-input" id="cf-status"><option ${e.status==='Planned'?'selected':''}>Planned</option><option ${e.status==='In Progress'?'selected':''}>In Progress</option><option ${e.status==='Complete'?'selected':''}>Complete</option></select></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Category</label><select class="form-input" id="cf-cat">${CSU_CATEGORIES.map(c=>`<option ${e.category===c?'selected':''}>${c}</option>`).join('')}</select></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Credits Earned</label><div class="flex items-center gap-1"><input type="number" class="form-input" id="cf-credits" value="${e.credits}" step="0.01" min="0" max="12"><span class="text-xs text-slate-400">cr</span></div></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Tags (comma-sep)</label><input class="form-input" id="cf-tags" value="${(e.tags||[]).join(', ')}"></div></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Start Date</label><div class="relative"><input type="date" class="form-input pr-8" id="cf-start" value="${e.startDate||''}"><button class="date-clear" id="cf-start-clear" style="${e.startDate?'':'display:none'}">&times;</button></div></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">End Date</label><div class="relative"><input type="date" class="form-input pr-8" id="cf-end" value="${e.endDate||''}"><button class="date-clear" id="cf-end-clear" style="${e.endDate?'':'display:none'}">&times;</button></div></div></div>
+<div class="mb-4"><label class="text-xs font-medium text-slate-400 mb-1 block">Applies To</label><div class="flex flex-wrap gap-2" id="cf-tracks">${trackChecks}</div></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Link</label><input class="form-input" id="cf-link" value="${esc(e.link)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Notes</label><input class="form-input" id="cf-notes" value="${esc(e.notes)}"></div></div>
+<div class="flex items-center gap-2 mb-4"><label class="text-xs font-medium text-slate-400">Showcase</label><input type="checkbox" id="cf-showcase" ${e.showcase?'checked':''}></div>
+<div class="flex gap-2"><button class="btn-primary" id="cf-save">Save</button><button class="btn-secondary" id="cf-cancel">Cancel</button></div></div>`;
+document.getElementById('cf-start').addEventListener('input',function(){document.getElementById('cf-start-clear').style.display=this.value?'':'none';});
+document.getElementById('cf-end').addEventListener('input',function(){document.getElementById('cf-end-clear').style.display=this.value?'':'none';});
+document.getElementById('cf-start-clear').addEventListener('click',function(){document.getElementById('cf-start').value='';this.style.display='none';});
+document.getElementById('cf-end-clear').addEventListener('click',function(){document.getElementById('cf-end').value='';this.style.display='none';});
+document.querySelectorAll('#cf-tracks .check-pill').forEach(pill=>{
+pill.addEventListener('click',function(ev){
+if(ev.target.tagName==='INPUT')return;
+const cb=this.querySelector('input');cb.checked=!cb.checked;this.classList.toggle('checked',cb.checked);
+});
+});
+document.getElementById('cf-save').addEventListener('click',()=>{
+const entries=getEntries();
+const csu=entries.csu||[];
+const tracks=[];document.querySelectorAll('#cf-tracks .dt-check:checked').forEach(cb=>tracks.push(cb.value));
+const newC={id:entry?entry.id:genId(),code:document.getElementById('cf-code').value,title:document.getElementById('cf-title').value,description:document.getElementById('cf-desc').value,status:document.getElementById('cf-status').value,category:document.getElementById('cf-cat').value,credits:parseFloat(document.getElementById('cf-credits').value)||0,degreeTrack:tracks,tags:document.getElementById('cf-tags').value.split(',').map(t=>t.trim()).filter(Boolean),link:document.getElementById('cf-link').value,notes:document.getElementById('cf-notes').value,showcase:document.getElementById('cf-showcase').checked,startDate:document.getElementById('cf-start').value,endDate:document.getElementById('cf-end').value,createdAt:entry?entry.createdAt:new Date().toISOString()};
+if(entry){const idx=csu.findIndex(x=>x.id===entry.id);if(idx>=0)csu[idx]=newC;}else csu.push(newC);
+entries.csu=csu;save('portfolioEntries',entries);render();
+});
+document.getElementById('cf-cancel').addEventListener('click',()=>{area.innerHTML='';});
+}
+
+// ============ BADGES TAB ============
+function renderBadges(){
+const badges=getBadges();
+const now=new Date('2026-05-10');
+const thisYear=badges.filter(b=>b.dateEarned&&b.dateEarned.startsWith('2026')).length;
+const certified=badges.filter(b=>b.category==='Certification').length;
+const courses=badges.filter(b=>['LinkedIn Learning','Course Completion','Module'].includes(b.category)).length;
+let html=`<div class="max-w-7xl mx-auto px-4 md:px-6 py-6">`;
+html+=`<div class="flex flex-col md:flex-row md:items-center gap-3 mb-4"><div><h2 class="text-xl md:text-2xl font-bold text-white">🥇 Badges & Credentials</h2><p class="text-sm text-slate-400">Track your certifications, courses, and professional credentials</p></div><button class="btn-primary flex items-center gap-1 ml-auto add-badge-btn"><i data-lucide="plus" class="w-4 h-4"></i> Add Credential</button></div>`;
+html+=`<div class="flex flex-wrap gap-3 mb-4 text-sm"><span class="badge badge-planned">Total: ${badges.length}</span><span class="badge badge-complete">✅ Certified: ${certified}</span><span class="badge badge-progress">🎓 Courses/Modules: ${courses}</span><span class="badge" style="background:rgba(0,120,212,0.15);color:#66b0ff">📅 This Year: ${thisYear}</span></div>`;
+html+=`<div class="flex flex-wrap items-center gap-2 mb-4"><span class="text-xs font-medium text-slate-400">Filter:</span>`;
+['All',...BADGE_CATEGORIES].forEach(c=>{html+=`<button class="filter-pill badge-filter-btn ${c==='All'?'active':''}" data-cat="${c}">${c}</button>`;});
+html+=`</div>`;
+html+=`<div class="flex flex-wrap items-center gap-3 mb-6"><div class="flex items-center gap-2"><span class="text-xs font-medium text-slate-400">Sort:</span><select class="form-input text-xs py-1 px-2" id="badge-sort" style="width:auto"><option value="newest">Newest First</option><option value="oldest">Oldest First</option><option value="az">A–Z</option></select></div><div class="flex-1 max-w-xs"><input class="form-input text-sm" id="badge-search" placeholder="Search badges..."></div></div>`;
+html+=`<div id="badge-form-area"></div>`;
+html+=`<div id="badge-list"></div></div>`;
+return html;
+}
+function renderBadgeList(filter='All',sort='newest',search=''){
+const container=document.getElementById('badge-list');
+if(!container)return;
+let badges=[...getBadges()];
+if(filter!=='All')badges=badges.filter(b=>b.category===filter);
+if(search)badges=badges.filter(b=>(b.title+' '+b.issuer).toLowerCase().includes(search.toLowerCase()));
+if(sort==='newest')badges.sort((a,b)=>(b.dateEarned||'').localeCompare(a.dateEarned||''));
+else if(sort==='oldest')badges.sort((a,b)=>(a.dateEarned||'').localeCompare(b.dateEarned||''));
+else if(sort==='az')badges.sort((a,b)=>a.title.localeCompare(b.title));
+if(!badges.length){
+container.innerHTML=`<div class="card p-12 text-center"><p class="text-slate-400">No credentials yet — add your first badge or certificate! 🏅</p></div>`;
+return;
+}
+let html=`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
+badges.forEach(b=>{
+const color=BADGE_CAT_COLOR[b.category]||'#9ca3af';
+const emoji=BADGE_CAT_EMOJI[b.category]||'📋';
+const expired=b.expirationDate&&b.expirationDate<today();
+const ft=resolveFileType(b);
+html+=`<div class="card overflow-hidden relative" style="border-left:4px solid ${color}">`;
+if(expired)html+=`<div class="absolute top-2 right-2 z-10"><span class="badge" style="background:rgba(124,58,237,0.2);color:#c4b5fd">⚠️ Expired</span></div>`;
+if(b.photoData && ft==='image'){
+html+=`<div style="height:140px;overflow:hidden"><img src="${b.photoData}" class="w-full h-full object-cover" alt="${esc(b.title)}"></div>`;
+}else if(b.photoData && ft==='pdf'){
+html+=`<div class="pdf-thumb-placeholder"><span class="pdf-emoji">📄</span><span class="pdf-filename">${esc(b.fileName||'Certificate.pdf')}</span><button class="pdf-view-pill view-pdf-thumb-btn" data-id="${b.id}">👁 View PDF</button></div>`;
+}else{
+html+=`<div class="cert-placeholder" style="background:linear-gradient(135deg,${color}15,${color}30)"><span class="text-4xl">${emoji}</span></div>`;
+}
+html+=`<div class="p-4"><h3 class="font-semibold text-white text-sm mb-1">${esc(b.title)}</h3><p class="text-xs text-slate-400 mb-2">${esc(b.issuer)}</p>`;
+html+=`<div class="flex flex-wrap gap-2 mb-2"><span class="badge" style="background:${color}15;color:${color}">${b.category}</span>`;
+html+=`<span class="text-xs text-slate-400">${b.dateEarned?fmtDate(b.dateEarned):'<em>Date not set</em>'}</span></div>`;
+if(b.credentialId)html+=`<p class="text-xs font-mono text-slate-500 mb-1">ID: ${esc(b.credentialId)}</p>`;
+if(b.credentialUrl)html+=`<a href="${esc(b.credentialUrl)}" target="_blank" class="text-xs text-azure-400 hover:underline flex items-center gap-1 mb-2"><i data-lucide="external-link" class="w-3 h-3"></i> View Credential</a>`;
+if(b.tags&&b.tags.length)html+=`<div class="flex flex-wrap gap-1 mb-2">${tagPills(b.tags)}</div>`;
+html+=`<div class="flex items-center gap-2 mt-2 pt-2 border-t flex-wrap" style="border-color:rgba(255,255,255,0.08)"><button class="showcase-star ${b.showcase?'active':''}" data-id="${b.id}" data-domain="badges" title="Toggle showcase">★</button>`;
+html+=`<button class="btn-secondary text-xs py-1 px-2 edit-badge-btn" data-id="${b.id}"><i data-lucide="pencil" class="w-3 h-3 inline"></i></button>`;
+html+=`<button class="btn-danger text-xs py-1 px-2 del-badge-btn" data-id="${b.id}"><i data-lucide="trash-2" class="w-3 h-3 inline"></i></button>`;
+html+=`<label class="btn-secondary text-xs py-1 px-2 cursor-pointer upload-badge-btn"><i data-lucide="paperclip" class="w-3 h-3 inline"></i> ${b.photoData?'🔄 Replace':'📎 Upload Certificate'}<input type="file" accept="image/*,.pdf" class="hidden badge-file-input" data-id="${b.id}"></label>`;
+if(b.photoData)html+=`<button class="btn-secondary text-xs py-1 px-2 view-badge-btn" data-id="${b.id}"><i data-lucide="eye" class="w-3 h-3 inline"></i> View</button>`;
+html+=`</div></div></div>`;
+});
+html+=`</div>`;
+container.innerHTML=html;
+lucide.createIcons();
+bindBadgeEvents();
+}
+function showBadgeForm(entry=null){
+const area=document.getElementById('badge-form-area');
+if(!area)return;
+const e=entry||{title:'',issuer:'',category:'Certification',dateEarned:'',expirationDate:'',credentialId:'',credentialUrl:'',tags:[],notes:'',showcase:false,photoData:'',fileName:'',fileType:''};
+const existingFt=resolveFileType(e);
+area.innerHTML=`<div class="card p-5 mb-6 border-l-4" style="border-left-color:#0078D4"><h3 class="font-semibold text-white mb-4">${entry?'Edit':'Add'} Credential</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Title</label><input class="form-input" id="bf-title" value="${esc(e.title)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Issuer</label><input class="form-input" id="bf-issuer" value="${esc(e.issuer)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Category</label><select class="form-input" id="bf-cat">${BADGE_CATEGORIES.map(c=>`<option ${e.category===c?'selected':''}>${c}</option>`).join('')}</select></div></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Date Earned</label><div class="relative"><input type="date" class="form-input pr-8" id="bf-date" value="${e.dateEarned||''}"><button class="date-clear" id="bf-date-clear" style="${e.dateEarned?'':'display:none'}">&times;</button></div></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Expiration Date</label><div class="relative"><input type="date" class="form-input pr-8" id="bf-exp" value="${e.expirationDate||''}"><button class="date-clear" id="bf-exp-clear" style="${e.expirationDate?'':'display:none'}">&times;</button></div></div></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Credential ID</label><input class="form-input" id="bf-cid" value="${esc(e.credentialId)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Credential URL</label><input class="form-input" id="bf-curl" value="${esc(e.credentialUrl)}"></div></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Tags (comma-sep)</label><input class="form-input" id="bf-tags" value="${(e.tags||[]).join(', ')}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Notes</label><input class="form-input" id="bf-notes" value="${esc(e.notes)}"></div></div>
+<div class="flex items-center gap-4 mb-4"><label class="text-xs font-medium text-slate-400 flex items-center gap-1">Showcase <input type="checkbox" id="bf-showcase" ${e.showcase?'checked':''}></label><label class="btn-secondary text-xs cursor-pointer"><i data-lucide="upload" class="w-3 h-3 inline"></i> Upload Certificate <input type="file" accept="image/*,.pdf" class="hidden" id="bf-file"></label><span id="bf-file-name" class="text-xs text-slate-400"></span></div>
+<div id="bf-preview-area" class="mb-4"></div>
+<div class="flex gap-2"><button class="btn-primary" id="bf-save">Save</button><button class="btn-secondary" id="bf-cancel">Cancel</button></div></div>`;
+
+let photoData=e.photoData||'',fileName=e.fileName||'',fileType=existingFt||'',fileSize=0;
+
+function renderFormPreview(){
+  const previewArea=document.getElementById('bf-preview-area');
+  if(!previewArea)return;
+  if(!photoData){previewArea.innerHTML='';return;}
+  if(fileType==='pdf'){
+    const sizeStr=fileSize?fmtFileSize(fileSize):'PDF';
+    previewArea.innerHTML=`<div class="pdf-form-preview"><span class="pdf-icon">📄</span><div class="pdf-info"><div class="pdf-name">${esc(fileName||'Certificate.pdf')}</div><div class="pdf-size">${sizeStr}</div></div><div class="pdf-actions"><button class="btn-primary text-xs py-1 px-3" id="bf-preview-pdf">👁 Preview PDF</button><button class="text-xs font-medium" id="bf-remove-file" style="color:#c4b5fd">✕ Remove</button></div></div>`;
+    document.getElementById('bf-preview-pdf').addEventListener('click',()=>openPdfData(photoData));
+    document.getElementById('bf-remove-file').addEventListener('click',()=>{photoData='';fileName='';fileType='';fileSize=0;document.getElementById('bf-file-name').textContent='';renderFormPreview();});
+  }else{
+    previewArea.innerHTML=`<div><img src="${photoData}" class="max-h-24 rounded" alt="Preview"><button class="text-xs mt-1 block" id="bf-remove-file" style="color:#c4b5fd">✕ Remove</button></div>`;
+    document.getElementById('bf-remove-file').addEventListener('click',()=>{photoData='';fileName='';fileType='';fileSize=0;document.getElementById('bf-file-name').textContent='';renderFormPreview();});
+  }
+}
+renderFormPreview();
+
+document.getElementById('bf-date').addEventListener('input',function(){document.getElementById('bf-date-clear').style.display=this.value?'':'none';});
+document.getElementById('bf-exp').addEventListener('input',function(){document.getElementById('bf-exp-clear').style.display=this.value?'':'none';});
+document.getElementById('bf-date-clear').addEventListener('click',function(){document.getElementById('bf-date').value='';this.style.display='none';});
+document.getElementById('bf-exp-clear').addEventListener('click',function(){document.getElementById('bf-exp').value='';this.style.display='none';});
+document.getElementById('bf-file').addEventListener('change',function(){
+const file=this.files[0];if(!file)return;
+fileName=file.name;
+fileSize=file.size;
+if(file.type==='application/pdf'||file.name.toLowerCase().endsWith('.pdf')){
+  fileType='pdf';
+}else{
+  fileType='image';
+}
+document.getElementById('bf-file-name').textContent='';
+const reader=new FileReader();
+reader.onload=function(ev){
+  photoData=ev.target.result;
+  renderFormPreview();
+};
+reader.readAsDataURL(file);
+});
+document.getElementById('bf-save').addEventListener('click',()=>{
+const badges=getBadges();
+const newB={id:entry?entry.id:genId(),title:document.getElementById('bf-title').value,issuer:document.getElementById('bf-issuer').value,category:document.getElementById('bf-cat').value,dateEarned:document.getElementById('bf-date').value,expirationDate:document.getElementById('bf-exp').value,credentialId:document.getElementById('bf-cid').value,credentialUrl:document.getElementById('bf-curl').value,tags:document.getElementById('bf-tags').value.split(',').map(t=>t.trim()).filter(Boolean),notes:document.getElementById('bf-notes').value,showcase:document.getElementById('bf-showcase').checked,photoData:photoData,fileName:fileName,fileType:fileType};
+if(entry){const idx=badges.findIndex(x=>x.id===entry.id);if(idx>=0)badges[idx]=newB;}else badges.push(newB);
+save('badgesCredentials',badges);render();
+});
+document.getElementById('bf-cancel').addEventListener('click',()=>{area.innerHTML='';});
+lucide.createIcons();
+}
+
+// ============ PROFILE TAB ============
+function renderProfile(){
+const p=getProfile();
+let html=`<div class="max-w-6xl mx-auto px-4 md:px-6 py-6"><div class="grid grid-cols-1 lg:grid-cols-5 gap-6">`;
+html+=`<div class="lg:col-span-3 space-y-6">`;
+html+=`<div class="card p-6" id="profile-identity"><div class="flex flex-col sm:flex-row items-center sm:items-start gap-5">`;
+html+=`<div class="avatar-circle flex-shrink-0" id="avatar-area">`;
+if(p.avatarPhoto){
+html+=`<img src="${p.avatarPhoto}" class="w-full h-full object-cover" alt="Avatar">`;
+}else{
+html+=`<div class="w-full h-full flex items-center justify-center text-white text-2xl font-bold" style="background:linear-gradient(135deg,#0078D4,#4f46e5)">CB</div>`;
+}
+html+=`<div class="overlay"><span>📷</span><span>Change Photo</span></div><input type="file" accept="image/*" class="hidden" id="avatar-input"></div>`;
+html+=`<div class="flex-1 text-center sm:text-left"><h2 class="text-xl font-bold text-white">${esc(p.name)}</h2><p class="text-azure-400 font-medium text-sm">${esc(p.title)}</p>`;
+if(p.location)html+=`<span class="badge badge-planned mt-1">📍 ${esc(p.location)}</span>`;
+html+=`<div class="flex flex-wrap gap-3 mt-3 justify-center sm:justify-start">`;
+if(p.email)html+=`<a href="mailto:${esc(p.email)}" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="mail" class="w-3 h-3"></i> ${esc(p.email)}</a>`;
+if(p.linkedin)html+=`<a href="${esc(p.linkedin)}" target="_blank" rel="noopener" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="linkedin" class="w-3 h-3"></i> LinkedIn</a>`;
+if(p.github)html+=`<a href="${esc(p.github)}" target="_blank" rel="noopener" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="github" class="w-3 h-3"></i> GitHub</a>`;
+if(p.website)html+=`<a href="${esc(p.website)}" target="_blank" rel="noopener" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="globe" class="w-3 h-3"></i> Website</a>`;
+html+=`</div></div><button class="self-start text-slate-500 hover:text-azure-400" id="edit-identity-btn"><i data-lucide="pencil" class="w-4 h-4"></i></button></div>`;
+if(p.avatarPhoto)html+=`<button class="text-xs mt-2" id="remove-avatar-btn" style="color:#c4b5fd">Remove photo</button>`;
+html+=`<div id="identity-form" class="hidden mt-4"></div></div>`;
+html+=`<div class="card p-6"><div class="flex items-center justify-between mb-3"><h3 class="font-semibold text-white">About Me</h3><button class="text-slate-500 hover:text-azure-400 edit-about-btn"><i data-lucide="pencil" class="w-4 h-4"></i></button></div><div id="about-display"><p class="text-sm text-slate-300 leading-relaxed">${esc(p.aboutMe)}</p></div><div id="about-form" class="hidden"></div></div>`;
+html+=`<div class="card p-6"><div class="flex items-center justify-between mb-3"><h3 class="font-semibold text-white">🎯 Career Goals</h3><button class="text-slate-500 hover:text-azure-400 edit-goals-btn"><i data-lucide="pencil" class="w-4 h-4"></i></button></div><div id="goals-display"><div class="space-y-2"><div class="flex justify-between text-sm"><span class="text-slate-400">Target Role</span><span class="font-medium text-slate-200">${esc(p.targetRole)}</span></div><div class="flex justify-between text-sm"><span class="text-slate-400">Target Timeline</span><span class="font-medium text-slate-200">${esc(p.targetTimeline)}</span></div><div class="flex justify-between text-sm"><span class="text-slate-400">Current Focus</span><span class="font-medium text-slate-200">${esc(p.currentFocus)}</span></div></div></div><div id="goals-form" class="hidden"></div></div>`;
+html+=`</div>`;
+html+=`<div class="lg:col-span-2 space-y-6">`;
+html+=`<div class="card p-6"><h3 class="font-semibold text-white mb-4">🏅 Certifications & Credentials</h3><div id="certs-list" class="space-y-3">`;
+(p.certifications||[]).forEach(c=>{
+const sb=c.status==='Earned'?'badge-complete':c.status==='In Progress'?'badge-progress':'badge-planned';
+html+=`<div class="flex items-center justify-between p-2 rounded-lg" style="background:rgba(255,255,255,0.05)"><div class="flex-1 min-w-0"><p class="text-sm font-medium text-slate-200 truncate">${esc(c.name)}</p><p class="text-xs text-slate-400">${esc(c.issuer)}${c.date?' · '+esc(c.date):''}</p></div><span class="${sb} badge text-xs">${c.status}</span><button class="ml-2 del-cert-btn" data-id="${c.id}" style="color:#c4b5fd">&times;</button></div>`;
+});
+html+=`</div><div id="cert-form-area" class="mt-3"></div><button class="btn-secondary text-xs mt-3 add-cert-btn"><i data-lucide="plus" class="w-3 h-3 inline"></i> Add Certification</button></div>`;
+html+=`<div class="card p-6"><div class="flex items-center justify-between mb-4"><h3 class="font-semibold text-white">⚡ Technical Skills</h3><button class="text-slate-500 hover:text-azure-400 toggle-skill-edit-btn"><i data-lucide="pencil" class="w-4 h-4"></i></button></div><div id="skills-display" class="flex flex-wrap gap-2">`;
+(p.skills||[]).forEach(s=>{html+=`<span class="tag-pill skill-tag">${esc(s)}<button class="ml-1 hidden del-skill-btn" data-skill="${esc(s)}" style="font-size:10px;color:#c4b5fd">&times;</button></span>`;});
+html+=`</div><div id="skill-add" class="hidden mt-3 flex gap-2"><input class="form-input flex-1" id="new-skill-input" placeholder="Add skill..."><button class="btn-primary text-xs" id="add-skill-btn"><i data-lucide="plus" class="w-3 h-3 inline"></i></button></div></div>`;
+html+=`<div class="card p-6"><h3 class="font-semibold text-white mb-4">🎓 Education</h3><div id="edu-list" class="space-y-3">`;
+(p.education||[]).forEach(e=>{
+const sb=e.status==='In Progress'?'badge-progress':e.status==='Planned'?'badge-planned':'badge-complete';
+html+=`<div class="flex items-start justify-between p-2 rounded-lg" style="background:rgba(255,255,255,0.05)"><div class="flex-1 min-w-0"><p class="text-sm font-medium text-slate-200">${esc(e.institution)}</p><p class="text-xs text-slate-400">${esc(e.degree)}</p><p class="text-xs text-slate-500">${esc(e.years)}</p></div><span class="${sb} badge text-xs">${e.status}</span><button class="ml-2 del-edu-btn" data-id="${e.id}" style="color:#c4b5fd">&times;</button></div>`;
+});
+html+=`</div><div id="edu-form-area" class="mt-3"></div><button class="btn-secondary text-xs mt-3 add-edu-btn"><i data-lucide="plus" class="w-3 h-3 inline"></i> Add Education</button></div>`;
+html+=`</div></div></div>`;
+return html;
+}
+
+// ============ PORTFOLIO VIEW ============
+function renderPortfolioView(){
+const p=getProfile();
+const entries=getEntries();
+const badges=getBadges();
+const td=new Date('2026-05-10').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+let html=`<div class="max-w-4xl mx-auto px-4 md:px-8 py-8">`;
+html+=`<div class="flex justify-end mb-4 no-print"><button class="btn-primary flex items-center gap-1" id="print-btn"><i data-lucide="printer" class="w-4 h-4"></i> Print</button></div>`;
+html+=`<div class="card p-8 mb-8"><div class="flex flex-col sm:flex-row items-center gap-5 mb-5">`;
+if(p.avatarPhoto){
+html+=`<div class="w-20 h-20 rounded-full overflow-hidden flex-shrink-0"><img src="${p.avatarPhoto}" class="w-full h-full object-cover" alt="Avatar"></div>`;
+}else{
+html+=`<div class="w-20 h-20 rounded-full flex items-center justify-center text-white text-xl font-bold flex-shrink-0" style="background:linear-gradient(135deg,#0078D4,#4f46e5)">CB</div>`;
+}
+html+=`<div class="text-center sm:text-left"><h1 class="text-2xl font-bold text-white">${esc(p.name)}</h1><p class="text-azure-400 font-medium">${esc(p.title)}</p>`;
+html+=`<div class="flex flex-wrap gap-3 mt-2 justify-center sm:justify-start">`;
+if(p.email)html+=`<a href="mailto:${esc(p.email)}" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="mail" class="w-3 h-3"></i> ${esc(p.email)}</a>`;
+if(p.linkedin)html+=`<a href="${esc(p.linkedin)}" target="_blank" rel="noopener" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="linkedin" class="w-3 h-3"></i> LinkedIn</a>`;
+if(p.github)html+=`<a href="${esc(p.github)}" target="_blank" rel="noopener" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="github" class="w-3 h-3"></i> GitHub</a>`;
+if(p.website)html+=`<a href="${esc(p.website)}" target="_blank" rel="noopener" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="globe" class="w-3 h-3"></i> Website</a>`;
+html+=`</div></div></div>`;
+if(p.aboutMe)html+=`<p class="text-sm text-slate-300 leading-relaxed mb-4">${esc(p.aboutMe)}</p>`;
+html+=`<div class="flex flex-wrap gap-3"><span class="badge" style="background:rgba(0,120,212,0.15);color:#66b0ff">🎯 ${esc(p.targetRole)}</span><span class="badge badge-progress">📌 ${esc(p.currentFocus)}</span></div>`;
+html+=`<p class="text-xs text-slate-500 mt-4 text-right">Azure Solutions Architect Portfolio · ${td}</p></div>`;
+const allDomains=[...DOMAIN_SLUGS,'csu'];
+const allNames=[...DOMAIN_NAMES,'CSU'];
+const allIcons=[...DOMAIN_ICONS,'graduation-cap'];
+allDomains.forEach((slug,i)=>{
+const items=(slug==='csu'?(entries.csu||[]):(entries[slug]||[])).filter(e=>e.showcase);
+if(!items.length)return;
+html+=`<div class="mb-8"><h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2"><i data-lucide="${allIcons[i]}" class="w-5 h-5 text-azure-400"></i>${allNames[i]}</h2>`;
+html+=`<div class="grid grid-cols-1 md:grid-cols-2 gap-4">`;
+items.forEach(e=>{
+html+=`<div class="card p-4 entry-card" data-status="${e.status}"><h3 class="font-semibold text-white text-sm mb-1">${esc(e.title)}</h3><p class="text-xs text-slate-400 mb-2">${esc(e.description)}</p>`;
+if(e.tags&&e.tags.length)html+=`<div class="flex flex-wrap gap-1">${tagPills(e.tags)}</div>`;
+if(e.link)html+=`<a href="${esc(e.link)}" target="_blank" class="text-xs text-azure-400 mt-2 inline-block">View Project →</a>`;
+html+=`</div>`;
+});
+html+=`</div></div>`;
+});
+const showcaseBadges=badges.filter(b=>b.showcase);
+if(showcaseBadges.length){
+html+=`<div class="mb-8"><h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2"><i data-lucide="award" class="w-5 h-5 text-azure-400"></i>Badges & Credentials</h2>`;
+html+=`<div class="grid grid-cols-1 md:grid-cols-2 gap-4">`;
+showcaseBadges.forEach(b=>{
+const color=BADGE_CAT_COLOR[b.category]||'#9ca3af';
+const emoji=BADGE_CAT_EMOJI[b.category]||'📋';
+const ft=resolveFileType(b);
+html+=`<div class="card p-4" style="border-left:4px solid ${color}"><div class="flex items-start gap-3">`;
+if(b.photoData && ft==='image')html+=`<img src="${b.photoData}" class="w-12 h-12 rounded object-cover" alt="">`;
+else if(b.photoData && ft==='pdf')html+=`<div class="w-12 h-12 rounded flex items-center justify-center text-xl" style="background:linear-gradient(135deg,#1e293b,#0f172a)">📄</div>`;
+else html+=`<div class="w-12 h-12 rounded flex items-center justify-center text-xl" style="background:${color}22">${emoji}</div>`;
+html+=`<div><h3 class="font-semibold text-white text-sm">${esc(b.title)}</h3><p class="text-xs text-slate-400">${esc(b.issuer)}</p><div class="flex gap-2 mt-1"><span class="badge text-xs" style="background:${color}15;color:${color}">${b.category}</span>${b.dateEarned?`<span class="text-xs text-slate-400">${fmtDate(b.dateEarned)}</span>`:''}</div>`;
+if(b.credentialUrl)html+=`<a href="${esc(b.credentialUrl)}" target="_blank" class="text-xs text-azure-400 mt-1 inline-block">View Credential →</a>`;
+html+=`</div></div></div>`;
+});
+html+=`</div></div>`;
+}
+html+=`</div>`;
+return html;
+}
+
+// ============ MAIN RENDER ============
+function render(){
+buildNav();
+const main=document.getElementById('app-main');
+// Always use space background — no toggling
+main.style.background='transparent';
+main.style.minHeight='calc(100vh - 64px)';
+if(portfolioMode){
+main.innerHTML=renderPortfolioView();
+}else if(currentTab===0){
+main.innerHTML=renderDashboard();
+}else if(currentTab>=1&&currentTab<=5){
+main.innerHTML=renderDomainTab(currentTab-1);
+}else if(currentTab===6){
+main.innerHTML=renderCSU();
+}else if(currentTab===7){
+main.innerHTML=renderBadges();
+}else if(currentTab===8){
+main.innerHTML=renderProfile();
+}
+lucide.createIcons();
+bindEvents();
+setTimeout(()=>{
+document.querySelectorAll('.progress-fill[data-target]').forEach(el=>{el.style.width=el.dataset.target+'%';});
+},50);
+}
+
+// ============ EVENT BINDING ============
+function bindEvents(){
+document.querySelectorAll('#portfolio-btn,#portfolio-btn-mobile').forEach(b=>b.addEventListener('click',()=>{portfolioMode=!portfolioMode;document.getElementById('mobile-menu').classList.add('hidden');render();}));
+document.querySelectorAll('#download-app-btn,#download-app-btn-mobile').forEach(b=>b.addEventListener('click',()=>{document.getElementById('mobile-menu').classList.add('hidden');downloadApp();}));
+const mmb=document.getElementById('mobile-menu-btn');if(mmb)mmb.addEventListener('click',()=>document.getElementById('mobile-menu').classList.remove('hidden'));
+const mmc=document.getElementById('mobile-menu-close');if(mmc)mmc.addEventListener('click',()=>document.getElementById('mobile-menu').classList.add('hidden'));
+document.querySelectorAll('.showcase-star').forEach(s=>s.addEventListener('click',function(){
+const id=this.dataset.id,domain=this.dataset.domain;
+if(domain==='badges'){
+const badges=getBadges();const b=badges.find(x=>x.id===id);if(b){b.showcase=!b.showcase;save('badgesCredentials',badges);}
+}else{
+const entries=getEntries();const list=entries[domain]||[];const e=list.find(x=>x.id===id);if(e){e.showcase=!e.showcase;save('portfolioEntries',entries);}
+}
+this.classList.toggle('active');
+this.style.transform='scale(1.4)';setTimeout(()=>{this.style.transform=this.classList.contains('active')?'scale(1.2)':'scale(1)';},200);
+}));
+document.querySelectorAll('.add-entry-btn').forEach(b=>b.addEventListener('click',()=>showEntryForm(b.dataset.domain)));
+document.querySelectorAll('.edit-entry-btn').forEach(b=>b.addEventListener('click',()=>{
+const entries=getEntries();const item=(entries[b.dataset.domain]||[]).find(e=>e.id===b.dataset.id);if(item)showEntryForm(b.dataset.domain,item);
+}));
+document.querySelectorAll('.del-entry-btn').forEach(b=>b.addEventListener('click',()=>{
+if(!confirm('Delete this entry?'))return;
+const entries=getEntries();entries[b.dataset.domain]=(entries[b.dataset.domain]||[]).filter(e=>e.id!==b.dataset.id);save('portfolioEntries',entries);render();
+}));
+if(currentTab===6)bindCSUTab();
+if(currentTab===7)bindBadgesTab();
+if(currentTab===8)bindProfileTab();
+const pb=document.getElementById('print-btn');if(pb)pb.addEventListener('click',()=>window.print());
+document.querySelectorAll('.edit-goal-btn').forEach(b=>b.addEventListener('click',function(){
+const track=this.dataset.track;
+const valEl=this.parentElement.querySelector('.goal-val');
+const goals=getGoals();
+const current=goals[track]||0;
+valEl.innerHTML=`<input type="number" class="text-xs bg-transparent border-b border-azure-400 text-white w-12 outline-none goal-input" value="${current}" min="0" max="200">`;
+const inp=valEl.querySelector('.goal-input');
+inp.focus();
+const saveGoal=()=>{const v=parseInt(inp.value)||0;goals[track]=v;save('degreeGoals',goals);render();};
+inp.addEventListener('blur',saveGoal);
+inp.addEventListener('keydown',e=>{if(e.key==='Enter')saveGoal();});
+}));
+}
+function bindCSUTab(){
+const addBtn=document.querySelector('.add-csu-btn');
+if(addBtn)addBtn.addEventListener('click',()=>showCSUForm());
+document.querySelectorAll('.csu-sort-btn').forEach(b=>b.addEventListener('click',function(){
+document.querySelectorAll('.csu-sort-btn').forEach(x=>x.classList.remove('active'));
+this.classList.add('active');
+renderCSUList(this.dataset.sort);
+}));
+renderCSUList('category');
+}
+function bindCSUEvents(){
+document.querySelectorAll('.edit-csu-btn').forEach(b=>b.addEventListener('click',()=>{
+const entries=getEntries();const c=(entries.csu||[]).find(x=>x.id===b.dataset.id);if(c)showCSUForm(c);
+}));
+document.querySelectorAll('.del-csu-btn').forEach(b=>b.addEventListener('click',()=>{
+if(!confirm('Delete this course?'))return;
+const entries=getEntries();entries.csu=(entries.csu||[]).filter(x=>x.id!==b.dataset.id);save('portfolioEntries',entries);render();
+}));
+document.querySelectorAll('.showcase-star[data-domain="csu"]').forEach(s=>s.addEventListener('click',function(){
+const id=this.dataset.id;const entries=getEntries();const c=(entries.csu||[]).find(x=>x.id===id);if(c){c.showcase=!c.showcase;save('portfolioEntries',entries);}
+this.classList.toggle('active');this.style.transform='scale(1.4)';setTimeout(()=>{this.style.transform=this.classList.contains('active')?'scale(1.2)':'scale(1)';},200);
+}));
+}
+function bindBadgesTab(){
+let filter='All',sort='newest',search='';
+const addBtn=document.querySelector('.add-badge-btn');
+if(addBtn)addBtn.addEventListener('click',()=>showBadgeForm());
+document.querySelectorAll('.badge-filter-btn').forEach(b=>b.addEventListener('click',function(){
+document.querySelectorAll('.badge-filter-btn').forEach(x=>x.classList.remove('active'));
+this.classList.add('active');filter=this.dataset.cat;renderBadgeList(filter,sort,search);
+}));
+const sortSel=document.getElementById('badge-sort');
+if(sortSel)sortSel.addEventListener('change',function(){sort=this.value;renderBadgeList(filter,sort,search);});
+const searchInp=document.getElementById('badge-search');
+if(searchInp)searchInp.addEventListener('input',function(){search=this.value;renderBadgeList(filter,sort,search);});
+renderBadgeList(filter,sort,search);
+}
+function bindBadgeEvents(){
+document.querySelectorAll('.edit-badge-btn').forEach(b=>b.addEventListener('click',()=>{
+const badge=getBadges().find(x=>x.id===b.dataset.id);if(badge)showBadgeForm(badge);
+}));
+document.querySelectorAll('.del-badge-btn').forEach(b=>b.addEventListener('click',()=>{
+if(!confirm('Delete this credential?'))return;
+const badges=getBadges().filter(x=>x.id!==b.dataset.id);save('badgesCredentials',badges);render();
+}));
+document.querySelectorAll('.badge-file-input').forEach(inp=>inp.addEventListener('change',function(){
+const file=this.files[0];if(!file)return;
+const id=this.dataset.id;
+const isPdf=file.type==='application/pdf'||file.name.toLowerCase().endsWith('.pdf');
+const reader=new FileReader();
+reader.onload=function(ev){
+const badges=getBadges();const b=badges.find(x=>x.id===id);
+if(b){
+  b.photoData=ev.target.result;
+  b.fileName=file.name;
+  b.fileType=isPdf?'pdf':'image';
+  save('badgesCredentials',badges);render();
+}
+};reader.readAsDataURL(file);
+}));
+document.querySelectorAll('.view-badge-btn').forEach(b=>b.addEventListener('click',()=>{
+const badge=getBadges().find(x=>x.id===b.dataset.id);
+if(!badge||!badge.photoData)return;
+const ft=resolveFileType(badge);
+if(ft==='pdf'){
+  openPdfData(badge.photoData);
+}else{
+  const w=window.open();if(w){w.document.write(`<img src="${badge.photoData}" style="max-width:100%">`);w.document.title=badge.title;}
+}
+}));
+document.querySelectorAll('.view-pdf-thumb-btn').forEach(b=>b.addEventListener('click',()=>{
+const badge=getBadges().find(x=>x.id===b.dataset.id);
+if(badge&&badge.photoData){openPdfData(badge.photoData);}
+}));
+document.querySelectorAll('.showcase-star[data-domain="badges"]').forEach(s=>s.addEventListener('click',function(){
+const id=this.dataset.id;const badges=getBadges();const b=badges.find(x=>x.id===id);if(b){b.showcase=!b.showcase;save('badgesCredentials',badges);}
+this.classList.toggle('active');this.style.transform='scale(1.4)';setTimeout(()=>{this.style.transform=this.classList.contains('active')?'scale(1.2)':'scale(1)';},200);
+}));
+}
+function bindProfileTab(){
+const p=getProfile();
+const avatarArea=document.getElementById('avatar-area');
+const avatarInput=document.getElementById('avatar-input');
+if(avatarArea)avatarArea.addEventListener('click',()=>avatarInput.click());
+if(avatarInput)avatarInput.addEventListener('change',function(){
+const file=this.files[0];if(!file)return;
+const reader=new FileReader();reader.onload=function(ev){const pr=getProfile();pr.avatarPhoto=ev.target.result;save('portfolioProfile',pr);render();};reader.readAsDataURL(file);
+});
+const removeAvBtn=document.getElementById('remove-avatar-btn');
+if(removeAvBtn)removeAvBtn.addEventListener('click',()=>{const pr=getProfile();pr.avatarPhoto='';save('portfolioProfile',pr);render();});
+const editIdBtn=document.getElementById('edit-identity-btn');
+if(editIdBtn)editIdBtn.addEventListener('click',()=>{
+const pr=getProfile();
+const form=document.getElementById('identity-form');
+form.classList.remove('hidden');
+form.innerHTML=`<div class="grid grid-cols-1 md:grid-cols-2 gap-3"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Full Name</label><input class="form-input" id="pi-name" value="${esc(pr.name)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Career Title</label><input class="form-input" id="pi-title" value="${esc(pr.title)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Location</label><input class="form-input" id="pi-location" value="${esc(pr.location)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Email</label><input class="form-input" id="pi-email" value="${esc(pr.email)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Phone</label><input class="form-input" id="pi-phone" value="${esc(pr.phone)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">LinkedIn URL</label><input class="form-input" id="pi-linkedin" value="${esc(pr.linkedin)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">GitHub URL</label><input class="form-input" id="pi-github" value="${esc(pr.github)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Website</label><input class="form-input" id="pi-website" value="${esc(pr.website)}"></div></div><div class="flex gap-2 mt-3"><button class="btn-primary" id="pi-save">Save</button><button class="btn-secondary" id="pi-cancel">Cancel</button></div>`;
+document.getElementById('pi-save').addEventListener('click',()=>{
+const pr=getProfile();pr.name=document.getElementById('pi-name').value;pr.title=document.getElementById('pi-title').value;pr.location=document.getElementById('pi-location').value;pr.email=document.getElementById('pi-email').value;pr.phone=document.getElementById('pi-phone').value;pr.linkedin=document.getElementById('pi-linkedin').value;pr.github=document.getElementById('pi-github').value;pr.website=document.getElementById('pi-website').value;save('portfolioProfile',pr);render();
+});
+document.getElementById('pi-cancel').addEventListener('click',()=>{form.classList.add('hidden');form.innerHTML='';});
+});
+const editAboutBtn=document.querySelector('.edit-about-btn');
+if(editAboutBtn)editAboutBtn.addEventListener('click',()=>{
+const pr=getProfile();
+document.getElementById('about-display').classList.add('hidden');
+const form=document.getElementById('about-form');form.classList.remove('hidden');
+form.innerHTML=`<textarea class="form-input" id="pa-text" rows="5" maxlength="600">${esc(pr.aboutMe)}</textarea><div class="flex items-center justify-between mt-2"><span class="text-xs text-slate-500" id="pa-count">${(pr.aboutMe||'').length} / 600</span><div class="flex gap-2"><button class="btn-primary" id="pa-save">Save</button><button class="btn-secondary" id="pa-cancel">Cancel</button></div></div>`;
+document.getElementById('pa-text').addEventListener('input',function(){document.getElementById('pa-count').textContent=this.value.length+' / 600';});
+document.getElementById('pa-save').addEventListener('click',()=>{const pr=getProfile();pr.aboutMe=document.getElementById('pa-text').value;save('portfolioProfile',pr);render();});
+document.getElementById('pa-cancel').addEventListener('click',()=>{document.getElementById('about-display').classList.remove('hidden');form.classList.add('hidden');form.innerHTML='';});
+});
+const editGoalsBtn=document.querySelector('.edit-goals-btn');
+if(editGoalsBtn)editGoalsBtn.addEventListener('click',()=>{
+const pr=getProfile();
+document.getElementById('goals-display').classList.add('hidden');
+const form=document.getElementById('goals-form');form.classList.remove('hidden');
+form.innerHTML=`<div class="space-y-3"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Target Role</label><input class="form-input" id="pg-role" value="${esc(pr.targetRole)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Target Timeline</label><input class="form-input" id="pg-timeline" value="${esc(pr.targetTimeline)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Current Focus</label><input class="form-input" id="pg-focus" value="${esc(pr.currentFocus)}"></div></div><div class="flex gap-2 mt-3"><button class="btn-primary" id="pg-save">Save</button><button class="btn-secondary" id="pg-cancel">Cancel</button></div>`;
+document.getElementById('pg-save').addEventListener('click',()=>{const pr=getProfile();pr.targetRole=document.getElementById('pg-role').value;pr.targetTimeline=document.getElementById('pg-timeline').value;pr.currentFocus=document.getElementById('pg-focus').value;save('portfolioProfile',pr);render();});
+document.getElementById('pg-cancel').addEventListener('click',()=>{document.getElementById('goals-display').classList.remove('hidden');form.classList.add('hidden');form.innerHTML='';});
+});
+document.querySelectorAll('.del-cert-btn').forEach(b=>b.addEventListener('click',()=>{
+const pr=getProfile();pr.certifications=pr.certifications.filter(c=>c.id!=b.dataset.id);save('portfolioProfile',pr);render();
+}));
+const addCertBtn=document.querySelector('.add-cert-btn');
+if(addCertBtn)addCertBtn.addEventListener('click',()=>{
+const area=document.getElementById('cert-form-area');
+area.innerHTML=`<div class="p-3 rounded-lg" style="background:rgba(255,255,255,0.05)"><div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2"><input class="form-input text-sm" id="nc-name" placeholder="Certification name"><input class="form-input text-sm" id="nc-issuer" placeholder="Issuer"></div><div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2"><input class="form-input text-sm" id="nc-date" placeholder="Date (e.g. 2026)"><select class="form-input text-sm" id="nc-status"><option>Planned</option><option>In Progress</option><option>Earned</option></select></div><div class="flex gap-2"><button class="btn-primary text-xs" id="nc-save">Save</button><button class="btn-secondary text-xs" id="nc-cancel">Cancel</button></div></div>`;
+document.getElementById('nc-save').addEventListener('click',()=>{
+const pr=getProfile();pr.certifications.push({id:Date.now(),name:document.getElementById('nc-name').value,issuer:document.getElementById('nc-issuer').value,date:document.getElementById('nc-date').value,status:document.getElementById('nc-status').value});save('portfolioProfile',pr);render();
+});
+document.getElementById('nc-cancel').addEventListener('click',()=>{area.innerHTML='';});
+});
+let skillEditMode=false;
+const toggleSkillBtn=document.querySelector('.toggle-skill-edit-btn');
+if(toggleSkillBtn)toggleSkillBtn.addEventListener('click',()=>{
+skillEditMode=!skillEditMode;
+document.querySelectorAll('.del-skill-btn').forEach(b=>b.classList.toggle('hidden',!skillEditMode));
+document.getElementById('skill-add').classList.toggle('hidden',!skillEditMode);
+});
+document.querySelectorAll('.del-skill-btn').forEach(b=>b.addEventListener('click',function(ev){
+ev.stopPropagation();const pr=getProfile();pr.skills=pr.skills.filter(s=>s!==this.dataset.skill);save('portfolioProfile',pr);render();
+}));
+const addSkillBtn=document.getElementById('add-skill-btn');
+if(addSkillBtn)addSkillBtn.addEventListener('click',()=>{
+const inp=document.getElementById('new-skill-input');if(!inp.value.trim())return;
+const pr=getProfile();pr.skills.push(inp.value.trim());save('portfolioProfile',pr);render();
+});
+document.querySelectorAll('.del-edu-btn').forEach(b=>b.addEventListener('click',()=>{
+const pr=getProfile();pr.education=pr.education.filter(e=>e.id!=b.dataset.id);save('portfolioProfile',pr);render();
+}));
+const addEduBtn=document.querySelector('.add-edu-btn');
+if(addEduBtn)addEduBtn.addEventListener('click',()=>{
+const area=document.getElementById('edu-form-area');
+area.innerHTML=`<div class="p-3 rounded-lg" style="background:rgba(255,255,255,0.05)"><div class="grid grid-cols-1 gap-2 mb-2"><input class="form-input text-sm" id="ne-inst" placeholder="Institution"><input class="form-input text-sm" id="ne-degree" placeholder="Degree"><div class="grid grid-cols-2 gap-2"><input class="form-input text-sm" id="ne-years" placeholder="Years"><select class="form-input text-sm" id="ne-status"><option>Planned</option><option>In Progress</option><option>Complete</option></select></div></div><div class="flex gap-2"><button class="btn-primary text-xs" id="ne-save">Save</button><button class="btn-secondary text-xs" id="ne-cancel">Cancel</button></div></div>`;
+document.getElementById('ne-save').addEventListener('click',()=>{
+const pr=getProfile();pr.education.push({id:Date.now(),institution:document.getElementById('ne-inst').value,degree:document.getElementById('ne-degree').value,years:document.getElementById('ne-years').value,status:document.getElementById('ne-status').value});save('portfolioProfile',pr);render();
+});
+document.getElementById('ne-cancel').addEventListener('click',()=>{area.innerHTML='';});
+});
+}
+
+// ============ INIT ============
+initData();
+render();
+</script>
+</body>
+</html>
