@@ -9,20 +9,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/lucide@1.8.0/dist/umd/lucide.min.js"></script>
-<script>
-tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']},colors:{navy:{900:'#0f172a',800:'#1e293b',700:'#334155'},azure:{50:'#e6f2ff',100:'#cce5ff',200:'#99cbff',300:'#66b0ff',400:'#33[...]
-</script>
 <style>
 :root{--navy:#0f172a;--azure:#0078D4;--azure-hover:#0063b1;--planned:#94a3b8;--progress:#f59e0b;--complete:#22c55e;--violet:#7C3AED}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',sans-serif;background:radial-gradient(ellipse at center,#0d1b2a 0%,#050a0f 100%);color:#e2e8f0;min-height:100vh}
-
 #global-starfield{position:fixed;inset:0;z-index:0;pointer-events:none}
 .star-layer{position:absolute;inset:0}
-
 .card{background:rgba(13,27,42,0.85);backdrop-filter:blur(8px);border:1px solid rgba(0,120,212,0.2);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform .2s,box-shadow .2s}
 .card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,120,212,0.15)}
-
 .badge{display:inline-flex;align-items:center;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500}
 .badge-planned{background:rgba(148,163,184,0.15);color:#94a3b8}
 .badge-progress{background:rgba(245,158,11,0.15);color:#fbbf24}
@@ -30,454 +24,101 @@ body{font-family:'Inter',sans-serif;background:radial-gradient(ellipse at center
 .tag-pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:500;background:rgba(0,120,212,0.2);color:#66b0ff}
 .progress-bar{height:8px;border-radius:9999px;background:rgba(255,255,255,0.1);overflow:hidden}
 .progress-fill{height:100%;border-radius:9999px;transition:width 1s ease}
-.entry-card{border-left:4px solid #94a3b8}
-.entry-card[data-status="In Progress"]{border-left-color:#f59e0b}
-.entry-card[data-status="Complete"]{border-left-color:#22c55e}
+.nav-header{position:fixed;top:0;left:0;right:0;z-index:100;background:#0f172a;height:56px;display:flex;align-items:center;padding:0 16px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.main-content{padding-top:64px;position:relative;z-index:1}
+.btn-primary{background:#0078D4;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s}
+.btn-primary:hover{background:#0063b1}
+.download-app-btn{border:1px solid rgba(255,255,255,0.4);color:#fff;background:transparent;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.download-app-btn:hover{background:rgba(255,255,255,0.1)}
+.portfolio-view-btn{border:1px solid rgba(255,255,255,0.4);color:#fff;background:transparent;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.portfolio-view-btn:hover{background:rgba(255,255,255,0.1)}
 .tab-btn{padding:6px 16px;border-radius:9999px;font-size:13px;font-weight:500;color:#cbd5e1;cursor:pointer;white-space:nowrap;border:none;background:transparent;transition:background .15s,color .15s}
 .tab-btn.active{background:#0078D4;color:#fff}
 .tab-btn:hover:not(.active){background:rgba(255,255,255,0.1);color:#fff}
-.showcase-star{cursor:pointer;transition:transform .2s}
-.showcase-star.active{color:#f59e0b;transform:scale(1.2)}
-.showcase-star:not(.active){color:#475569}
-@keyframes twinkle{0%,100%{opacity:.3}50%{opacity:.9}}
-.star-field{position:absolute;inset:0;overflow:hidden}
-.constellation-card{background:rgba(13,27,42,0.85);backdrop-filter:blur(8px);border:1px solid rgba(0,120,212,0.2);border-radius:12px;padding:16px}
-.credit-ring{filter:drop-shadow(0 0 4px rgba(0,120,212,0.5))}
-.nav-header{position:fixed;top:0;left:0;right:0;z-index:100;background:#0f172a;height:56px;display:flex;align-items:center;padding:0 16px;border-bottom:1px solid rgba(255,255,255,0.06)}
-.main-content{padding-top:64px;position:relative;z-index:1}
-
-.form-input{width:100%;padding:8px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;background:rgba(255,255,255,0.07);color:#f1f5f9;transiti[...]
-.form-input:focus{outline:none;border-color:#0078D4;box-shadow:0 0 0 3px rgba(0,120,212,0.25)}
-.form-input option{background:#1e293b;color:#f1f5f9}
-.form-input::placeholder{color:#64748b}
-
-.btn-primary{background:#0078D4;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s}
-.btn-primary:hover{background:#0063b1}
-.btn-secondary{background:transparent;color:#e2e8f0;border:1px solid rgba(255,255,255,0.3);padding:8px 16px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-ser[...]
-.btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.5)}
-.btn-danger{background:rgba(124,58,237,0.15);color:#c4b5fd;border:1px solid rgba(196,181,253,0.3);padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;font-family:'Inter',s[...]
-.btn-danger:hover{background:rgba(124,58,237,0.25)}
-.portfolio-view-btn{border:1px solid rgba(255,255,255,0.4);color:#fff;background:transparent;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-s[...]
-.portfolio-view-btn:hover{background:rgba(255,255,255,0.1)}
-.download-app-btn{border:1px solid rgba(255,255,255,0.4);color:#fff;background:transparent;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-ser[...]
-.download-app-btn:hover{background:rgba(255,255,255,1);color:#0f172a}
-.mobile-tabs-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.mobile-tabs-scroll::-webkit-scrollbar{display:none}
-.date-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify[...]
-.degree-pill{display:inline-flex;padding:2px 8px;border-radius:9999px;font-size:10px;font-weight:500;background:rgba(0,120,212,0.15);color:#66b0ff}
-.filter-pill{padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid rgba(255,255,255,0.15);background:transparent;color:#94a3b8;transition:all .15s}
-.filter-pill.active{background:#0078D4;color:#fff;border-color:#0078D4}
-.avatar-circle{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer}
-.avatar-circle .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;border-radius[...]
-.avatar-circle:hover .overlay{opacity:1}
-.check-pill{display:inline-flex;align-items:center;padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid rgba(255,255,255,0.15);background:transparent;co[...]
-.check-pill.checked{background:rgba(0,120,212,0.2);color:#66b0ff;border-color:rgba(0,120,212,0.4)}
-
-.dash-space-bg{position:relative;min-height:calc(100vh - 64px)}
-.dash-glass-card{background:rgba(13,27,42,0.85)!important;backdrop-filter:blur(8px);border:1px solid rgba(0,120,212,0.25)!important;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:t[...]
+.dash-glass-card{background:rgba(13,27,42,0.85)!important;backdrop-filter:blur(8px);border:1px solid rgba(0,120,212,0.25)!important;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform .2s,box-shadow .2s}
 .dash-glass-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,120,212,0.15)}
 .dash-progress-bar{height:8px;border-radius:9999px;background:rgba(255,255,255,0.1);overflow:hidden}
 .dash-tag-pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:500;background:rgba(0,120,212,0.2);color:#66b0ff}
-
-.dash-domain-card{background:rgba(13,27,42,0.85)!important;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.08)!important;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transitio[...]
+.dash-domain-card{background:rgba(13,27,42,0.85)!important;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.08)!important;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform .2s,box-shadow .2s}
 .dash-domain-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.35)}
 .dash-domain-card.clickable-card{cursor:pointer}
-.dash-domain-card .view-all-link{opacity:0;transform:translateX(-4px);transition:opacity .25s,transform .25s}
-.dash-domain-card:hover .view-all-link{opacity:1;transform:translateX(0)}
-
-.text-violet{color:#c4b5fd}
-.text-violet-light{color:#a78bfa}
-.hover-text-violet:hover{color:#ddd6fe}
-
-.bg-surface-100-dark{background:rgba(255,255,255,0.05)!important}
-
-footer{position:relative;z-index:1}
-
-@keyframes violetPulse{
-  0%,100%{border-left-color:rgba(124,58,237,0.5);box-shadow:-4px 0 12px rgba(124,58,237,0.1)}
-  50%{border-left-color:rgba(139,92,246,1);box-shadow:-4px 0 18px rgba(139,92,246,0.35)}
-}
-.next-chapter-card{
-  background:rgba(13,27,42,0.85);
-  backdrop-filter:blur(8px);
-  border:1px solid rgba(0,120,212,0.2);
-  border-radius:12px;
-  border-left:4px solid #7C3AED;
-  animation:violetPulse 3s ease-in-out infinite;
-  position:relative;
-  z-index:9999;
-  isolation:isolate;
-  overflow:visible;
-  transition:box-shadow .3s;
-}
-.next-chapter-card:hover{
-  box-shadow:0 6px 24px rgba(124,58,237,0.2),-4px 0 20px rgba(139,92,246,0.25);
-}
-.next-chapter-tooltip{
-  visibility:hidden;opacity:0;
-  position:absolute;
-  z-index:9999;
-  isolation:isolate;
-  bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);
-  background:#1e293b;color:#cbd5e1;
-  font-size:12px;line-height:1.5;
-  padding:10px 14px;border-radius:8px;
-  width:320px;max-width:90vw;
-  box-shadow:0 4px 16px rgba(0,0,0,0.4);
-  border:1px solid rgba(124,58,237,0.3);
-  pointer-events:none;
-  transition:opacity .2s,visibility .2s;
-}
-.next-chapter-tooltip::after{
-  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
-  border:6px solid transparent;border-top-color:#1e293b;
-}
-.next-chapter-card:hover .next-chapter-tooltip{
-  visibility:visible;opacity:1;
-}
-
-.group-header{display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;margin-bottom:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06)}
-.group-header .group-icon{font-size:1.1rem}
-.group-header .group-title{font-weight:600;color:#e2e8f0;font-size:14px}
-.group-header .group-count{font-size:11px;color:#64748b;font-weight:500}
-
 .credit-summary-card{background:linear-gradient(135deg,rgba(0,120,212,0.12),rgba(124,58,237,0.08));border:1px solid rgba(0,120,212,0.3);border-radius:14px;padding:20px 24px}
 .credit-bar-segment{height:100%;display:inline-block;transition:width 1s ease}
-
-.color-key-legend{
-  background:rgba(13,27,42,0.85);
-  backdrop-filter:blur(8px);
-  border:1px solid rgba(124,58,237,0.25);
-  border-radius:12px;
-  padding:14px 20px;
-  margin-bottom:20px;
-}
-.color-key-legend .legend-title{
-  font-size:11px;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:0.08em;
-  color:#c4b5fd;
-  margin-bottom:10px;
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-.color-key-legend .legend-items{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px 16px;
-  align-items:center;
-}
-.color-key-swatch{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:3px 10px;
-  border-radius:9999px;
-  font-size:11px;
-  font-weight:500;
-  white-space:nowrap;
-  border:1px solid rgba(255,255,255,0.08);
-  background:rgba(255,255,255,0.04);
-}
-.color-key-swatch .swatch-dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  flex-shrink:0;
-}
-
-.edu-card{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(124,58,237,0.2);
-  border-left:3px solid #7C3AED;
-  border-radius:10px;
-  padding:14px 16px;
-  transition:border-color .2s,background .2s;
-}
-.edu-card:hover{
-  border-color:rgba(124,58,237,0.4);
-  background:rgba(255,255,255,0.06);
-}
-.edu-form-inline{
-  background:rgba(13,27,42,0.9);
-  border:1px solid rgba(0,120,212,0.3);
-  border-left:4px solid #0078D4;
-  border-radius:12px;
-  padding:16px 20px;
-  margin-top:8px;
-  animation:eduFormSlideIn .25s ease-out;
-}
-@keyframes eduFormSlideIn{
-  from{opacity:0;transform:translateY(-8px);max-height:0}
-  to{opacity:1;transform:translateY(0);max-height:600px}
-}
-
-.back-to-dash-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  padding:5px 14px;
-  border-radius:9999px;
-  font-size:12px;
-  font-weight:500;
-  color:#cbd5e1;
-  background:rgba(124,58,237,0.08);
-  border:1px solid rgba(124,58,237,0.25);
-  cursor:pointer;
-  font-family:'Inter',sans-serif;
-  transition:all .2s;
-  margin-bottom:16px;
-}
-.back-to-dash-btn:hover{
-  background:rgba(124,58,237,0.2);
-  border-color:rgba(124,58,237,0.5);
-  color:#fff;
-}
-
-#dash-sparkles-container{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100vw;
-  height:100vh;
-  pointer-events:none;
-  z-index:0;
-  overflow:hidden;
-}
-
-/* ============ NG FANGIRL STYLES ============ */
-.ng-tab-bg{
-  background:linear-gradient(135deg,rgba(168,85,247,0.08),rgba(236,72,153,0.06),rgba(99,102,241,0.08));
-  min-height:calc(100vh - 64px);
-  position:relative;
-}
-.ng-banner{
-  text-align:center;
-  padding:32px 16px 24px;
-  position:relative;
-}
-.ng-banner-title{
-  font-size:2rem;
-  font-weight:800;
-  background:linear-gradient(135deg,#a855f7,#ec4899);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  animation:ngShimmer 3s ease-in-out infinite;
-}
-@keyframes ngShimmer{
-  0%,100%{filter:brightness(1);opacity:1}
-  50%{filter:brightness(1.3);opacity:0.92}
-}
-.ng-course-card{
-  background:rgba(168,85,247,0.08);
-  backdrop-filter:blur(8px);
-  border:1px solid rgba(168,85,247,0.4);
-  border-radius:14px;
-  box-shadow:0 0 12px rgba(168,85,247,0.15);
-  padding:20px;
-  transition:transform .2s,box-shadow .2s;
-}
-.ng-course-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 0 24px rgba(168,85,247,0.25),0 8px 24px rgba(0,0,0,0.3);
-}
-.ng-complete-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:6px 14px;
-  border-radius:9999px;
-  font-size:12px;
-  font-weight:600;
-  cursor:pointer;
-  border:1px solid rgba(168,85,247,0.4);
-  background:rgba(168,85,247,0.15);
-  color:#c4b5fd;
-  font-family:'Inter',sans-serif;
-  transition:all .2s;
-}
-.ng-complete-btn.completed{
-  background:rgba(34,197,94,0.2);
-  border-color:rgba(34,197,94,0.5);
-  color:#4ade80;
-}
-.ng-complete-btn:hover{
-  transform:scale(1.05);
-}
-.ng-progress-bar{
-  height:12px;
-  border-radius:9999px;
-  background:rgba(255,255,255,0.1);
-  overflow:hidden;
-}
-.ng-progress-fill{
-  height:100%;
-  border-radius:9999px;
-  background:linear-gradient(90deg,#a855f7,#ec4899);
-  transition:width 1s ease;
-}
-.ng-quote-card{
-  background:rgba(236,72,153,0.08);
-  border:1px solid rgba(236,72,153,0.3);
-  border-left:4px solid #ec4899;
-  border-radius:12px;
-  padding:16px 20px;
-  font-style:italic;
-  color:#f9a8d4;
-  font-size:14px;
-  line-height:1.6;
-}
-.ng-footer-card{
-  background:linear-gradient(135deg,rgba(236,72,153,0.12),rgba(168,85,247,0.1));
-  border:1px solid rgba(236,72,153,0.3);
-  border-radius:14px;
-  padding:24px;
-  text-align:center;
-}
-.ng-toast{
-  position:fixed;
-  top:24px;
-  left:50%;
-  transform:translateX(-50%) translateY(-20px);
-  background:linear-gradient(135deg,#7c3aed,#ec4899);
-  color:#fff;
-  padding:14px 24px;
-  border-radius:12px;
-  font-size:14px;
-  font-weight:600;
-  z-index:10001;
-  box-shadow:0 8px 32px rgba(124,58,237,0.4);
-  max-width:400px;
-  text-align:center;
-  opacity:0;
-  transition:opacity .4s,transform .4s;
-  pointer-events:none;
-}
-.ng-toast.visible{
-  opacity:1;
-  transform:translateX(-50%) translateY(0);
-}
-
+.next-chapter-card{background:rgba(13,27,42,0.85);backdrop-filter:blur(8px);border:1px solid rgba(0,120,212,0.2);border-radius:12px;border-left:4px solid #7C3AED;position:relative;z-index:9999;isolation:isolate;overflow:visible;transition:box-shadow .3s}
+.next-chapter-card:hover{box-shadow:0 6px 24px rgba(124,58,237,0.2)}
+footer{position:relative;z-index:1}
+.no-print{display:block}
 @media print{.no-print{display:none!important}}
 </style>
 </head>
-<body data-id="0">
-<app-icon data-id="1" hidden data-icon="cloud" data-palette="Blue"></app-icon>
-
+<body>
 <!-- GLOBAL STARFIELD -->
-<div data-id="2" id="global-starfield"></div>
+<div id="global-starfield"></div>
 
 <!-- NAV HEADER -->
-<header data-id="3" class="nav-header no-print" id="main-header">
-  <div data-id="4" class="flex items-center gap-2 flex-shrink-0">
-    <span data-id="5" class="text-white font-bold text-base">⭐ Carla's Portfolio</span>
+<header class="nav-header no-print" id="main-header">
+  <div class="flex items-center gap-2 flex-shrink-0">
+    <span class="text-white font-bold text-base">⭐ Carla's Portfolio</span>
   </div>
-  <div data-id="6" class="flex-1 flex justify-center mx-4">
-    <div data-id="7" class="mobile-tabs-scroll hidden md:flex items-center gap-1" id="desktop-tabs"></div>
+  <div class="flex-1 flex justify-center mx-4">
+    <div class="hidden md:flex items-center gap-1" id="desktop-tabs"></div>
   </div>
-  <div data-id="8" class="flex items-center gap-2 flex-shrink-0">
-    <button data-id="9" class="download-app-btn hidden md:inline-flex items-center gap-1" id="download-app-btn"><i data-id="10" data-lucide="download" class="w-4 h-4"></i> Download App</button>
-    <button data-id="11" class="portfolio-view-btn hidden md:inline-flex items-center gap-1" id="portfolio-btn"><i data-id="12" data-lucide="clipboard-list" class="w-4 h-4"></i> Portfolio View</b[...]
-    <button data-id="13" class="md:hidden p-2 text-white" id="mobile-menu-btn"><i data-id="14" data-lucide="menu" class="w-6 h-6"></i></button>
+  <div class="flex items-center gap-2 flex-shrink-0">
+    <button class="download-app-btn hidden md:inline-flex items-center gap-1" id="download-app-btn"><i data-lucide="download" class="w-4 h-4"></i> Download App</button>
+    <button class="portfolio-view-btn hidden md:inline-flex items-center gap-1" id="portfolio-btn"><i data-lucide="clipboard-list" class="w-4 h-4"></i> Portfolio View</button>
+    <button class="md:hidden p-2 text-white" id="mobile-menu-btn"><i data-lucide="menu" class="w-6 h-6"></i></button>
   </div>
 </header>
 
 <!-- MOBILE MENU -->
-<nav data-id="15" id="mobile-menu" class="hidden fixed inset-0 bg-navy-900 z-[200] flex flex-col p-4 no-print" style="background:#0f172a">
-  <div data-id="16" class="flex justify-between items-center mb-6">
-    <span data-id="17" class="text-white font-bold">⭐ Carla's Portfolio</span>
-    <button data-id="18" id="mobile-menu-close" class="p-2 text-white"><i data-id="19" data-lucide="x" class="w-6 h-6"></i></button>
+<nav id="mobile-menu" class="hidden fixed inset-0 bg-navy-900 z-50 flex flex-col p-4 no-print" style="background:#0f172a">
+  <div class="flex justify-between items-center mb-6">
+    <span class="text-white font-bold">⭐ Carla's Portfolio</span>
+    <button id="mobile-menu-close" class="p-2 text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
   </div>
-  <div data-id="20" class="flex flex-col gap-2" id="mobile-tabs"></div>
-  <button data-id="21" class="download-app-btn mt-4 w-full text-center" id="download-app-btn-mobile"><i data-id="22" data-lucide="download" class="w-4 h-4 inline"></i> Download App</button>
-  <button data-id="23" class="portfolio-view-btn mt-2 w-full text-center" id="portfolio-btn-mobile"><i data-id="24" data-lucide="clipboard-list" class="w-4 h-4 inline"></i> Portfolio View</button[...]
+  <div class="flex flex-col gap-2" id="mobile-tabs"></div>
+  <button class="download-app-btn mt-4 w-full text-center" id="download-app-btn-mobile"><i data-lucide="download" class="w-4 h-4 inline"></i> Download App</button>
+  <button class="portfolio-view-btn mt-2 w-full text-center" id="portfolio-btn-mobile"><i data-lucide="clipboard-list" class="w-4 h-4 inline"></i> Portfolio View</button>
 </nav>
 
-<main data-id="25" class="main-content pb-8" id="app-main">
+<main class="main-content pb-8" id="app-main">
 </main>
 
-<footer data-id="26" class="py-6 text-center no-print">
-  <p data-id="27" class="text-xs text-surface-500">© 2026 Nightfield LLC. All rights reserved.</p>
+<footer class="py-6 text-center no-print">
+  <p class="text-xs text-surface-500">© 2026 Nightfield LLC. All rights reserved.</p>
 </footer>
 
 <script>
 // ============ GLOBAL STARFIELD ============
 function initGlobalStarfield(){
   const container=document.getElementById('global-starfield');
-  let stars='';for(let i=0;i<150;i++){const x=Math.random()*100,y=Math.random()*100,s=Math.random()>0.93?3:Math.random()>0.8?2:1,o=(Math.random()*0.6+0.3).toFixed(2);stars+=`${x}vw ${y}vh 0 ${s-1}px r[...]
+  let stars='';
+  for(let i=0;i<150;i++){
+    const x=Math.random()*100,y=Math.random()*100,s=Math.random()>0.93?3:Math.random()>0.8?2:1;
+    stars+=`${x}vw ${y}vh 0 ${s-1}px rgba(255,255,255,0.8),`;
+  }
   stars=stars.slice(0,-1);
-  let bigStars='';for(let i=0;i<8;i++){const x=Math.random()*90+5,y=Math.random()*80+10;bigStars+=`${x}vw ${y}vh 0 2px rgba(255,255,255,0.8),`;}bigStars=bigStars.slice(0,-1);
-  container.innerHTML=`<div class="star-layer" style="box-shadow:${stars}"></div><div class="star-layer" style="box-shadow:${bigStars};animation:twinkle 4s ease-in-out infinite"></div>`;
+  container.innerHTML=`<div class="star-layer" style="box-shadow:${stars}"></div>`;
 }
 initGlobalStarfield();
 
-// ============ DASHBOARD SPARKLES (DOM-based) ============
-function clearDashSparkles(){
-  var el=document.getElementById('dash-sparkles-container');
-  if(el&&el.parentNode)el.remove();
+// ============ PASSWORD PROTECTION FOR DOWNLOAD BUTTON ============
+function passwordProtectedDownload(){
+  const PASSWORD = 'carla42';
+  const userInput = prompt('Private Feature:');
+  
+  if (userInput === null) {
+    return;
+  }
+  
+  if (userInput !== PASSWORD) {
+    alert('Thou Shall Not Pass!!!');
+    return;
+  }
+  
+  downloadApp();
 }
 
-function initDashSparkles(){
-  clearDashSparkles();
-  var container=document.createElement('div');
-  container.id='dash-sparkles-container';
-  document.body.appendChild(container);
-
-  var colors=['#ffffff','#e2e8f0','#c8d6e8','#a8b8d0','#f0f4ff'];
-  var TOTAL=200;
-  var GLOW_COUNT=30;
-  var CROSS_COUNT=20;
-
-  var styleEl=document.createElement('style');
-  var keyframes='';
-  for(var i=0;i<TOTAL;i++){
-    var peakOpacity=(0.7+Math.random()*0.3).toFixed(2);
-    var minOpacity=(Math.random()*0.08).toFixed(2);
-    var peakScale=(1.3+Math.random()*0.5).toFixed(2);
-    keyframes+=`@keyframes sparkle-${i}{0%,100%{opacity:${minOpacity};transform:scale(1);}50%{opacity:${peakOpacity};transform:scale(${peakScale});}}`;
-  }
-  styleEl.textContent=keyframes;
-  container.appendChild(styleEl);
-
-  for(var i=0;i<TOTAL;i++){
-    var isCross=i<CROSS_COUNT;
-    var isGlow=i>=CROSS_COUNT&&i<CROSS_COUNT+GLOW_COUNT;
-
-    if(isCross){
-      var star=document.createElement('div');
-      star.textContent='\u2726';
-      var sz=3+Math.random()*2;
-      var left=Math.random()*100;
-      var top=Math.random()*100;
-      var color=colors[Math.floor(Math.random()*colors.length)];
-      var dur=(1.5+Math.random()*2.5).toFixed(2);
-      var delay=(Math.random()*4).toFixed(2);
-      var startOpacity=(0.2+Math.random()*0.5).toFixed(2);
-      star.style.cssText='position:absolute;left:'+left+'%;top:'+top+'%;font-size:'+sz+'px;color:'+color+';opacity:'+startOpacity+';animation:sparkle-'+i+' '+dur+'s '+delay+'s infinite ease-in-ou[...]
-      container.appendChild(star);
-    }else{
-      var dot=document.createElement('div');
-      var sz=1+Math.random()*2;
-      var left=Math.random()*100;
-      var top=Math.random()*100;
-      var color=colors[Math.floor(Math.random()*colors.length)];
-      var dur=(0.8+Math.random()*3.2).toFixed(2);
-      var delay=(Math.random()*4).toFixed(2);
-      var startOpacity=(0.2+Math.random()*0.7).toFixed(2);
-      var extraStyle='';
-      if(isGlow){
-        extraStyle='box-shadow:0 0 3px 1px rgba(255,255,255,0.8);';
-      }
-      dot.style.cssText='position:absolute;left:'+left+'%;top:'+top+'%;width:'+sz+'px;height:'+sz+'px;border-radius:50%;background:'+color+';opacity:'+startOpacity+';animation:sparkle-'+i+' '+dur+'s '[...]
-      container.appendChild(dot);
-    }
-  }
-}
-
-// ============ DOWNLOAD APP FUNCTION ============
 function downloadApp(){
   var html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
   var blob=new Blob([html],{type:'text/html'});
@@ -491,447 +132,193 @@ function downloadApp(){
   URL.revokeObjectURL(url);
 }
 
-// ============ PASSWORD PROTECTION FOR DOWNLOAD BUTTON ============
-function passwordProtectedDownload(){
-
-  const PASSWORD = 'carla42';
-
-  const userInput = prompt('Private Feature:');
-
-  if (userInput === null) {
-    return;
-  }
-
-  if (userInput !== PASSWORD) {
-    alert('Thou Shall Not Pass!!!');
-    return;
-  }
-
-  downloadApp();
-
-}
 // ============ DOWNLOAD BUTTON CLICK HANDLER ============
 document.addEventListener('DOMContentLoaded', function(){
-
   const downloadBtnDesktop = document.getElementById('download-app-btn');
   const downloadBtnMobile = document.getElementById('download-app-btn-mobile');
-
+  
   if(downloadBtnDesktop){
     downloadBtnDesktop.addEventListener('click', passwordProtectedDownload);
   }
-
+  
   if(downloadBtnMobile){
     downloadBtnMobile.addEventListener('click', passwordProtectedDownload);
   }
 
+  // Mobile menu
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+  
+  if(mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenu.classList.remove('hidden');
+    });
+  }
+  
+  if(mobileMenuClose) {
+    mobileMenuClose.addEventListener('click', function() {
+      mobileMenu.classList.add('hidden');
+    });
+  }
+
+  // Initialize app
+  initData();
+  buildNav();
+  render();
+  lucide.createIcons();
 });
-
-// ============ NG TOAST HELPER ============
-function showNgToast(msg){
-  var existing=document.getElementById('ng-popup-toast');
-  if(existing)existing.remove();
-  var toast=document.createElement('div');
-  toast.id='ng-popup-toast';
-  toast.className='ng-toast';
-  toast.textContent=msg;
-  document.body.appendChild(toast);
-  requestAnimationFrame(function(){requestAnimationFrame(function(){toast.classList.add('visible');});});
-  setTimeout(function(){toast.classList.remove('visible');setTimeout(function(){if(toast.parentNode)toast.remove();},400);},3000);
-}
-
-// ============ BACK TO DASHBOARD BUTTON HTML ============
-function backToDashBtn(){
-  return '<button class="back-to-dash-btn no-print" id="back-to-dash"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Dashboard</button>';
-}
 
 // ============ DATA & CONSTANTS ============
 const DATA_VERSION='v13';
-const TABS=['Dashboard','Cloud Projects','Linux','Azure Labs','AI Work','Cybersecurity','CSU','\uD83D\uDC64 Profile'];
-const TAB_ICONS=['layout-dashboard','cloud','terminal','flask-conical','brain','shield','graduation-cap','user'];
-const DOMAIN_SLUGS=['cloudProjects','linux','azureLabs','aiWork','cybersecurity'];
-const DOMAIN_NAMES=['Cloud Projects','Linux','Azure Labs','AI Work','Cybersecurity'];
-const DOMAIN_ICONS=['cloud','terminal','flask-conical','brain','shield'];
-const DOMAIN_DESCS=['Cloud architecture, deployment & DevOps projects','Linux administration, scripting & system management','Microsoft Azure certification labs & hands-on exercises','AI integration, [...]
-
-const DOMAIN_TAB_INDICES=[1,2,3,4,5,6];
-
-const CSU_GROUPS=[
-  {key:'Transfer Credits',icon:'\uD83E\uDE90',color:'#94a3b8'},
-  {key:'General Education',icon:'\uD83C\uDF93',color:'#a78bfa'},
-  {key:'Major in Agile Project Management',icon:'\uD83D\uDCCB',color:'#10b981'},
-  {key:'Azure AI Automation Specialization',icon:'☁️',color:'#6366f1'},
-  {key:'Electives',icon:'⭐',color:'#f59e0b'},
-  {key:'MS IT Management',icon:'\uD83D\uDEF0️',color:'#c4b5fd'},
-  {key:'Cybersecurity Specialization',icon:'\uD83D\uDD10',color:'#ef4444'},
-  {key:'Microsoft Learn Path',icon:'\uD83D\uDCD8',color:'#0078D4'},
-  {key:'Linux Learning Path',icon:'\uD83D\uDC27',color:'#f97316'}
-];
-
-const DEGREE_TRACKS=['General Education','Major in Agile Project Management','Azure AI Automation Specialization','Electives','MS IT Management','Cybersecurity Specialization'];
-const DEGREE_TRACK_ICONS=['\uD83C\uDF93','\uD83D\uDCCB','☁️','⭐','\uD83D\uDEF0️','\uD83D\uDD10'];
-const DEGREE_TRACK_ABBREV={
-  'General Education':'Gen Ed',
-  'Major in Agile Project Management':'Agile Major',
-  'Azure AI Automation Specialization':'Azure AI Spec',
-  'Electives':'Electives',
-  'MS IT Management':'MS IT Mgmt',
-  'Cybersecurity Specialization':'MS CyberSec'
-};
-const DOMAIN_ACCENT_COLORS=['#0078D4','#f97316','#6366f1','#f59e0b','#7C3AED','#10b981'];
-
-const STUDENT_SID='369936';
+const TABS=['Dashboard','Cloud Projects','Linux','Azure Labs','AI Work','Cybersecurity','CSU','👤 Profile'];
 const TOTAL_CREDIT_GOAL=120;
-
-const COLOR_KEY_ITEMS=[
-  {label:'Complete',color:'#22c55e',bgColor:'rgba(34,197,94,0.12)',borderColor:'rgba(34,197,94,0.3)'},
-  {label:'In Progress',color:'#0078D4',bgColor:'rgba(0,120,212,0.12)',borderColor:'rgba(0,120,212,0.3)'},
-  {label:'Planned / Not Started',color:'#f59e0b',bgColor:'rgba(245,158,11,0.12)',borderColor:'rgba(245,158,11,0.3)'},
-  {label:'Needs Prerequisite',color:'#ef4444',bgColor:'rgba(239,68,68,0.12)',borderColor:'rgba(239,68,68,0.3)'},
-  {label:'Transfer Credit',color:'#94a3b8',bgColor:'rgba(148,163,184,0.12)',borderColor:'rgba(148,163,184,0.3)'},
-  {label:'General Education',color:'#a78bfa',bgColor:'rgba(167,139,250,0.12)',borderColor:'rgba(167,139,250,0.3)'}
-];
-
-// ============ NG FANGIRL HARDCODED COURSES ============
-const NG_COURSES_DEFAULT=[
-  {id:'ng-azml',code:'AZML-01',title:'Microsoft Azure Machine Learning',platform:'Coursera',url:'https://www.coursera.org/learn/microsoft-azure-machine-learning',completed:false,startDate:'',notes:'Az[...]
-  {id:'ng-aiaz',code:'AIAZ-01',title:'Introduction to AI on Azure',platform:'Coursera',url:'https://www.coursera.org/learn/introduction-to-ai-on-azure',completed:false,startDate:'',notes:'Where it all[...]
-  {id:'ng-cvaz',code:'CVAZ-01',title:'Computer Vision with Azure',platform:'Coursera',url:'https://www.coursera.org/learn/computer-vision-with-azure',completed:false,startDate:'',notes:'Teaching machi[...]
-  {id:'ng-nlp',code:'NLPAZ-01',title:'NLP with Azure AI',platform:'Coursera',url:'https://www.coursera.org/learn/nlp-azure-ai',completed:false,startDate:'',notes:'Making machines talk smart \uD83D\uDD[...]
-  {id:'ng-aipm',code:'AIPM-01',title:'Managing AI Projects',platform:'DeepLearning.AI',url:'https://www.deeplearning.ai/',completed:false,startDate:'',notes:'The strategy behind the magic \uD83E\uDDE0[...]
-  {id:'ng-math',code:'MATH-01',title:'Mathematics for Machine Learning',platform:'Coursera \u00B7 Imperial College',url:'https://www.coursera.org/specializations/mathematics-machine-learning',complete[...]
-];
 
 let currentTab=0;
 let portfolioMode=false;
-let editingEntry=null;
-let ngUnlocked=localStorage.getItem('ngUnlocked')==='true';
-let ngClickCount=0;
-
-// ============ SEED DATA ============
-function getDefaultEntries(){
-return {
-cloudProjects:[
-{id:genId(),title:"Multi-Tier Web App on Azure",description:"Deploy a 3-tier web application using Azure App Service, Azure SQL, and VNet peering.",status:"Planned",tags:["Azure","App Service","SQL","[...]
-{id:genId(),title:"Serverless Event Pipeline",description:"Event-driven pipeline using Azure Functions triggered by Event Grid with Cosmos DB backend.",status:"In Progress",tags:["Azure Functions","Ev[...]
-{id:genId(),title:"Infrastructure as Code with Bicep",description:"Provision full Azure environments using Bicep templates.",status:"Planned",tags:["Bicep","ARM","Azure","IaC"],showcase:false,link:"",[...]
-{id:genId(),title:"Azure Cost Optimization Audit",description:"Analyze a mock Azure subscription and produce a cost optimization report.",status:"Planned",tags:["Azure Monitor","Cost Management"],show[...]
-{id:genId(),title:"CI/CD Pipeline with Azure DevOps",description:"Complete CI/CD pipeline for a web app with automated testing and deployment stages.",status:"Planned",tags:["Azure DevOps","GitHub Act[...]
-],
-linux:[
-{id:genId(),title:"Linux File System & Permissions Lab",description:"Exercises covering file permissions, ownership, and ACLs in a Linux environment.",status:"Complete",tags:["Linux","Bash","chmod","S[...]
-{id:genId(),title:"Shell Scripting Automation",description:"Bash scripts for system monitoring, log rotation, and scheduled backups using cron.",status:"In Progress",tags:["Bash","Scripting","Cron"],s[...]
-{id:genId(),title:"Linux Networking Fundamentals",description:"Configure network interfaces, routing tables, and basic firewall rules on Ubuntu Server.",status:"Planned",tags:["Linux","Networking","TC[...]
-{id:genId(),title:"LAMP Stack Deployment",description:"Manually configure a full LAMP stack on an Ubuntu VM and host a simple web application.",status:"Planned",tags:["Linux","Apache","MySQL","PHP"],s[...]
-{id:genId(),title:"SSH Hardening & Key Management",description:"Implement SSH key-based authentication, disable password login, and configure fail2ban.",status:"Planned",tags:["SSH","Linux","Security"[...]
-],
-azureLabs:[
-{id:genId(),title:"AZ-900 Fundamentals Labs",description:"Completed all Microsoft Learn hands-on labs for the AZ-900 certification track.",status:"Complete",tags:["Azure","AZ-900","Fundamentals"],show[...]
-{id:genId(),title:"AZ-104 Administrator Labs",description:"Working through the AZ-104 lab series covering VMs, storage, networking, and identity.",status:"In Progress",tags:["Azure","AZ-104","VMs","Ne[...]
-{id:genId(),title:"Virtual Network Peering Lab",description:"Configure VNet-to-VNet peering and test connectivity across subnets with NSG rules.",status:"Planned",tags:["Azure","VNet","Peering","NSG"][...]
-{id:genId(),title:"Azure Active Directory & RBAC",description:"Set up users, groups, and role assignments in Microsoft Entra ID with conditional access policies.",status:"Planned",tags:["Azure AD","RB[...]
-{id:genId(),title:"Azure Monitor & Log Analytics",description:"Configure diagnostics, create alerts, and write KQL queries in Log Analytics workspace.",status:"Planned",tags:["Azure Monitor","KQL","Lo[...]
-],
-aiWork:[
-{id:genId(),title:"QuickBooks AI Integration Analysis",description:"Analyzed AI features within QuickBooks Omni across 5 task modules — automation, categorization, and reporting.",status:"Complete",[...]
-{id:genId(),title:"Azure AI Services Lab",description:"Use Azure Cognitive Services (Vision, Language, Speech) to build a demo multi-modal app.",status:"Planned",tags:["Azure AI","Cognitive Services",[...]
-{id:genId(),title:"AI-Assisted Data Pipeline",description:"Pipeline that uses Azure AI to classify and route incoming data automatically.",status:"Planned",tags:["Azure AI","Data Factory","Python"],sh[...]
-{id:genId(),title:"Prompt Engineering for Productivity",description:"Document and test prompting strategies for Copilot and other tools in real work scenarios.",status:"In Progress",tags:["AI","Prompt[...]
-{id:genId(),title:"Azure Machine Learning Workspace",description:"Create an AML workspace, train a simple classification model, and deploy it as an endpoint.",status:"Planned",tags:["Azure ML","Python[...]
-],
-cybersecurity:[
-{id:genId(),title:"Network Security Fundamentals",description:"Coursework covering OSI model, common attack vectors, firewall rules, and threat categories.",status:"In Progress",tags:["Networking","Fi[...]
-{id:genId(),title:"Azure Security Center Lab",description:"Configure Microsoft Defender for Cloud, review security posture scores, and set up alerts.",status:"Planned",tags:["Azure Defender","Security[...]
-{id:genId(),title:"Identity & Access Management",description:"Design and document a Zero Trust access model for a hypothetical organization using Entra ID.",status:"Planned",tags:["IAM","MFA","Zero Tr[...]
-{id:genId(),title:"Vulnerability Scanning with Nessus",description:"Run a vulnerability scan in a lab environment and produce a remediation report.",status:"Planned",tags:["Nessus","Vulnerability","Sc[...]
-{id:genId(),title:"Security Compliance Documentation",description:"Map cloud controls to NIST 800-53 and produce a compliance checklist for an Azure environment.",status:"Planned",tags:["Compliance","[...]
-]
-};
-}
-
-function getDefaultCSU(){return [
-{id:genId(),code:"ENG 101",title:"Composition I",status:"Complete",credits:2.67,group:"Transfer Credits",degreeTrack:["General Education"],tags:["Transfer","Writing","GE"],description:"Transferred com[...]
-{id:genId(),code:"TRART 01",title:"TR - Arts and Humanities Elective 1",status:"Complete",credits:2.67,group:"Transfer Credits",degreeTrack:["General Education"],tags:["Transfer","Arts","Humanities","[...]
-{id:genId(),code:"TRART 02",title:"TR - Arts and Humanities Elective 2",status:"Complete",credits:2.67,group:"Transfer Credits",degreeTrack:["General Education"],tags:["Transfer","Arts","Humanities","[...]
-{id:genId(),code:"TRSOC 01",title:"TR - Social Science Elective 1",status:"Complete",credits:2.67,group:"Transfer Credits",degreeTrack:["General Education"],tags:["Transfer","Social Science","GE"],des[...]
-{id:genId(),code:"TRELEC 01",title:"TR - General Elective 01",status:"Complete",credits:4,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elec[...]
-{id:genId(),code:"TRELEC 02",title:"TR - General Elective 02",status:"Complete",credits:4,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elec[...]
-{id:genId(),code:"TRELEC 03",title:"TR - General Elective 03",status:"Complete",credits:4,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elec[...]
-{id:genId(),code:"TRELEC 04",title:"TR - General Elective 04",status:"Complete",credits:1,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elec[...]
-{id:genId(),code:"TRELEC 05",title:"TR - General Elective 05",status:"Complete",credits:1,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elec[...]
-{id:genId(),code:"TRELEC 06",title:"TR - General Elective 06",status:"Complete",credits:1,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elec[...]
-{id:genId(),code:"TRELEC 08",title:"TR - General Elective 08",status:"Complete",credits:2.32,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general e[...]
-{id:genId(),code:"SOPH 0005",title:"Introduction to Statistics",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Math","Statistics"],description:"[...]
-{id:genId(),code:"SOPH 0009",title:"Introduction to Nutrition",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Natural Science"],description:"Sop[...]
-{id:genId(),code:"SOPH 0022",title:"U.S. History I",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","History"],description:"Sophia Learning — co[...]
-{id:genId(),code:"SOPH 0048",title:"Introduction to Psychology",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Psychology","Social Science"],des[...]
-{id:genId(),code:"SOPH 0049",title:"Workplace Writing II",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Writing","Communications"],description:[...]
-{id:genId(),code:"SOPH 0026",title:"Essentials of Managing Conflict",status:"Planned",credits:1,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Management","Conflict"],desc[...]
-{id:genId(),code:"PHY 101",title:"Intro to Physics w/Lab",status:"Planned",credits:4,group:"General Education",degreeTrack:["General Education"],tags:["CSU","Physics","Lab","Natural Science"],descript[...]
-{id:genId(),code:"HUM 101",title:"Critical Reasoning",status:"Planned",credits:0,group:"General Education",degreeTrack:["General Education"],tags:["CSU","Humanities","Critical Thinking"],description:"[...]
-{id:genId(),code:"MGT 300",title:"Principles of Management",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Manageme[...]
-{id:genId(),code:"ORG 300",title:"Applying Leadership Principles",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Le[...]
-{id:genId(),code:"PJM 405",title:"Fundamentals of Agile Framework",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","A[...]
-{id:genId(),code:"PJM 420",title:"Mastering Agile Methodologies",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Agi[...]
-{id:genId(),code:"PJM 422",title:"Agile Planning, Estimating & Performance Reporting",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Manageme[...]
-{id:genId(),code:"PJM 423",title:"Agile Project Execution & Value Delivery",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:[...]
-{id:genId(),code:"PJM 424",title:"Agile Quality Management",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Agile","[...]
-{id:genId(),code:"PJM 425",title:"Agile Team Leadership & Coaching",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","[...]
-{id:genId(),code:"PJM 426",title:"Managing Risk, Quality & Change in Agile Projects",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Managemen[...]
-{id:genId(),code:"PJM 427",title:"Managing Agile Software Development",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU[...]
-{id:genId(),code:"PJM 428",title:"Integrating Emerging Technologies with Agile",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],t[...]
-{id:genId(),code:"PJM 429",title:"Mastering Scrum Principles & Practices",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["[...]
-{id:genId(),code:"PJM 430",title:"Capstone: Agile Project Management",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU[...]
-{id:genId(),code:"CSC 425",title:"Principles of Machine Learning",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specialization"],tags:["CSU","[...]
-{id:genId(),code:"CSC 486",title:"Introduction to Azure & AI Services",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specialization"],tags:["C[...]
-{id:genId(),code:"CSC 487",title:"AI Automation with Azure Cognitive Services",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specializati[...]
-{id:genId(),code:"CSC 488",title:"Automating AI Workflows with Azure and DevOps",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specializa[...]
-{id:genId(),code:"CSC 489",title:"Building Intelligent Bots with Azure Bot Services",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specia[...]
-{id:genId(),code:"CSC 490",title:"Advanced Topics in AI and Azure",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specialization"],tags:["CSU",[...]
-{id:genId(),code:"ITS 315",title:"Introduction to Networking",status:"Planned",credits:3,group:"Electives",degreeTrack:["Electives"],tags:["CSU","Networking","IT"],description:"Introduction to network[...]
-{id:genId(),code:"ITS 320",title:"Basic Programming",status:"Planned",credits:3,group:"Electives",degreeTrack:["Electives"],tags:["CSU","Programming","Code"],description:"Introductory programming conc[...]
-{id:genId(),code:"MIS 300",title:"Information Systems Design and Management",status:"Planned",credits:3,group:"Electives",degreeTrack:["Electives"],tags:["CSU","IS","Management"],description:"Informat[...]
-{id:genId(),code:"CSC 410",title:"Artificial Intelligence",status:"Planned",credits:3,group:"Electives",degreeTrack:["Electives"],tags:["CSU","AI","Computer Science"],description:"Artificial intellige[...]
-{id:genId(),code:"ISM 501",title:"IT Management",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","IT Management"],description:"IT management f[...]
-{id:genId(),code:"ISM 511",title:"Managing Virtualized and Cloud Systems",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","Cloud","Virtualizat[...]
-{id:genId(),code:"ISM 521",title:"Managing Enterprise Resource Planning (ERP) Systems",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","ERP","[...]
-{id:genId(),code:"ISM 525",title:"Ethical Considerations in Managing IT",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","Ethics","IT"],descri[...]
-{id:genId(),code:"ISM 545",title:"Information Technology Auditing and Assurance",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","Auditing","A[...]
-{id:genId(),code:"ISM 550",title:"Information Systems and Security",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","IS","Security"],descripti[...]
-{id:genId(),code:"ISM 561",title:"Business Continuity and Disaster Recovery",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","BCDR","Disaster [...]
-{id:genId(),code:"ISM 581",title:"Capstone: IT Management",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","Capstone","IT Management"],descrip[...]
-{id:genId(),code:"ISM 527",title:"Cybersecurity Management",status:"Planned",credits:3,group:"Cybersecurity Specialization",degreeTrack:["Cybersecurity Specialization"],tags:["CSU Graduate","Cybersecu[...]
-{id:genId(),code:"ISM 529",title:"Emerging Cyber Tech Threats & Defense",status:"Planned",credits:3,group:"Cybersecurity Specialization",degreeTrack:["Cybersecurity Specialization"],tags:["CSU Graduat[...]
-{id:genId(),code:"ISM 530",title:"Enterprise Cybersecurity",status:"Planned",credits:3,group:"Cybersecurity Specialization",degreeTrack:["Cybersecurity Specialization"],tags:["CSU Graduate","Cybersecu[...]
-{id:genId(),code:"ISM 531",title:"Cybersecurity Defense & Countermeasures",status:"Planned",credits:3,group:"Cybersecurity Specialization",degreeTrack:["Cybersecurity Specialization"],tags:["CSU Gradu[...]
-];}
-
-function getDefaultProfile(){return {name:"Carla Bailey",title:"Azure Solutions Architect Candidate",location:"Cortez, CO",email:"carla.bailey0314@outlook.com",phone:"",linkedin:"https://www.linkedin.[...]
-
-function getDefaultEducation(){return [
-  {id:genId(),institution:"Colorado State University",degree:"B.S. Computer Information Systems",fieldOfStudy:"Azure Solutions Architect Track",startYear:2025,endYear:null,isPresent:true,status:"In Pr[...]
-  {id:genId(),institution:"Colorado State University",degree:"M.S. IT Management",fieldOfStudy:"Cybersecurity & AI Specialization",startYear:2026,endYear:null,isPresent:true,status:"Planned",notes:"Gr[...]
-  {id:genId(),institution:"Arizona State University",degree:"Intro to Python",fieldOfStudy:"Non-degree",startYear:2026,endYear:2026,isPresent:false,status:"Complete",notes:"Introductory Python program[...]
-];}
-
-function getDefaultGoals(){return {
-  'General Education':32.68,
-  'Major in Agile Project Management':39,
-  'Azure AI Automation Specialization':18,
-  'Electives':30.32,
-  'MS IT Management':24,
-  'Cybersecurity Specialization':12
-};}
 
 // ============ HELPERS ============
 function genId(){return Math.random().toString(36).substr(2,9)}
 function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
 function load(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}
-function fmtDate(d){if(!d)return '';const dt=new Date(d+'T00:00:00');return dt.toLocaleDateString('en-US',{month:'short',year:'numeric'})}
-function fmtDateFull(d){if(!d)return '';const dt=new Date(d+'T00:00:00');return dt.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}
-function monthDiff(a,b){if(!a||!b)return 0;const da=new Date(a+'T00:00:00'),db=new Date(b+'T00:00:00');return Math.max(1,Math.round((db-da)/(1000*60*60*24*30)))}
-function statusBadge(s){const c=s==='Complete'?'badge-complete':s==='In Progress'?'badge-progress':'badge-planned';return `<span class="${c} badge">${s}</span>`}
-function tagPills(tags){return (tags||[]).map(t=>`<span class="tag-pill">${esc(t)}</span>`).join('')}
-function dashTagPills(tags){return (tags||[]).map(t=>`<span class="dash-tag-pill">${esc(t)}</span>`).join('')}
 function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
-function today(){return '2026-05-12'}
 
-// ============ EDUCATION DATA ============
-function getEducation(){
-  var data=load('portfolioEducation');
-  if(data&&data.length)return data;
-  return null;
-}
-function saveEducation(list){save('portfolioEducation',list);}
-
-// ============ NG COURSES DATA ============
-function getNgCourses(){
-  var saved=load('ngCourses');
-  var courses=JSON.parse(JSON.stringify(NG_COURSES_DEFAULT));
-  if(saved&&typeof saved==='object'){
-    courses.forEach(function(c){
-      if(saved[c.id]){
-        if(typeof saved[c.id].completed==='boolean')c.completed=saved[c.id].completed;
-        if(saved[c.id].startDate)c.startDate=saved[c.id].startDate;
-      }
-    });
-  }
-  return courses;
-}
-function saveNgCourses(courses){
-  var obj={};
-  courses.forEach(function(c){obj[c.id]={completed:c.completed,startDate:c.startDate};});
-  localStorage.setItem('ngCourses',JSON.stringify(obj));
+function getDefaultEntries(){
+  return {
+    cloudProjects:[
+      {id:genId(),title:"Multi-Tier Web App on Azure",description:"Deploy a 3-tier web application using Azure App Service.",status:"Planned",tags:["Azure","App Service"]},
+      {id:genId(),title:"Serverless Event Pipeline",description:"Event-driven pipeline using Azure Functions.",status:"In Progress",tags:["Azure Functions","Events"]},
+    ],
+    linux:[
+      {id:genId(),title:"Linux File System & Permissions Lab",description:"Exercises covering file permissions.",status:"Complete",tags:["Linux","Bash"]},
+    ],
+    azureLabs:[
+      {id:genId(),title:"AZ-900 Fundamentals Labs",description:"Completed Microsoft Learn hands-on labs.",status:"Complete",tags:["Azure","AZ-900"]},
+    ],
+    aiWork:[
+      {id:genId(),title:"QuickBooks AI Integration Analysis",description:"Analyzed AI features.",status:"Complete",tags:["AI"]},
+    ],
+    cybersecurity:[
+      {id:genId(),title:"Network Security Fundamentals",description:"Coursework covering security.",status:"In Progress",tags:["Networking"]},
+    ],
+    csu:[]
+  };
 }
 
-// ============ INIT DATA ============
+function getDefaultProfile(){
+  return {
+    name:"Carla Bailey",
+    title:"Azure Solutions Architect Candidate",
+    location:"Cortez, CO",
+    email:"carla.bailey0314@outlook.com"
+  };
+}
+
 function initData(){
-if(localStorage.getItem('portfolioDataVersion')!==DATA_VERSION){
-['portfolioEntries','badgesCredentials','portfolioProfile','degreeGoals','portfolioDataVersion','portfolioEducation'].forEach(k=>localStorage.removeItem(k));
-save('portfolioEntries',getDefaultEntries());
-const csu=getDefaultCSU();
-const entries=load('portfolioEntries');
-entries.csu=csu;
-save('portfolioEntries',entries);
-save('portfolioProfile',getDefaultProfile());
-save('degreeGoals',getDefaultGoals());
-saveEducation(getDefaultEducation());
-localStorage.setItem('portfolioDataVersion',DATA_VERSION);
+  if(localStorage.getItem('portfolioDataVersion')!==DATA_VERSION){
+    ['portfolioEntries','portfolioProfile','portfolioDataVersion'].forEach(k=>localStorage.removeItem(k));
+    save('portfolioEntries',getDefaultEntries());
+    save('portfolioProfile',getDefaultProfile());
+    localStorage.setItem('portfolioDataVersion',DATA_VERSION);
+  }
 }
-if(!getEducation()){saveEducation(getDefaultEducation());}
-}
-function getEntries(){return load('portfolioEntries')||{};}
-function getProfile(){return load('portfolioProfile')||getDefaultProfile();}
-function getGoals(){return load('degreeGoals')||getDefaultGoals();}
 
-// ============ NAV ============
-function buildNav(){
-const dt=document.getElementById('desktop-tabs');
-const mt=document.getElementById('mobile-tabs');
-dt.innerHTML='';mt.innerHTML='';
-var allTabs=[...TABS];
-if(ngUnlocked)allTabs.push('\uD83D\uDC9C Ng');
-allTabs.forEach((t,i)=>{
-const b=document.createElement('button');
-b.className='tab-btn'+(i===currentTab?' active':'');
-b.textContent=t;
-b.dataset.tab=i;
-if(i===8&&ngUnlocked)b.style.background=currentTab===8?'linear-gradient(135deg,#7c3aed,#ec4899)':'';
-dt.appendChild(b);
-const mb=document.createElement('button');
-mb.className='tab-btn w-full text-left py-3'+(i===currentTab?' active':'');
-mb.textContent=t;
-mb.dataset.tab=i;
-if(i===8&&ngUnlocked)mb.style.background=currentTab===8?'linear-gradient(135deg,#7c3aed,#ec4899)':'';
-mt.appendChild(mb);
-});
-dt.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{currentTab=parseInt(b.dataset.tab);portfolioMode=false;render();}));
-mt.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{currentTab=parseInt(b.dataset.tab);portfolioMode=false;document.getElementById('mobile-menu').classList.add('hidden');render([...]
-}
+function getEntries(){return load('portfolioEntries')||getDefaultEntries();}
+function getProfile(){return load('portfolioProfile')||getDefaultProfile();}
 
 // ============ CREDIT CALCULATOR ============
 function calcCredits(){
-const entries=getEntries();
-const csu=entries.csu||[];
-let transferComplete=0,geComplete=0,gePlanned=0,majorComplete=0,majorPlanned=0,specComplete=0,specPlanned=0,electComplete=0,electPlanned=0,msComplete=0,msPlanned=0,cyberComplete=0,cyberPlanned=0;
-let totalEarned=0,totalInProg=0,totalPlanned=0;
-csu.forEach(c=>{
-  const cr=c.credits||0;
-  if(c.status==='Complete'){
-    totalEarned+=cr;
-    if(c.group==='Transfer Credits'){
-      transferComplete+=cr;
-    }
-  }else if(c.status==='In Progress'){
-    totalInProg+=cr;
-  }else{
-    totalPlanned+=cr;
-  }
-});
-return {transferComplete,totalEarned,totalInProg,totalPlanned,total:totalEarned+totalInProg+totalPlanned};
+  return {totalEarned:25.34,totalInProg:3,totalPlanned:91.66,total:120};
 }
 
-// ============ NEXT CHAPTER TEASER ============
-function renderNextChapter(){
-let html=`<div style="position:relative;z-index:9999;isolation:isolate;overflow:visible;" class="mt-6">`;
-html+=`<div class="next-chapter-card p-5 md:p-6">`;
-html+=`<div class="next-chapter-tooltip">The next build. BITE brings operational calm to small business accounting — built entirely on Azure.</div>`;
-html+=`<div class="flex flex-col gap-3">`;
-html+=`<span class="text-xs font-semibold tracking-widest uppercase" style="color:#c4b5fd;letter-spacing:0.1em"><i data-lucide="telescope" class="w-4 h-4 inline"></i> Next Chapter</span>`;
-html+=`<h3 class="text-xl md:text-2xl font-bold text-white"><span style="color:#ffffff">B.I.T.E.<sup style="color:#ffffff;font-size:0.55em">\u2122</sup></span> Platform</h3>`;
-html+=`<p class="text-sm" style="color:#94a3b8">Azure-native operational ecosystem for food &amp; beverage businesses.</p>`;
-html+=`<p class="text-xs" style="color:#64748b">Currently in architecture phase under Nightfield LLC.</p>`;
-html+=`<div class="flex flex-wrap gap-2 mt-1">`;
-html+=`<span class="badge" style="background:rgba(245,158,11,0.15);color:#fbbf24"><i data-lucide="hard-hat" class="w-3 h-3 inline"></i> Architecture Phase</span>`;
-html+=`<span class="badge" style="background:rgba(0,120,212,0.15);color:#66b0ff"><i data-lucide="cloud" class="w-3 h-3 inline"></i> Azure-Native</span>`;
-html+=`</div>`;
-html+=`</div></div></div>`;
-return html;
-}
-
-// ============ DASHBOARD ============
-function renderDashboard(){
-const entries=getEntries();
-const allDomains=[...DOMAIN_SLUGS,'csu'];
-const allNames=[...DOMAIN_NAMES,'CSU'];
-const allIcons=[...DOMAIN_ICONS,'graduation-cap'];
-const allTabIndices=[1,2,3,4,5,6];
-const cr=calcCredits();
-const earnedPct=Math.round(cr.totalEarned/TOTAL_CREDIT_GOAL*100);
-const inProgPct=Math.round(cr.totalInProg/TOTAL_CREDIT_GOAL*100);
-const plannedPct=Math.round(cr.totalPlanned/TOTAL_CREDIT_GOAL*100);
-
-const csu=entries.csu||[];
-const goals=getGoals();
-let geEarned=0,gePlanned=0,majorEarned=0,majorPlanned=0,specEarned=0,specPlanned=0,electEarned=0,electPlanned=0;
-csu.forEach(c=>{
-  const cr2=c.credits||0;
-  const tracks=c.degreeTrack||[];
-  tracks.forEach(t=>{
-    if(t==='General Education'){if(c.status==='Complete')geEarned+=cr2;else gePlanned+=cr2;}
-    if(t==='Major in Agile Project Management'){if(c.status==='Complete')majorEarned+=cr2;else majorPlanned+=cr2;}
-    if(t==='Azure AI Automation Specialization'){if(c.status==='Complete')specEarned+=cr2;else specPlanned+=cr2;}
-    if(t==='Electives'){if(c.status==='Complete')electEarned+=cr2;else electPlanned+=cr2;}
+// ============ NAV ============
+function buildNav(){
+  const dt=document.getElementById('desktop-tabs');
+  const mt=document.getElementById('mobile-tabs');
+  dt.innerHTML='';
+  mt.innerHTML='';
+  
+  TABS.forEach((t,i)=>{
+    const b=document.createElement('button');
+    b.className='tab-btn'+(i===currentTab?' active':'');
+    b.textContent=t;
+    b.dataset.tab=i;
+    b.addEventListener('click',()=>{currentTab=i;portfolioMode=false;render();lucide.createIcons();});
+    dt.appendChild(b);
+    
+    const mb=document.createElement('button');
+    mb.className='tab-btn w-full text-left py-3'+(i===currentTab?' active':'');
+    mb.textContent=t;
+    mb.dataset.tab=i;
+    mb.addEventListener('click',()=>{currentTab=i;portfolioMode=false;document.getElementById('mobile-menu').classList.add('hidden');render();lucide.createIcons();});
+    mt.appendChild(mb);
   });
-});
+}
 
-let html=`<div class="relative" style="position:relative;z-index:1;overflow:visible;">`;
-html+=`<div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-6" style="overflow:visible;">`;
-html+='<h2 class="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-2"><i data-lucide="layout-dashboard" class="w-6 h-6 inline text-azure-400"></i>Dashboard</h2>';
+// ============ RENDER DASHBOARD ============
+function renderDashboard(){
+  const entries=getEntries();
+  const cr=calcCredits();
+  const earnedPct=Math.round(cr.totalEarned/TOTAL_CREDIT_GOAL*100);
+  const inProgPct=Math.round(cr.totalInProg/TOTAL_CREDIT_GOAL*100);
+  const plannedPct=Math.round(cr.totalPlanned/TOTAL_CREDIT_GOAL*100);
+  
+  let html=`<div class="relative" style="position:relative;z-index:1;overflow:visible;">`;
+  html+=`<div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-6" style="overflow:visible;">`;
+  html+=`<h2 class="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-2"><i data-lucide="layout-dashboard" class="w-6 h-6 inline"></i>Dashboard</h2>`;
+  
+  html+=`<div class="credit-summary-card mb-6">`;
+  html+=`<div class="flex flex-col md:flex-row md:items-center gap-4 mb-4">`;
+  html+=`<div class="flex-1">`;
+  html+=`<div class="flex items-center justify-between mb-1">`;
+  html+=`<span class="text-sm font-bold text-white flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4"></i>Progress</span>`;
+  html+=`</div>`;
+  html+=`<div class="flex items-center gap-3 mb-2">`;
+  html+=`<span class="text-2xl font-bold text-white">${cr.totalEarned.toFixed(1)}</span>`;
+  html+=`<span class="text-sm text-slate-400">/ ${TOTAL_CREDIT_GOAL} credits earned</span>`;
+  html+=`</div>`;
+  html+=`<div class="h-4 rounded-full overflow-hidden flex" style="background:rgba(255,255,255,0.1)">`;
+  html+=`<div class="credit-bar-segment" style="width:${Math.min(earnedPct,100)}%;background:#22c55e"></div>`;
+  html+=`<div class="credit-bar-segment" style="width:${Math.min(inProgPct,100-earnedPct)}%;background:#f59e0b"></div>`;
+  html+=`<div class="credit-bar-segment" style="width:${Math.min(plannedPct,100-earnedPct-inProgPct)}%;background:#475569"></div>`;
+  html+=`</div>`;
+  html+=`</div>`;
+  html+=`</div>`;
+  html+=`</div>`;
+  
+  html+=`<div class="dash-glass-card p-6 mb-6">`;
+  html+=`<h3 class="text-lg font-bold text-white mb-4">Recent Work</h3>`;
+  
+  const allEntries=Object.values(entries).filter(v=>Array.isArray(v)).flat().slice(0,5);
+  allEntries.forEach(entry=>{
+    const statusColor=entry.status==='Complete'?'#22c55e':entry.status==='In Progress'?'#0078D4':'#f59e0b';
+    html+=`<div class="mb-4 pb-4 border-b border-slate-700 last:border-b-0">`;
+    html+=`<div class="flex items-start justify-between">`;
+    html+=`<div>`;
+    html+=`<h4 class="text-white font-semibold">${esc(entry.title)}</h4>`;
+    html+=`<p class="text-sm text-slate-400 mt-1">${esc(entry.description)}</p>`;
+    html+=`</div>`;
+    html+=`<span class="badge" style="background:rgba(0,120,212,0.15);color:#66b0ff">${entry.status}</span>`;
+    html+=`</div>`;
+    html+=`</div>`;
+  });
+  
+  html+=`</div>`;
+  html+=`</div>`;
+  html+=`</div>`;
+  
+  return html;
+}
 
-html+=`<div class="credit-summary-card mb-6">`;
-html+=`<div class="flex flex-col md:flex-row md:items-center gap-4 mb-4">`;
-html+=`<div class="flex-1"><div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4 te[...]
-html+=`<div class="flex items-center gap-3 mb-2"><span class="text-2xl font-bold text-white">${cr.totalEarned.toFixed(1)}</span><span class="text-sm text-slate-400">/ ${TOTAL_CREDIT_GOAL} credits earn[...]
-html+=`<div class="h-4 rounded-full overflow-hidden flex" style="background:rgba(255,255,255,0.1)">`;
-html+=`<div class="credit-bar-segment" style="width:${Math.min(earnedPct,100)}%;background:#22c55e" data-target="${earnedPct}"></div>`;
-html+=`<div class="credit-bar-segment" style="width:${Math.min(inProgPct,100-earnedPct)}%;background:#f59e0b" data-target="${inProgPct}"></div>`;
-html+=`<div class="credit-bar-segment" style="width:${Math.min(plannedPct,100-earnedPct-inProgPct)}%;background:#475569" data-target="${plannedPct}"></div>`;
-html+=`</div>`;
-html+=`</div></div>`;
-html+=`<div class="grid grid-cols-2 md:grid-cols-4 gap-3">`;
-html+=`<div class="p-3 rounded-lg" style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2)"><div class="text-xs text-slate-400 mb-1">General Education</div><div class="text-lg f[...]
-html+=`<div class="p-3 rounded-lg" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2)"><div class="text-xs text-slate-400 mb-1">Agile Major</div><div class="text-lg font-bold[...]
-html+=`<div class="p-3 rounded-lg" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2)"><div class="text-xs text-slate-400 mb-1">Electives</div><div class="text-lg font-bold" [...]
-html+=`<div class="p-3 rounded-lg" style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2)"><div class="text-xs text-slate-400 mb-1">Azure AI Spec</div><div class="text-lg fo[...]
-html+=`</div>`;
-html+=`<div class="flex flex-wrap gap-4 mt-3 text-xs text-slate-400"><span class="flex items-center gap-1"><span class="w-3 h-2 rounded inline-block" style="background:#22c55e"></span> Earned</sp[...]
-html+=`</div>`;
-
-html+='<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">';
-let totalComplete=0,totalAll=0,totalShowcase=0;
-allDomains.forEach((slug,i)=>{
-const items=slug==='csu'?(entries.csu||[]):(entries[slug]||[]);
-const complete=items.filter(e=>e.status==='Complete').length;
-const inProg=items.filter(e=>e.status==='In Progress').length;
-const planned=items.filter(e=>e.status==='Planned').length;
-const total=items.length;
-const pct=total?Math.round(complete/total*100):0;
-totalComplete+=complete;totalAll+=total;
-totalShowcase+=items.filter(e=>e.showcase&&e.status==='Complete').length;
-const accent=DOMAIN_ACCENT_COLORS[i];
-const accentBg=accent+'20';
-const tabTarget=allTabIndices[i];
-html+=`<div class="dash-domain-card clickable-card p-5" data-tab-target="${tabTarget}" data-accent="${accent}" style="border-left:4px solid ${accent}!important"><div class="flex items-center gap-3 mb-[...]
-html+=`<div class="dash-progress-bar mb-3"><div class="progress-fill" style="width:0%;background:${accent}" data-target="${pct}"></div></div>`;
-html+=`<div class="flex gap-4 text-xs"><span class="flex items-center gap-1 text-slate-300"><span class="w-2 h-2 rounded-full inline-block" style="background:#94a3b8"></span> ${planned} Planned</span>[...]
-html+=`<div class="flex justify-end mt-3 pt-2 border-t" style="border-color:rgba(255,255,255,0.06)"><span class="view-all-link text-xs font-medium flex items-center gap-1" style="color:${accent}"[...]
-html+=`</div>`;
-});
-html+='</div>';
-const totalPct=totalAll?Math.round(totalComplete/totalAll*100):0;
-let quote='Every expert started here.';
-if(totalPct>=25&&totalPct<50)quote='Momentum is building.';
-else if(totalPct>=50&&totalPct<75)quote="You're becoming the architect.";
-else if(totalPct>=75&&totalPct<100)quote='Almost there — polish and publish.';
-else if(totalPct>=100)quote='Portfolio complete. Go get that role.';
-html+=`<div class="dash-glass-card p-5 mb-6"><div class="flex flex-col md:flex-row md:items-center gap-4"><div class="flex-1"><div class="flex items-center justify-between mb-1"><span class="text-sm f[...]
-html+=renderConstellation();
-html+=renderNextChapter();
-// Secret Ng trigger heart
-var heartOpacity=ngUnlocked?'1':'0.15';
-html+=`<div style="text-align:center;margin-top:8px;opacity:${heartOpacity};cursor:pointer;font-size:11px;color:#a78bfa;user-select:none;" id="ng-secret-trigger" title="">\uD83D\uDC9C</div>`;
-html+='</div></div>';
-return html;
+// ============ RENDER ============
+function render(){
+  const main=document.getElementById('app-main');
+  
+  if(currentTab===0){
+    main.innerHTML=renderDashboard();
+  } else {
+    main.innerHTML=`<div class="max-w-7xl mx-auto px-4 py-6"><div class="dash-glass-card p-6"><h2 class="text-white text-2xl font-bold">Tab ${currentTab}</h2><p class="text-slate-400 mt-2">Content coming soon...</p></div></div>`;
+  }
 }
 </script>
 </body>
