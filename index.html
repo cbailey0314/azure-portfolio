@@ -67,8 +67,6 @@ body{font-family:'Inter',sans-serif;background:radial-gradient(ellipse at center
 .degree-pill{display:inline-flex;padding:2px 8px;border-radius:9999px;font-size:10px;font-weight:500;background:rgba(0,120,212,0.15);color:#66b0ff}
 .filter-pill{padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid rgba(255,255,255,0.15);background:transparent;color:#94a3b8;transition:all .15s}
 .filter-pill.active{background:#0078D4;color:#fff;border-color:#0078D4}
-.cert-thumb{width:100%;height:140px;object-fit:cover;border-radius:12px 12px 0 0}
-.cert-placeholder{width:100%;height:100px;display:flex;align-items:center;justify-content:center;font-size:36px;border-radius:12px 12px 0 0}
 .avatar-circle{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer}
 .avatar-circle .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;border-radius:50%;color:#fff;font-size:11px;gap:2px}
 .avatar-circle:hover .overlay{opacity:1}
@@ -87,32 +85,9 @@ body{font-family:'Inter',sans-serif;background:radial-gradient(ellipse at center
 .dash-domain-card .view-all-link{opacity:0;transform:translateX(-4px);transition:opacity .25s,transform .25s}
 .dash-domain-card:hover .view-all-link{opacity:1;transform:translateX(0)}
 
-.pdf-thumb-placeholder{width:100%;height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:12px 12px 0 0;background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%)}
-.pdf-thumb-placeholder .pdf-emoji{font-size:2.5rem;line-height:1}
-.pdf-thumb-placeholder .pdf-filename{color:#fff;font-size:0.75rem;max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center}
-.pdf-view-pill{display:inline-flex;align-items:center;gap:4px;background:#0078D4;color:#fff;border:none;padding:4px 12px;border-radius:9999px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s}
-.pdf-view-pill:hover{background:#0063b1}
-
-.pdf-form-preview{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:8px;border:1px solid rgba(255,255,255,0.1)}
-.pdf-form-preview .pdf-icon{font-size:1.5rem}
-.pdf-form-preview .pdf-info{flex:1;min-width:0}
-.pdf-form-preview .pdf-info .pdf-name{font-size:13px;font-weight:500;color:#e2e8f0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pdf-form-preview .pdf-info .pdf-size{font-size:11px;color:#94a3b8}
-.pdf-form-preview .pdf-actions{display:flex;gap:6px;align-items:center}
-
 .text-violet{color:#c4b5fd}
 .text-violet-light{color:#a78bfa}
 .hover-text-violet:hover{color:#ddd6fe}
-
-.pdf-modal-overlay-style{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.pdf-modal-container{width:90vw;height:90vh;display:flex;flex-direction:column;background:#1e293b;border-radius:12px;overflow:hidden}
-.pdf-modal-header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#0f172a}
-.pdf-modal-header span{color:white;font-weight:600}
-.pdf-modal-close-btn{color:white;background:rgba(255,255,255,0.1);border:none;border-radius:6px;padding:4px 12px;cursor:pointer;font-size:14px}
-.pdf-modal-close-btn:hover{background:rgba(255,255,255,0.2)}
-
-.pdf-toast{position:fixed;bottom:24px;right:24px;background:#1e293b;color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;z-index:10000;box-shadow:0 4px 16px rgba(0,0,0,0.3);max-width:340px;line-height:1.4;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s}
-.pdf-toast.visible{opacity:1;transform:translateY(0)}
 
 .bg-surface-100-dark{background:rgba(255,255,255,0.05)!important}
 
@@ -159,82 +134,6 @@ footer{position:relative;z-index:1}
 }
 .next-chapter-card:hover .next-chapter-tooltip{
   visibility:visible;opacity:1;
-}
-
-@keyframes verifiedGlow{
-  0%,100%{box-shadow:0 0 12px rgba(34,197,94,0.15),0 2px 8px rgba(0,0,0,0.3)}
-  50%{box-shadow:0 0 24px rgba(34,197,94,0.3),0 4px 16px rgba(0,0,0,0.3)}
-}
-.credly-verified-card{
-  background:rgba(13,27,42,0.9);
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(34,197,94,0.35);
-  border-radius:16px;
-  overflow:hidden;
-  transition:transform .25s,box-shadow .25s;
-  animation:verifiedGlow 4s ease-in-out infinite;
-  position:relative;
-}
-.credly-verified-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 8px 32px rgba(34,197,94,0.25),0 0 0 1px rgba(34,197,94,0.4);
-}
-.credly-verified-card::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;
-  height:4px;
-  background:linear-gradient(90deg,#22c55e,#0078D4,#7C3AED);
-}
-.credly-badge-icon{
-  width:100px;height:100px;
-  border-radius:50%;
-  background:linear-gradient(135deg,rgba(34,197,94,0.15),rgba(0,120,212,0.15));
-  border:2px solid rgba(34,197,94,0.3);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-  position:relative;
-  overflow:hidden;
-}
-.credly-badge-icon svg{
-  width:48px;height:48px;
-  color:#22c55e;
-  filter:drop-shadow(0 0 6px rgba(34,197,94,0.4));
-}
-.credly-badge-icon img{
-  width:100%;height:100%;
-  object-fit:cover;
-  border-radius:50%;
-}
-.verified-label{
-  display:inline-flex;align-items:center;gap:4px;
-  background:rgba(34,197,94,0.15);
-  color:#4ade80;
-  padding:3px 10px;
-  border-radius:9999px;
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:0.03em;
-  border:1px solid rgba(34,197,94,0.25);
-}
-.credly-verify-link{
-  display:inline-flex;align-items:center;gap:6px;
-  background:linear-gradient(135deg,#22c55e,#16a34a);
-  color:#fff;
-  padding:8px 18px;
-  border-radius:9999px;
-  font-size:12px;
-  font-weight:600;
-  text-decoration:none;
-  transition:all .2s;
-  border:none;
-  cursor:pointer;
-  font-family:'Inter',sans-serif;
-}
-.credly-verify-link:hover{
-  background:linear-gradient(135deg,#16a34a,#15803d);
-  box-shadow:0 4px 16px rgba(34,197,94,0.3);
-  transform:translateY(-1px);
 }
 
 .group-header{display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;margin-bottom:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06)}
@@ -474,7 +373,7 @@ footer{position:relative;z-index:1}
 <!-- NAV HEADER -->
 <header data-id="3" class="nav-header no-print" id="main-header">
   <div data-id="4" class="flex items-center gap-2 flex-shrink-0">
-    <span data-id="5" class="text-white font-bold text-base">🤙 Carla's Portfolio</span>
+    <span data-id="5" class="text-white font-bold text-base">⭐ Carla's Portfolio</span>
   </div>
   <div data-id="6" class="flex-1 flex justify-center mx-4">
     <div data-id="7" class="mobile-tabs-scroll hidden md:flex items-center gap-1" id="desktop-tabs"></div>
@@ -489,7 +388,7 @@ footer{position:relative;z-index:1}
 <!-- MOBILE MENU -->
 <nav data-id="15" id="mobile-menu" class="hidden fixed inset-0 bg-navy-900 z-[200] flex flex-col p-4 no-print" style="background:#0f172a">
   <div data-id="16" class="flex justify-between items-center mb-6">
-    <span data-id="17" class="text-white font-bold">🤙 Carla's Portfolio</span>
+    <span data-id="17" class="text-white font-bold">⭐ Carla's Portfolio</span>
     <button data-id="18" id="mobile-menu-close" class="p-2 text-white"><i data-id="19" data-lucide="x" class="w-6 h-6"></i></button>
   </div>
   <div data-id="20" class="flex flex-col gap-2" id="mobile-tabs"></div>
@@ -592,19 +491,6 @@ function downloadApp(){
   URL.revokeObjectURL(url);
 }
 
-// ============ PDF TOAST HELPER ============
-function showPdfToast(msg){
-  var existing=document.getElementById('pdf-popup-toast');
-  if(existing)existing.remove();
-  var toast=document.createElement('div');
-  toast.id='pdf-popup-toast';
-  toast.className='pdf-toast';
-  toast.textContent=msg;
-  document.body.appendChild(toast);
-  requestAnimationFrame(function(){requestAnimationFrame(function(){toast.classList.add('visible');});});
-  setTimeout(function(){toast.classList.remove('visible');setTimeout(function(){if(toast.parentNode)toast.remove();},350);},4000);
-}
-
 // ============ NG TOAST HELPER ============
 function showNgToast(msg){
   var existing=document.getElementById('ng-popup-toast');
@@ -618,38 +504,15 @@ function showNgToast(msg){
   setTimeout(function(){toast.classList.remove('visible');setTimeout(function(){if(toast.parentNode)toast.remove();},400);},3000);
 }
 
-// ============ OPEN PDF DATA ============
-function openPdfData(dataUri){
-  try{
-    var byteString=atob(dataUri.split(',')[1]);
-    var ab=new ArrayBuffer(byteString.length);
-    var ia=new Uint8Array(ab);
-    for(var i=0;i<byteString.length;i++)ia[i]=byteString.charCodeAt(i);
-    var blob=new Blob([ab],{type:'application/pdf'});
-    var url=URL.createObjectURL(blob);
-    var a=document.createElement('a');
-    a.href=url;
-    a.target='_blank';
-    a.rel='noopener';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(function(){URL.revokeObjectURL(url);},3000);
-    showPdfToast("If the PDF didn\u2019t open, check your browser\u2019s popup blocker and allow popups for this site.");
-  }catch(e){
-    showPdfToast("Could not open this PDF. Try downloading it instead.");
-  }
-}
-
 // ============ BACK TO DASHBOARD BUTTON HTML ============
 function backToDashBtn(){
   return '<button class="back-to-dash-btn no-print" id="back-to-dash"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Dashboard</button>';
 }
 
 // ============ DATA & CONSTANTS ============
-const DATA_VERSION='v12';
-const TABS=['Dashboard','Cloud Projects','Linux','Azure Labs','AI Work','Cybersecurity','CSU','\uD83E\uDD47 Badges','\uD83D\uDC64 Profile'];
-const TAB_ICONS=['layout-dashboard','cloud','terminal','flask-conical','brain','shield','graduation-cap','award','user'];
+const DATA_VERSION='v13';
+const TABS=['Dashboard','Cloud Projects','Linux','Azure Labs','AI Work','Cybersecurity','CSU','\uD83D\uDC64 Profile'];
+const TAB_ICONS=['layout-dashboard','cloud','terminal','flask-conical','brain','shield','graduation-cap','user'];
 const DOMAIN_SLUGS=['cloudProjects','linux','azureLabs','aiWork','cybersecurity'];
 const DOMAIN_NAMES=['Cloud Projects','Linux','Azure Labs','AI Work','Cybersecurity'];
 const DOMAIN_ICONS=['cloud','terminal','flask-conical','brain','shield'];
@@ -679,26 +542,10 @@ const DEGREE_TRACK_ABBREV={
   'MS IT Management':'MS IT Mgmt',
   'Cybersecurity Specialization':'MS CyberSec'
 };
-const BADGE_CATEGORIES=['Certification','LinkedIn Learning','Course Completion','Module','Badge','Other'];
-const BADGE_CAT_EMOJI={'Certification':'\uD83C\uDFC5','LinkedIn Learning':'\uD83D\uDCBC','Course Completion':'\uD83C\uDF93','Module':'\uD83D\uDCE6','Badge':'⭐','Other':'\uD83D\uDCCB'};
-const BADGE_CAT_COLOR={'Certification':'#0078D4','LinkedIn Learning':'#0A66C2','Course Completion':'#4f46e5','Module':'#64748b','Badge':'#f59e0b','Other':'#9ca3af'};
 const DOMAIN_ACCENT_COLORS=['#0078D4','#f97316','#6366f1','#f59e0b','#7C3AED','#10b981'];
 
 const STUDENT_SID='369936';
 const TOTAL_CREDIT_GOAL=120;
-
-const CREDLY_VERIFIED_BADGES=[
-  {
-    id:'credly-nasa-open-science',
-    title:'NASA Open Science Essentials',
-    issuer:'NASA',
-    badgeImageUrl:'https://images.credly.com/size/340x340/images/bfcf4490-f814-4a14-910a-61b2bc20ac16/image.png',
-    verifyUrl:'https://www.credly.com/badges/bfcf4490-f814-4a14-910a-61b2bc20ac16',
-    dateEarned:'',
-    tags:['NASA','Open Science','Research','Data'],
-    description:'Earners of this badge have demonstrated foundational knowledge of NASA open science principles, including open data, open software, and open results across the scientific community.'
-  }
-];
 
 const COLOR_KEY_ITEMS=[
   {label:'Complete',color:'#22c55e',bgColor:'rgba(34,197,94,0.12)',borderColor:'rgba(34,197,94,0.3)'},
@@ -722,7 +569,6 @@ const NG_COURSES_DEFAULT=[
 let currentTab=0;
 let portfolioMode=false;
 let editingEntry=null;
-let editingBadge=null;
 let ngUnlocked=localStorage.getItem('ngUnlocked')==='true';
 let ngClickCount=0;
 
@@ -824,13 +670,6 @@ function getDefaultCSU(){return [
 {id:genId(),code:"ISM 531",title:"Cybersecurity Defense & Countermeasures",status:"Planned",credits:3,group:"Cybersecurity Specialization",degreeTrack:["Cybersecurity Specialization"],tags:["CSU Graduate","Cybersecurity","Defense"],description:"Cybersecurity defense and countermeasures.",category:"Cybersecurity Specialization",platform:"CSU Graduate",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()}
 ];}
 
-function getDefaultBadges(){return [
-{id:genId(),title:"Microsoft Azure Fundamentals",issuer:"Microsoft",category:"Certification",dateEarned:"",expirationDate:"",credentialId:"",credentialUrl:"",tags:["Azure","Cloud","AZ-900"],notes:"Target cert",showcase:true,photoData:"",fileName:"",fileType:"",badgeImageUrl:""},
-{id:genId(),title:"Introduction to Cloud Computing",issuer:"LinkedIn Learning",category:"LinkedIn Learning",dateEarned:"",expirationDate:"",credentialId:"",credentialUrl:"",tags:["Cloud","Azure","Fundamentals"],notes:"",showcase:false,photoData:"",fileName:"",fileType:"",badgeImageUrl:""},
-{id:genId(),title:"Linux Command Line Basics",issuer:"LinkedIn Learning",category:"LinkedIn Learning",dateEarned:"",expirationDate:"",credentialId:"",credentialUrl:"",tags:["Linux","Bash","CLI"],notes:"",showcase:false,photoData:"",fileName:"",fileType:"",badgeImageUrl:""},
-{id:genId(),title:"Agile Foundations",issuer:"LinkedIn Learning",category:"LinkedIn Learning",dateEarned:"",expirationDate:"",credentialId:"",credentialUrl:"",tags:["Agile","Scrum","Project Management"],notes:"",showcase:false,photoData:"",fileName:"",fileType:"",badgeImageUrl:""}
-];}
-
 function getDefaultProfile(){return {name:"Carla Bailey",title:"Azure Solutions Architect Candidate",location:"Cortez, CO",email:"carla.bailey0314@outlook.com",phone:"",linkedin:"https://www.linkedin.com/in/carla0314/",github:"https://github.com/cbailey0314",website:"",aboutMe:"I'm an IT professional and CSU student pursuing a career as an Azure Solutions Architect. My background spans cloud infrastructure, Linux systems, AI integration, and agile project management. I'm passionate about building scalable, secure cloud solutions and continuously expanding my technical skill set.",targetRole:"Azure Solutions Architect",targetTimeline:"2027",currentFocus:"AZ-104 Certification \u00B7 CSU Coursework \u00B7 Portfolio Building",avatarPhoto:"",certifications:[{id:1,name:"AZ-900: Azure Fundamentals",issuer:"Microsoft",date:"",status:"Planned"},{id:2,name:"AZ-104: Azure Administrator",issuer:"Microsoft",date:"",status:"Planned"},{id:3,name:"AZ-305: Azure Solutions Architect Expert",issuer:"Microsoft",date:"",status:"Planned"},{id:4,name:"Linux+ (CompTIA)",issuer:"CompTIA",date:"",status:"Planned"}],skills:["Azure","Linux","Bash","Python","Networking","SQL","IaC / Bicep","Azure DevOps","AI/ML","Agile / Scrum","Cost Management","Azure Monitor","KQL","Entra ID / RBAC","TCP/IP","Git","GitHub"]};}
 
 function getDefaultEducation(){return [
@@ -860,14 +699,6 @@ function tagPills(tags){return (tags||[]).map(t=>`<span class="tag-pill">${esc(t
 function dashTagPills(tags){return (tags||[]).map(t=>`<span class="dash-tag-pill">${esc(t)}</span>`).join('')}
 function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 function today(){return '2026-05-12'}
-function fmtFileSize(bytes){if(!bytes||bytes<=0)return '';if(bytes<1024)return bytes+' B';if(bytes<1048576)return (bytes/1024).toFixed(1)+' KB';return (bytes/1048576).toFixed(1)+' MB';}
-function resolveFileType(entry){
-  if(entry.fileType)return entry.fileType;
-  if(!entry.photoData)return '';
-  if(entry.fileName&&entry.fileName.toLowerCase().endsWith('.pdf'))return 'pdf';
-  if(entry.photoData&&entry.photoData.startsWith('data:application/pdf'))return 'pdf';
-  return 'image';
-}
 
 // ============ EDUCATION DATA ============
 function getEducation(){
@@ -906,7 +737,6 @@ const csu=getDefaultCSU();
 const entries=load('portfolioEntries');
 entries.csu=csu;
 save('portfolioEntries',entries);
-save('badgesCredentials',getDefaultBadges());
 save('portfolioProfile',getDefaultProfile());
 save('degreeGoals',getDefaultGoals());
 saveEducation(getDefaultEducation());
@@ -915,7 +745,6 @@ localStorage.setItem('portfolioDataVersion',DATA_VERSION);
 if(!getEducation()){saveEducation(getDefaultEducation());}
 }
 function getEntries(){return load('portfolioEntries')||{};}
-function getBadges(){return load('badgesCredentials')||[];}
 function getProfile(){return load('portfolioProfile')||getDefaultProfile();}
 function getGoals(){return load('degreeGoals')||getDefaultGoals();}
 
@@ -931,13 +760,13 @@ const b=document.createElement('button');
 b.className='tab-btn'+(i===currentTab?' active':'');
 b.textContent=t;
 b.dataset.tab=i;
-if(i===9)b.style.background=currentTab===9?'linear-gradient(135deg,#7c3aed,#ec4899)':'';
+if(i===8&&ngUnlocked)b.style.background=currentTab===8?'linear-gradient(135deg,#7c3aed,#ec4899)':'';
 dt.appendChild(b);
 const mb=document.createElement('button');
 mb.className='tab-btn w-full text-left py-3'+(i===currentTab?' active':'');
 mb.textContent=t;
 mb.dataset.tab=i;
-if(i===9)mb.style.background=currentTab===9?'linear-gradient(135deg,#7c3aed,#ec4899)':'';
+if(i===8&&ngUnlocked)mb.style.background=currentTab===8?'linear-gradient(135deg,#7c3aed,#ec4899)':'';
 mt.appendChild(mb);
 });
 dt.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{currentTab=parseInt(b.dataset.tab);portfolioMode=false;render();}));
@@ -1279,158 +1108,6 @@ entries.csu=csu;save('portfolioEntries',entries);render();
 document.getElementById('cf-cancel').addEventListener('click',()=>{area.innerHTML='';});
 }
 
-// ============ CREDLY VERIFIED SECTION ============
-function renderCredlyVerifiedSection(){
-let html=`<div class="mb-8">`;
-html+=`<div class="flex items-center gap-2 mb-4"><span class="text-xs font-semibold tracking-widest uppercase" style="color:#4ade80;letter-spacing:0.08em"><i data-lucide="shield-check" class="w-4 h-4 inline" style="color:#22c55e"></i> Verified Credentials</span></div>`;
-html+=`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">`;
-CREDLY_VERIFIED_BADGES.forEach(cb=>{
-html+=`<div class="credly-verified-card">`;
-html+=`<div class="p-5 md:p-6">`;
-html+=`<div class="flex items-start gap-4">`;
-// Badge icon circle with image + onerror fallback
-if(cb.badgeImageUrl){
-  html+=`<div class="credly-badge-icon"><img src="${esc(cb.badgeImageUrl)}" alt="${esc(cb.title)}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" data-fallback-badge="true"></div>`;
-}else{
-  html+=`<div class="credly-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#22c55e;filter:drop-shadow(0 0 6px rgba(34,197,94,0.4))"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>`;
-}
-html+=`<div class="flex-1 min-w-0">`;
-html+=`<div class="flex items-center gap-2 flex-wrap mb-1"><span class="verified-label"><i data-lucide="check-circle" class="w-3 h-3 inline"></i> Verified</span><span class="badge badge-complete">Earned</span></div>`;
-html+=`<h3 class="text-white font-bold text-base md:text-lg mt-2">${esc(cb.title)}</h3>`;
-html+=`<p class="text-azure-400 text-sm font-medium">${esc(cb.issuer)}</p>`;
-html+=`</div>`;
-html+=`</div>`;
-html+=`<p class="text-xs text-slate-400 mt-3 leading-relaxed">${esc(cb.description)}</p>`;
-if(cb.tags&&cb.tags.length)html+=`<div class="flex flex-wrap gap-1 mt-3">${tagPills(cb.tags)}</div>`;
-html+=`<div class="flex items-center gap-3 mt-4 flex-wrap">`;
-html+=`<a href="${esc(cb.verifyUrl)}" target="_blank" rel="noopener" class="credly-verify-link"><i data-lucide="external-link" class="w-3.5 h-3.5 inline"></i> Verify on Credly</a>`;
-if(cb.dateEarned)html+=`<span class="text-xs text-slate-400"><i data-lucide="calendar" class="w-3 h-3 inline"></i> ${fmtDateFull(cb.dateEarned)}</span>`;
-html+=`</div>`;
-html+=`</div>`;
-html+=`</div>`;
-});
-html+=`</div></div>`;
-return html;
-}
-
-// ============ BADGES TAB ============
-function renderBadges(){
-const badges=getBadges();
-const certified=badges.filter(b=>b.category==='Certification').length;
-const courses=badges.filter(b=>['LinkedIn Learning','Course Completion','Module'].includes(b.category)).length;
-const thisYear=badges.filter(b=>b.dateEarned&&b.dateEarned.startsWith('2026')).length;
-let html=`<div class="max-w-7xl mx-auto px-4 md:px-6 py-6">`;
-html+=backToDashBtn();
-html+=`<div class="flex flex-col md:flex-row md:items-center gap-3 mb-4"><div><h2 class="text-xl md:text-2xl font-bold text-white"><i data-lucide="award" class="w-6 h-6 inline text-azure-400"></i> Badges & Credentials</h2><p class="text-sm text-slate-400">Track your certifications, courses, and professional credentials</p></div><button class="btn-primary flex items-center gap-1 ml-auto add-badge-btn"><i data-lucide="plus" class="w-4 h-4"></i> Add Credential</button></div>`;
-html+=renderCredlyVerifiedSection();
-html+=`<div class="flex items-center gap-3 mb-5"><div class="flex-1 h-px" style="background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent)"></div><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">All Credentials</span><div class="flex-1 h-px" style="background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent)"></div></div>`;
-html+=`<div class="flex flex-wrap gap-3 mb-4 text-sm"><span class="badge badge-planned">Total: ${badges.length}</span><span class="badge badge-complete"><i data-lucide="check" class="w-3 h-3 inline"></i> Certified: ${certified}</span><span class="badge badge-progress"><i data-lucide="graduation-cap" class="w-3 h-3 inline"></i> Courses/Modules: ${courses}</span><span class="badge" style="background:rgba(0,120,212,0.15);color:#66b0ff"><i data-lucide="calendar" class="w-3 h-3 inline"></i> This Year: ${thisYear}</span></div>`;
-html+=`<div class="flex flex-wrap items-center gap-2 mb-4"><span class="text-xs font-medium text-slate-400">Filter:</span>`;
-['All',...BADGE_CATEGORIES].forEach(c=>{html+=`<button class="filter-pill badge-filter-btn ${c==='All'?'active':''}" data-cat="${c}">${c}</button>`;});
-html+=`</div>`;
-html+=`<div class="flex flex-wrap items-center gap-3 mb-6"><div class="flex items-center gap-2"><span class="text-xs font-medium text-slate-400">Sort:</span><select class="form-input text-xs py-1 px-2" id="badge-sort" style="width:auto"><option value="newest">Newest First</option><option value="oldest">Oldest First</option><option value="az">A\u2013Z</option></select></div><div class="flex-1 max-w-xs"><input class="form-input text-sm" id="badge-search" placeholder="Search badges..."></div></div>`;
-html+=`<div id="badge-form-area"></div>`;
-html+=`<div id="badge-list"></div></div>`;
-return html;
-}
-function renderBadgeList(filter='All',sort='newest',search=''){
-const container=document.getElementById('badge-list');
-if(!container)return;
-let badges=[...getBadges()];
-if(filter!=='All')badges=badges.filter(b=>b.category===filter);
-if(search)badges=badges.filter(b=>(b.title+' '+b.issuer).toLowerCase().includes(search.toLowerCase()));
-if(sort==='newest')badges.sort((a,b)=>(b.dateEarned||'').localeCompare(a.dateEarned||''));
-else if(sort==='oldest')badges.sort((a,b)=>(a.dateEarned||'').localeCompare(b.dateEarned||''));
-else if(sort==='az')badges.sort((a,b)=>a.title.localeCompare(b.title));
-if(!badges.length){
-container.innerHTML=`<div class="card p-12 text-center"><p class="text-slate-400">No credentials yet — add your first badge or certificate!</p></div>`;
-return;
-}
-let html=`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
-badges.forEach(b=>{
-const color=BADGE_CAT_COLOR[b.category]||'#9ca3af';
-const emoji=BADGE_CAT_EMOJI[b.category]||'\uD83D\uDCCB';
-const expired=b.expirationDate&&b.expirationDate<today();
-const ft=resolveFileType(b);
-html+=`<div class="card overflow-hidden relative" style="border-left:4px solid ${color}">`;
-if(expired)html+=`<div class="absolute top-2 right-2 z-10"><span class="badge" style="background:rgba(124,58,237,0.2);color:#c4b5fd"><i data-lucide="alert-triangle" class="w-3 h-3 inline"></i> Expired</span></div>`;
-if(b.photoData&&ft==='image'){html+=`<div style="height:140px;overflow:hidden"><img src="${b.photoData}" class="w-full h-full object-cover" alt="${esc(b.title)}"></div>`;}
-else if(b.photoData&&ft==='pdf'){html+=`<div class="pdf-thumb-placeholder"><span class="pdf-emoji"><i data-lucide="file-text" class="w-8 h-8 text-slate-400"></i></span><span class="pdf-filename">${esc(b.fileName||'Certificate.pdf')}</span><button class="pdf-view-pill view-pdf-thumb-btn" data-id="${b.id}"><i data-lucide="eye" class="w-3 h-3 inline"></i> View PDF</button></div>`;}
-else if(b.badgeImageUrl){html+=`<div style="height:140px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,${color}10,${color}20)"><img src="${esc(b.badgeImageUrl)}" alt="${esc(b.title)}" style="max-height:130px;max-width:90%;object-fit:contain;"></div>`;}
-else{html+=`<div class="cert-placeholder" style="background:linear-gradient(135deg,${color}15,${color}30)"><span class="text-4xl">${emoji}</span></div>`;}
-html+=`<div class="p-4"><h3 class="font-semibold text-white text-sm mb-1">${esc(b.title)}</h3><p class="text-xs text-slate-400 mb-2">${esc(b.issuer)}</p>`;
-html+=`<div class="flex flex-wrap gap-2 mb-2"><span class="badge" style="background:${color}15;color:${color}">${b.category}</span>`;
-html+=`<span class="text-xs text-slate-400">${b.dateEarned?fmtDate(b.dateEarned):'<em>Date not set</em>'}</span></div>`;
-if(b.credentialId)html+=`<p class="text-xs font-mono text-slate-500 mb-1">ID: ${esc(b.credentialId)}</p>`;
-if(b.credentialUrl)html+=`<a href="${esc(b.credentialUrl)}" target="_blank" class="text-xs text-azure-400 hover:underline flex items-center gap-1 mb-2"><i data-lucide="external-link" class="w-3 h-3"></i> View Credential</a>`;
-if(b.tags&&b.tags.length)html+=`<div class="flex flex-wrap gap-1 mb-2">${tagPills(b.tags)}</div>`;
-html+=`<div class="flex items-center gap-2 mt-2 pt-2 border-t flex-wrap" style="border-color:rgba(255,255,255,0.08)"><button class="showcase-star ${b.showcase?'active':''}" data-id="${b.id}" data-domain="badges" title="Toggle showcase"><i data-lucide="star" class="w-4 h-4"></i></button>`;
-html+=`<button class="btn-secondary text-xs py-1 px-2 edit-badge-btn" data-id="${b.id}"><i data-lucide="pencil" class="w-3 h-3 inline"></i> Edit</button>`;
-html+=`<button class="btn-danger text-xs py-1 px-2 del-badge-btn" data-id="${b.id}"><i data-lucide="trash-2" class="w-3 h-3 inline"></i> Delete</button>`;
-html+=`<label class="btn-secondary text-xs py-1 px-2 cursor-pointer upload-badge-btn"><i data-lucide="paperclip" class="w-3 h-3 inline"></i> ${b.photoData?'Replace':'Upload'}<input type="file" accept="image/*,.pdf" class="hidden badge-file-input" data-id="${b.id}"></label>`;
-if(b.photoData)html+=`<button class="btn-secondary text-xs py-1 px-2 view-badge-btn" data-id="${b.id}"><i data-lucide="eye" class="w-3 h-3 inline"></i> View</button>`;
-html+=`</div></div></div>`;
-});
-html+=`</div>`;
-container.innerHTML=html;
-lucide.createIcons();
-bindBadgeEvents();
-}
-function showBadgeForm(entry=null){
-const area=document.getElementById('badge-form-area');
-if(!area)return;
-const e=entry||{title:'',issuer:'',category:'Certification',dateEarned:'',expirationDate:'',credentialId:'',credentialUrl:'',tags:[],notes:'',showcase:false,photoData:'',fileName:'',fileType:'',badgeImageUrl:''};
-const existingFt=resolveFileType(e);
-area.innerHTML=`<div class="card p-5 mb-6 border-l-4" style="border-left-color:#0078D4"><h3 class="font-semibold text-white mb-4">${entry?'Edit':'Add'} Credential</h3>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Title</label><input class="form-input" id="bf-title" value="${esc(e.title)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Issuer</label><input class="form-input" id="bf-issuer" value="${esc(e.issuer)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Category</label><select class="form-input" id="bf-cat">${BADGE_CATEGORIES.map(c=>`<option ${e.category===c?'selected':''}>${c}</option>`).join('')}</select></div></div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Date Earned</label><div class="relative"><input type="date" class="form-input pr-8" id="bf-date" value="${e.dateEarned||''}"><button class="date-clear" id="bf-date-clear" style="${e.dateEarned?'':'display:none'}">&times;</button></div></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Expiration Date</label><div class="relative"><input type="date" class="form-input pr-8" id="bf-exp" value="${e.expirationDate||''}"><button class="date-clear" id="bf-exp-clear" style="${e.expirationDate?'':'display:none'}">&times;</button></div></div></div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Credential ID</label><input class="form-input" id="bf-cid" value="${esc(e.credentialId)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Credential URL</label><input class="form-input" id="bf-curl" value="${esc(e.credentialUrl)}"></div></div>
-<div class="mb-4"><label class="text-xs font-medium text-slate-400 mb-1 block">Badge Image URL (optional)</label><input class="form-input" id="bf-badge-img-url" value="${esc(e.badgeImageUrl||'')}" placeholder="https://images.credly.com/... or any image URL"></div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Tags (comma-sep)</label><input class="form-input" id="bf-tags" value="${(e.tags||[]).join(', ')}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Notes</label><input class="form-input" id="bf-notes" value="${esc(e.notes)}"></div></div>
-<div class="flex items-center gap-4 mb-4"><label class="text-xs font-medium text-slate-400 flex items-center gap-1">Showcase <input type="checkbox" id="bf-showcase" ${e.showcase?'checked':''}></label><label class="btn-secondary text-xs cursor-pointer"><i data-lucide="upload" class="w-3 h-3 inline"></i> Upload Certificate <input type="file" accept="image/*,.pdf" class="hidden" id="bf-file"></label><span id="bf-file-name" class="text-xs text-slate-400"></span></div>
-<div id="bf-preview-area" class="mb-4"></div>
-<div class="flex gap-2"><button class="btn-primary" id="bf-save">Save</button><button class="btn-secondary" id="bf-cancel">Cancel</button></div></div>`;
-
-let photoData=e.photoData||'',fileName=e.fileName||'',fileType=existingFt||'',fileSize=0;
-
-function renderFormPreview(){
-  const previewArea=document.getElementById('bf-preview-area');
-  if(!previewArea)return;
-  if(!photoData){previewArea.innerHTML='';return;}
-  if(fileType==='pdf'){
-    const sizeStr=fileSize?fmtFileSize(fileSize):'PDF';
-    previewArea.innerHTML=`<div class="pdf-form-preview"><span class="pdf-icon"><i data-lucide="file-text" class="w-6 h-6 text-slate-400"></i></span><div class="pdf-info"><div class="pdf-name">${esc(fileName||'Certificate.pdf')}</div><div class="pdf-size">${sizeStr}</div></div><div class="pdf-actions"><button class="btn-primary text-xs py-1 px-3" id="bf-preview-pdf"><i data-lucide="eye" class="w-3 h-3 inline"></i> Preview PDF</button><button class="text-xs font-medium" id="bf-remove-file" style="color:#c4b5fd">\u2715 Remove</button></div></div>`;
-    document.getElementById('bf-preview-pdf').addEventListener('click',()=>openPdfData(photoData));
-    document.getElementById('bf-remove-file').addEventListener('click',()=>{photoData='';fileName='';fileType='';fileSize=0;document.getElementById('bf-file-name').textContent='';renderFormPreview();});
-    lucide.createIcons();
-  }else{
-    previewArea.innerHTML=`<div><img src="${photoData}" class="max-h-24 rounded" alt="Preview"><button class="text-xs mt-1 block" id="bf-remove-file" style="color:#c4b5fd">\u2715 Remove</button></div>`;
-    document.getElementById('bf-remove-file').addEventListener('click',()=>{photoData='';fileName='';fileType='';fileSize=0;document.getElementById('bf-file-name').textContent='';renderFormPreview();});
-  }
-}
-renderFormPreview();
-
-document.getElementById('bf-date').addEventListener('input',function(){document.getElementById('bf-date-clear').style.display=this.value?'':'none';});
-document.getElementById('bf-exp').addEventListener('input',function(){document.getElementById('bf-exp-clear').style.display=this.value?'':'none';});
-document.getElementById('bf-date-clear').addEventListener('click',function(){document.getElementById('bf-date').value='';this.style.display='none';});
-document.getElementById('bf-exp-clear').addEventListener('click',function(){document.getElementById('bf-exp').value='';this.style.display='none';});
-document.getElementById('bf-file').addEventListener('change',function(){
-const file=this.files[0];if(!file)return;
-fileName=file.name;fileSize=file.size;
-if(file.type==='application/pdf'||file.name.toLowerCase().endsWith('.pdf')){fileType='pdf';}else{fileType='image';}
-document.getElementById('bf-file-name').textContent='';
-const reader=new FileReader();reader.onload=function(ev){photoData=ev.target.result;renderFormPreview();};reader.readAsDataURL(file);
-});
-document.getElementById('bf-save').addEventListener('click',()=>{
-const badges=getBadges();
-const newB={id:entry?entry.id:genId(),title:document.getElementById('bf-title').value,issuer:document.getElementById('bf-issuer').value,category:document.getElementById('bf-cat').value,dateEarned:document.getElementById('bf-date').value,expirationDate:document.getElementById('bf-exp').value,credentialId:document.getElementById('bf-cid').value,credentialUrl:document.getElementById('bf-curl').value,tags:document.getElementById('bf-tags').value.split(',').map(t=>t.trim()).filter(Boolean),notes:document.getElementById('bf-notes').value,showcase:document.getElementById('bf-showcase').checked,photoData:photoData,fileName:fileName,fileType:fileType,badgeImageUrl:document.getElementById('bf-badge-img-url').value.trim()};
-if(entry){const idx=badges.findIndex(x=>x.id===entry.id);if(idx>=0)badges[idx]=newB;}else badges.push(newB);
-save('badgesCredentials',badges);render();
-});
-document.getElementById('bf-cancel').addEventListener('click',()=>{area.innerHTML='';});
-lucide.createIcons();
-}
-
 // ============ EDUCATION CARD (Display) ============
 function renderEducationCard(e){
 const sb=e.status==='Complete'?'badge-complete':e.status==='In Progress'?'badge-progress':'badge-planned';
@@ -1656,7 +1333,6 @@ return html;
 function renderPortfolioView(){
 const p=getProfile();
 const entries=getEntries();
-const badges=getBadges();
 const eduList=getEducation()||[];
 const td=new Date('2026-05-12').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
 let html=`<div class="max-w-4xl mx-auto px-4 md:px-8 py-8">`;
@@ -1692,19 +1368,6 @@ html+=`</div></div></div>`;
 html+=`</div></div>`;
 }
 
-if(CREDLY_VERIFIED_BADGES.length){
-html+=`<div class="mb-8"><h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2"><i data-lucide="shield-check" class="w-5 h-5" style="color:#22c55e"></i>Verified Credentials</h2>`;
-html+=`<div class="grid grid-cols-1 md:grid-cols-2 gap-4">`;
-CREDLY_VERIFIED_BADGES.forEach(cb=>{
-html+=`<div class="card p-4" style="border-left:4px solid #22c55e"><div class="flex items-start gap-3">`;
-if(cb.badgeImageUrl){html+=`<div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden" style="background:transparent"><img src="${esc(cb.badgeImageUrl)}" alt="${esc(cb.title)}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" data-fallback-badge="true"></div>`;}
-else{html+=`<div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3)"><i data-lucide="award" class="w-6 h-6" style="color:#22c55e"></i></div>`;}
-html+=`<div><h3 class="font-semibold text-white text-sm">${esc(cb.title)}</h3><p class="text-xs text-slate-400">${esc(cb.issuer)}</p><div class="flex gap-2 mt-1"><span class="verified-label"><i data-lucide="check-circle" class="w-3 h-3 inline"></i> Verified</span>${cb.dateEarned?`<span class="text-xs text-slate-400">${fmtDate(cb.dateEarned)}</span>`:''}</div>`;
-html+=`<a href="${esc(cb.verifyUrl)}" target="_blank" rel="noopener" class="text-xs text-azure-400 mt-1 inline-block">Verify on Credly \u2192</a>`;
-html+=`</div></div></div>`;
-});
-html+=`</div></div>`;
-}
 const allDomains=[...DOMAIN_SLUGS,'csu'];
 const allNames=[...DOMAIN_NAMES,'CSU'];
 const allIcons=[...DOMAIN_ICONS,'graduation-cap'];
@@ -1721,24 +1384,6 @@ html+=`</div>`;
 });
 html+=`</div></div>`;
 });
-const showcaseBadges=badges.filter(b=>b.showcase);
-if(showcaseBadges.length){
-html+=`<div class="mb-8"><h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2"><i data-lucide="award" class="w-5 h-5 text-azure-400"></i>Badges & Credentials</h2>`;
-html+=`<div class="grid grid-cols-1 md:grid-cols-2 gap-4">`;
-showcaseBadges.forEach(b=>{
-const color=BADGE_CAT_COLOR[b.category]||'#9ca3af';
-const emoji=BADGE_CAT_EMOJI[b.category]||'\uD83D\uDCCB';
-const ft=resolveFileType(b);
-html+=`<div class="card p-4" style="border-left:4px solid ${color}"><div class="flex items-start gap-3">`;
-if(b.photoData&&ft==='image')html+=`<img src="${b.photoData}" class="w-12 h-12 rounded object-cover" alt="">`;
-else if(b.badgeImageUrl)html+=`<div class="w-12 h-12 rounded flex items-center justify-center overflow-hidden" style="background:transparent"><img src="${esc(b.badgeImageUrl)}" alt="${esc(b.title)}" style="width:100%;height:100%;object-fit:contain;"></div>`;
-else html+=`<div class="w-12 h-12 rounded flex items-center justify-center text-xl" style="background:${color}22">${emoji}</div>`;
-html+=`<div><h3 class="font-semibold text-white text-sm">${esc(b.title)}</h3><p class="text-xs text-slate-400">${esc(b.issuer)}</p><div class="flex gap-2 mt-1"><span class="badge text-xs" style="background:${color}15;color:${color}">${b.category}</span>${b.dateEarned?`<span class="text-xs text-slate-400">${fmtDate(b.dateEarned)}</span>`:''}</div>`;
-if(b.credentialUrl)html+=`<a href="${esc(b.credentialUrl)}" target="_blank" class="text-xs text-azure-400 mt-1 inline-block">View Credential \u2192</a>`;
-html+=`</div></div></div>`;
-});
-html+=`</div></div>`;
-}
 html+=`</div>`;
 return html;
 }
@@ -1760,16 +1405,12 @@ main.innerHTML=renderDomainTab(currentTab-1);
 }else if(currentTab===6){
 main.innerHTML=renderCSU();
 }else if(currentTab===7){
-main.innerHTML=renderBadges();
-}else if(currentTab===8){
 main.innerHTML=renderProfile();
-}else if(currentTab===9){
+}else if(currentTab===8){
 main.innerHTML=renderNgFangirl();
 }
 lucide.createIcons();
 bindEvents();
-// Set up onerror fallback for badge images after render
-setupBadgeImageFallbacks();
 setTimeout(()=>{
 document.querySelectorAll('.progress-fill[data-target]').forEach(el=>{el.style.width=el.dataset.target+'%';});
 // Ng progress bar
@@ -1780,41 +1421,6 @@ if(ngFill)ngFill.style.width=ngFill.dataset.target+'%';
 if(currentTab===0&&!portfolioMode){
   setTimeout(initDashSparkles,50);
 }
-}
-
-// ============ BADGE IMAGE FALLBACK ============
-function setupBadgeImageFallbacks(){
-  document.querySelectorAll('img[data-fallback-badge="true"]').forEach(function(img){
-    img.addEventListener('error',function(){
-      // Replace with SVG icon fallback
-      var parent=this.parentElement;
-      if(parent){
-        this.remove();
-        var svgNS='http://www.w3.org/2000/svg';
-        var svg=document.createElementNS(svgNS,'svg');
-        svg.setAttribute('xmlns',svgNS);
-        svg.setAttribute('width','48');
-        svg.setAttribute('height','48');
-        svg.setAttribute('viewBox','0 0 24 24');
-        svg.setAttribute('fill','none');
-        svg.setAttribute('stroke','currentColor');
-        svg.setAttribute('stroke-width','2');
-        svg.setAttribute('stroke-linecap','round');
-        svg.setAttribute('stroke-linejoin','round');
-        svg.style.color='#22c55e';
-        svg.style.filter='drop-shadow(0 0 6px rgba(34,197,94,0.4))';
-        var circle=document.createElementNS(svgNS,'circle');
-        circle.setAttribute('cx','12');
-        circle.setAttribute('cy','8');
-        circle.setAttribute('r','6');
-        svg.appendChild(circle);
-        var path=document.createElementNS(svgNS,'path');
-        path.setAttribute('d','M15.477 12.89 17 22l-5-3-5 3 1.523-9.11');
-        svg.appendChild(path);
-        parent.appendChild(svg);
-      }
-    },{once:true});
-  });
 }
 
 // ============ EVENT BINDING ============
@@ -1833,7 +1439,7 @@ if(ngTrigger){
   ngTrigger.addEventListener('click',function(){
     if(ngUnlocked){
       // Already unlocked — navigate to tab
-      currentTab=9;
+      currentTab=8;
       portfolioMode=false;
       render();
       window.scrollTo({top:0,behavior:'smooth'});
@@ -1852,11 +1458,7 @@ if(ngTrigger){
 
 document.querySelectorAll('.showcase-star').forEach(s=>s.addEventListener('click',function(){
 const id=this.dataset.id,domain=this.dataset.domain;
-if(domain==='badges'){
-const badges=getBadges();const b=badges.find(x=>x.id===id);if(b){b.showcase=!b.showcase;save('badgesCredentials',badges);}
-}else{
 const entries=getEntries();const list=entries[domain]||[];const e=list.find(x=>x.id===id);if(e){e.showcase=!e.showcase;save('portfolioEntries',entries);}
-}
 this.classList.toggle('active');
 this.style.transform='scale(1.4)';setTimeout(()=>{this.style.transform=this.classList.contains('active')?'scale(1.2)':'scale(1)';},200);
 }));
@@ -1872,9 +1474,8 @@ const entries=getEntries();entries[b.dataset.domain]=(entries[b.dataset.domain]|
 bindDashboardCardNavigation();
 
 if(currentTab===6)bindCSUTab();
-if(currentTab===7)bindBadgesTab();
-if(currentTab===8)bindProfileTab();
-if(currentTab===9)bindNgTab();
+if(currentTab===7)bindProfileTab();
+if(currentTab===8)bindNgTab();
 const pb=document.getElementById('print-btn');if(pb)pb.addEventListener('click',()=>window.print());
 document.querySelectorAll('.edit-goal-btn').forEach(b=>b.addEventListener('click',function(){
 const track=this.dataset.track;
@@ -1968,54 +1569,6 @@ const entries=getEntries();entries.csu=(entries.csu||[]).filter(x=>x.id!==b.data
 }));
 document.querySelectorAll('.showcase-star[data-domain="csu"]').forEach(s=>s.addEventListener('click',function(){
 const id=this.dataset.id;const entries=getEntries();const c=(entries.csu||[]).find(x=>x.id===id);if(c){c.showcase=!c.showcase;save('portfolioEntries',entries);}
-this.classList.toggle('active');this.style.transform='scale(1.4)';setTimeout(()=>{this.style.transform=this.classList.contains('active')?'scale(1.2)':'scale(1)';},200);
-}));
-}
-function bindBadgesTab(){
-let filter='All',sort='newest',search='';
-const addBtn=document.querySelector('.add-badge-btn');
-if(addBtn)addBtn.addEventListener('click',()=>showBadgeForm());
-document.querySelectorAll('.badge-filter-btn').forEach(b=>b.addEventListener('click',function(){
-document.querySelectorAll('.badge-filter-btn').forEach(x=>x.classList.remove('active'));
-this.classList.add('active');filter=this.dataset.cat;renderBadgeList(filter,sort,search);
-}));
-const sortSel=document.getElementById('badge-sort');
-if(sortSel)sortSel.addEventListener('change',function(){sort=this.value;renderBadgeList(filter,sort,search);});
-const searchInp=document.getElementById('badge-search');
-if(searchInp)searchInp.addEventListener('input',function(){search=this.value;renderBadgeList(filter,sort,search);});
-renderBadgeList(filter,sort,search);
-}
-function bindBadgeEvents(){
-document.querySelectorAll('.edit-badge-btn').forEach(b=>b.addEventListener('click',()=>{
-const badge=getBadges().find(x=>x.id===b.dataset.id);if(badge)showBadgeForm(badge);
-}));
-document.querySelectorAll('.del-badge-btn').forEach(b=>b.addEventListener('click',()=>{
-if(!confirm('Delete this credential?'))return;
-const badges=getBadges().filter(x=>x.id!==b.dataset.id);save('badgesCredentials',badges);render();
-}));
-document.querySelectorAll('.badge-file-input').forEach(inp=>inp.addEventListener('change',function(){
-const file=this.files[0];if(!file)return;
-const id=this.dataset.id;
-const isPdf=file.type==='application/pdf'||file.name.toLowerCase().endsWith('.pdf');
-const reader=new FileReader();
-reader.onload=function(ev){
-const badges=getBadges();const b=badges.find(x=>x.id===id);
-if(b){b.photoData=ev.target.result;b.fileName=file.name;b.fileType=isPdf?'pdf':'image';save('badgesCredentials',badges);render();}
-};reader.readAsDataURL(file);
-}));
-document.querySelectorAll('.view-badge-btn').forEach(b=>b.addEventListener('click',()=>{
-const badge=getBadges().find(x=>x.id===b.dataset.id);
-if(!badge||!badge.photoData)return;
-const ft=resolveFileType(badge);
-if(ft==='pdf'){openPdfData(badge.photoData);}
-else{const w=window.open();if(w){w.document.write(`<img src="${badge.photoData}" style="max-width:100%">`);w.document.title=badge.title;}}
-}));
-document.querySelectorAll('.view-pdf-thumb-btn').forEach(b=>b.addEventListener('click',()=>{
-const badge=getBadges().find(x=>x.id===b.dataset.id);
-if(badge&&badge.photoData){openPdfData(badge.photoData);}
-}));
-document.querySelectorAll('.showcase-star[data-domain="badges"]').forEach(s=>s.addEventListener('click',function(){
-const id=this.dataset.id;const badges=getBadges();const b=badges.find(x=>x.id===id);if(b){b.showcase=!b.showcase;save('badgesCredentials',badges);}
 this.classList.toggle('active');this.style.transform='scale(1.4)';setTimeout(()=>{this.style.transform=this.classList.contains('active')?'scale(1.2)':'scale(1)';},200);
 }));
 }
