@@ -10,7 +10,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/lucide@1.8.0/dist/umd/lucide.min.js"></script>
 <script>
-tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']},colors:{navy:{900:'#0f172a',800:'#1e293b',700:'#334155'},azure:{50:'#e6f2ff',100:'#cce5ff',200:'#99cbff',300:'#66b0ff',400:'#3396ff',500:'#0078D4',600:'#0063b1',700:'#004e8c',800:'#003a68',900:'#002544'},surface:{50:'#ffffff',100:'#f8fafc',200:'#f1f5f9',300:'#e2e8f0',400:'#cbd5e1',500:'#94a3b8'},status:{planned:'#94a3b8',progress:'#f59e0b',complete:'#22c55e',plannedbg:'#f1f5f9',progressbg:'#fffbeb',completebg:'#f0fdf4'},violet:{50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#7C3AED',600:'#6d28d9',700:'#5b21b6',800:'#4c1d95',900:'#3b0764'}}}}}
+tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']},colors:{navy:{900:'#0f172a',800:'#1e293b',700:'#334155'},azure:{50:'#e6f2ff',100:'#cce5ff',200:'#99cbff',300:'#66b0ff',400:'#33[...]
 </script>
 <style>
 :root{--navy:#0f172a;--azure:#0078D4;--azure-hover:#0063b1;--planned:#94a3b8;--progress:#f59e0b;--complete:#22c55e;--violet:#7C3AED}
@@ -46,40 +46,40 @@ body{font-family:'Inter',sans-serif;background:radial-gradient(ellipse at center
 .nav-header{position:fixed;top:0;left:0;right:0;z-index:100;background:#0f172a;height:56px;display:flex;align-items:center;padding:0 16px;border-bottom:1px solid rgba(255,255,255,0.06)}
 .main-content{padding-top:64px;position:relative;z-index:1}
 
-.form-input{width:100%;padding:8px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;background:rgba(255,255,255,0.07);color:#f1f5f9;transition:border-color .15s,box-shadow .15s}
+.form-input{width:100%;padding:8px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;background:rgba(255,255,255,0.07);color:#f1f5f9;transiti[...]
 .form-input:focus{outline:none;border-color:#0078D4;box-shadow:0 0 0 3px rgba(0,120,212,0.25)}
 .form-input option{background:#1e293b;color:#f1f5f9}
 .form-input::placeholder{color:#64748b}
 
 .btn-primary{background:#0078D4;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s}
 .btn-primary:hover{background:#0063b1}
-.btn-secondary{background:transparent;color:#e2e8f0;border:1px solid rgba(255,255,255,0.3);padding:8px 16px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s,border-color .15s}
+.btn-secondary{background:transparent;color:#e2e8f0;border:1px solid rgba(255,255,255,0.3);padding:8px 16px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-ser[...]
 .btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.5)}
-.btn-danger{background:rgba(124,58,237,0.15);color:#c4b5fd;border:1px solid rgba(196,181,253,0.3);padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-danger{background:rgba(124,58,237,0.15);color:#c4b5fd;border:1px solid rgba(196,181,253,0.3);padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;font-family:'Inter',s[...]
 .btn-danger:hover{background:rgba(124,58,237,0.25)}
-.portfolio-view-btn{border:1px solid rgba(255,255,255,0.4);color:#fff;background:transparent;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s,color .15s}
+.portfolio-view-btn{border:1px solid rgba(255,255,255,0.4);color:#fff;background:transparent;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-s[...]
 .portfolio-view-btn:hover{background:rgba(255,255,255,0.1)}
-.download-app-btn{border:1px solid rgba(255,255,255,0.4);color:#fff;background:transparent;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s,color .15s}
+.download-app-btn{border:1px solid rgba(255,255,255,0.4);color:#fff;background:transparent;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-ser[...]
 .download-app-btn:hover{background:rgba(255,255,255,1);color:#0f172a}
 .mobile-tabs-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .mobile-tabs-scroll::-webkit-scrollbar{display:none}
-.date-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;color:#94a3b8;line-height:1}
+.date-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify[...]
 .degree-pill{display:inline-flex;padding:2px 8px;border-radius:9999px;font-size:10px;font-weight:500;background:rgba(0,120,212,0.15);color:#66b0ff}
 .filter-pill{padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid rgba(255,255,255,0.15);background:transparent;color:#94a3b8;transition:all .15s}
 .filter-pill.active{background:#0078D4;color:#fff;border-color:#0078D4}
 .avatar-circle{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer}
-.avatar-circle .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;border-radius:50%;color:#fff;font-size:11px;gap:2px}
+.avatar-circle .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;border-radius[...]
 .avatar-circle:hover .overlay{opacity:1}
-.check-pill{display:inline-flex;align-items:center;padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid rgba(255,255,255,0.15);background:transparent;color:#94a3b8;transition:all .15s}
+.check-pill{display:inline-flex;align-items:center;padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid rgba(255,255,255,0.15);background:transparent;co[...]
 .check-pill.checked{background:rgba(0,120,212,0.2);color:#66b0ff;border-color:rgba(0,120,212,0.4)}
 
 .dash-space-bg{position:relative;min-height:calc(100vh - 64px)}
-.dash-glass-card{background:rgba(13,27,42,0.85)!important;backdrop-filter:blur(8px);border:1px solid rgba(0,120,212,0.25)!important;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform .2s,box-shadow .2s}
+.dash-glass-card{background:rgba(13,27,42,0.85)!important;backdrop-filter:blur(8px);border:1px solid rgba(0,120,212,0.25)!important;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:t[...]
 .dash-glass-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,120,212,0.15)}
 .dash-progress-bar{height:8px;border-radius:9999px;background:rgba(255,255,255,0.1);overflow:hidden}
 .dash-tag-pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:500;background:rgba(0,120,212,0.2);color:#66b0ff}
 
-.dash-domain-card{background:rgba(13,27,42,0.85)!important;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.08)!important;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform .25s,box-shadow .25s,border-color .25s}
+.dash-domain-card{background:rgba(13,27,42,0.85)!important;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.08)!important;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transitio[...]
 .dash-domain-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.35)}
 .dash-domain-card.clickable-card{cursor:pointer}
 .dash-domain-card .view-all-link{opacity:0;transform:translateX(-4px);transition:opacity .25s,transform .25s}
@@ -380,7 +380,7 @@ footer{position:relative;z-index:1}
   </div>
   <div data-id="8" class="flex items-center gap-2 flex-shrink-0">
     <button data-id="9" class="download-app-btn hidden md:inline-flex items-center gap-1" id="download-app-btn"><i data-id="10" data-lucide="download" class="w-4 h-4"></i> Download App</button>
-    <button data-id="11" class="portfolio-view-btn hidden md:inline-flex items-center gap-1" id="portfolio-btn"><i data-id="12" data-lucide="clipboard-list" class="w-4 h-4"></i> Portfolio View</button>
+    <button data-id="11" class="portfolio-view-btn hidden md:inline-flex items-center gap-1" id="portfolio-btn"><i data-id="12" data-lucide="clipboard-list" class="w-4 h-4"></i> Portfolio View</b[...]
     <button data-id="13" class="md:hidden p-2 text-white" id="mobile-menu-btn"><i data-id="14" data-lucide="menu" class="w-6 h-6"></i></button>
   </div>
 </header>
@@ -393,7 +393,7 @@ footer{position:relative;z-index:1}
   </div>
   <div data-id="20" class="flex flex-col gap-2" id="mobile-tabs"></div>
   <button data-id="21" class="download-app-btn mt-4 w-full text-center" id="download-app-btn-mobile"><i data-id="22" data-lucide="download" class="w-4 h-4 inline"></i> Download App</button>
-  <button data-id="23" class="portfolio-view-btn mt-2 w-full text-center" id="portfolio-btn-mobile"><i data-id="24" data-lucide="clipboard-list" class="w-4 h-4 inline"></i> Portfolio View</button>
+  <button data-id="23" class="portfolio-view-btn mt-2 w-full text-center" id="portfolio-btn-mobile"><i data-id="24" data-lucide="clipboard-list" class="w-4 h-4 inline"></i> Portfolio View</button[...]
 </nav>
 
 <main data-id="25" class="main-content pb-8" id="app-main">
@@ -407,7 +407,7 @@ footer{position:relative;z-index:1}
 // ============ GLOBAL STARFIELD ============
 function initGlobalStarfield(){
   const container=document.getElementById('global-starfield');
-  let stars='';for(let i=0;i<150;i++){const x=Math.random()*100,y=Math.random()*100,s=Math.random()>0.93?3:Math.random()>0.8?2:1,o=(Math.random()*0.6+0.3).toFixed(2);stars+=`${x}vw ${y}vh 0 ${s-1}px rgba(255,255,255,${o}),`;}
+  let stars='';for(let i=0;i<150;i++){const x=Math.random()*100,y=Math.random()*100,s=Math.random()>0.93?3:Math.random()>0.8?2:1,o=(Math.random()*0.6+0.3).toFixed(2);stars+=`${x}vw ${y}vh 0 ${s-1}px r[...]
   stars=stars.slice(0,-1);
   let bigStars='';for(let i=0;i<8;i++){const x=Math.random()*90+5,y=Math.random()*80+10;bigStars+=`${x}vw ${y}vh 0 2px rgba(255,255,255,0.8),`;}bigStars=bigStars.slice(0,-1);
   container.innerHTML=`<div class="star-layer" style="box-shadow:${stars}"></div><div class="star-layer" style="box-shadow:${bigStars};animation:twinkle 4s ease-in-out infinite"></div>`;
@@ -456,7 +456,7 @@ function initDashSparkles(){
       var dur=(1.5+Math.random()*2.5).toFixed(2);
       var delay=(Math.random()*4).toFixed(2);
       var startOpacity=(0.2+Math.random()*0.5).toFixed(2);
-      star.style.cssText='position:absolute;left:'+left+'%;top:'+top+'%;font-size:'+sz+'px;color:'+color+';opacity:'+startOpacity+';animation:sparkle-'+i+' '+dur+'s '+delay+'s infinite ease-in-out;line-height:1;pointer-events:none;';
+      star.style.cssText='position:absolute;left:'+left+'%;top:'+top+'%;font-size:'+sz+'px;color:'+color+';opacity:'+startOpacity+';animation:sparkle-'+i+' '+dur+'s '+delay+'s infinite ease-in-ou[...]
       container.appendChild(star);
     }else{
       var dot=document.createElement('div');
@@ -471,7 +471,7 @@ function initDashSparkles(){
       if(isGlow){
         extraStyle='box-shadow:0 0 3px 1px rgba(255,255,255,0.8);';
       }
-      dot.style.cssText='position:absolute;left:'+left+'%;top:'+top+'%;width:'+sz+'px;height:'+sz+'px;border-radius:50%;background:'+color+';opacity:'+startOpacity+';animation:sparkle-'+i+' '+dur+'s '+delay+'s infinite ease-in-out;pointer-events:none;'+extraStyle;
+      dot.style.cssText='position:absolute;left:'+left+'%;top:'+top+'%;width:'+sz+'px;height:'+sz+'px;border-radius:50%;background:'+color+';opacity:'+startOpacity+';animation:sparkle-'+i+' '+dur+'s '[...]
       container.appendChild(dot);
     }
   }
@@ -489,6 +489,32 @@ function downloadApp(){
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
+}
+
+// ============ PASSWORD PROTECTION FOR DOWNLOAD BUTTON ============
+function initPasswordProtection(){
+  const PASSWORD='carla';
+  const downloadBtnDesktop=document.getElementById('download-app-btn');
+  const downloadBtnMobile=document.getElementById('download-app-btn-mobile');
+  
+  function requestPassword(){
+    const userInput=prompt('Enter password to access the Download App feature:');
+    return userInput===PASSWORD;
+  }
+  
+  function setupDownloadButton(btn){
+    if(!btn)return;
+    btn.addEventListener('click',function(e){
+      if(!requestPassword()){
+        alert('Incorrect password. This feature is private.');
+        return;
+      }
+      downloadApp();
+    });
+  }
+  
+  setupDownloadButton(downloadBtnDesktop);
+  setupDownloadButton(downloadBtnMobile);
 }
 
 // ============ NG TOAST HELPER ============
@@ -516,7 +542,7 @@ const TAB_ICONS=['layout-dashboard','cloud','terminal','flask-conical','brain','
 const DOMAIN_SLUGS=['cloudProjects','linux','azureLabs','aiWork','cybersecurity'];
 const DOMAIN_NAMES=['Cloud Projects','Linux','Azure Labs','AI Work','Cybersecurity'];
 const DOMAIN_ICONS=['cloud','terminal','flask-conical','brain','shield'];
-const DOMAIN_DESCS=['Cloud architecture, deployment & DevOps projects','Linux administration, scripting & system management','Microsoft Azure certification labs & hands-on exercises','AI integration, machine learning & prompt engineering','Network security, compliance & identity management'];
+const DOMAIN_DESCS=['Cloud architecture, deployment & DevOps projects','Linux administration, scripting & system management','Microsoft Azure certification labs & hands-on exercises','AI integration, [...]
 
 const DOMAIN_TAB_INDICES=[1,2,3,4,5,6];
 
@@ -558,12 +584,12 @@ const COLOR_KEY_ITEMS=[
 
 // ============ NG FANGIRL HARDCODED COURSES ============
 const NG_COURSES_DEFAULT=[
-  {id:'ng-azml',code:'AZML-01',title:'Microsoft Azure Machine Learning',platform:'Coursera',url:'https://www.coursera.org/learn/microsoft-azure-machine-learning',completed:false,startDate:'',notes:'Azure ML + Andrew Ng collab energy \u2601\uFE0F',micro:'You got this! \uD83D\uDCAA'},
-  {id:'ng-aiaz',code:'AIAZ-01',title:'Introduction to AI on Azure',platform:'Coursera',url:'https://www.coursera.org/learn/introduction-to-ai-on-azure',completed:false,startDate:'',notes:'Where it all begins \uD83D\uDE80',micro:'Andrew would be proud \uD83C\uDF1F'},
-  {id:'ng-cvaz',code:'CVAZ-01',title:'Computer Vision with Azure',platform:'Coursera',url:'https://www.coursera.org/learn/computer-vision-with-azure',completed:false,startDate:'',notes:'Teaching machines to see \uD83D\uDC41\uFE0F',micro:'Eyes on the prize! \uD83D\uDC40'},
-  {id:'ng-nlp',code:'NLPAZ-01',title:'NLP with Azure AI',platform:'Coursera',url:'https://www.coursera.org/learn/nlp-azure-ai',completed:false,startDate:'',notes:'Making machines talk smart \uD83D\uDDE3\uFE0F',micro:'Words have power! \u2728'},
-  {id:'ng-aipm',code:'AIPM-01',title:'Managing AI Projects',platform:'DeepLearning.AI',url:'https://www.deeplearning.ai/',completed:false,startDate:'',notes:'The strategy behind the magic \uD83E\uDDE0',micro:'Big brain energy! \uD83E\uDDE0'},
-  {id:'ng-math',code:'MATH-01',title:'Mathematics for Machine Learning',platform:'Coursera \u00B7 Imperial College',url:'https://www.coursera.org/specializations/mathematics-machine-learning',completed:false,startDate:'',notes:'Imperial College collab \u2014 fancy! \uD83C\uDFA9',micro:'Math is beautiful! \uD83C\uDF08'}
+  {id:'ng-azml',code:'AZML-01',title:'Microsoft Azure Machine Learning',platform:'Coursera',url:'https://www.coursera.org/learn/microsoft-azure-machine-learning',completed:false,startDate:'',notes:'Az[...]
+  {id:'ng-aiaz',code:'AIAZ-01',title:'Introduction to AI on Azure',platform:'Coursera',url:'https://www.coursera.org/learn/introduction-to-ai-on-azure',completed:false,startDate:'',notes:'Where it all[...]
+  {id:'ng-cvaz',code:'CVAZ-01',title:'Computer Vision with Azure',platform:'Coursera',url:'https://www.coursera.org/learn/computer-vision-with-azure',completed:false,startDate:'',notes:'Teaching machi[...]
+  {id:'ng-nlp',code:'NLPAZ-01',title:'NLP with Azure AI',platform:'Coursera',url:'https://www.coursera.org/learn/nlp-azure-ai',completed:false,startDate:'',notes:'Making machines talk smart \uD83D\uDD[...]
+  {id:'ng-aipm',code:'AIPM-01',title:'Managing AI Projects',platform:'DeepLearning.AI',url:'https://www.deeplearning.ai/',completed:false,startDate:'',notes:'The strategy behind the magic \uD83E\uDDE0[...]
+  {id:'ng-math',code:'MATH-01',title:'Mathematics for Machine Learning',platform:'Coursera \u00B7 Imperial College',url:'https://www.coursera.org/specializations/mathematics-machine-learning',complete[...]
 ];
 
 let currentTab=0;
@@ -576,106 +602,106 @@ let ngClickCount=0;
 function getDefaultEntries(){
 return {
 cloudProjects:[
-{id:genId(),title:"Multi-Tier Web App on Azure",description:"Deploy a 3-tier web application using Azure App Service, Azure SQL, and VNet peering.",status:"Planned",tags:["Azure","App Service","SQL","Networking"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Serverless Event Pipeline",description:"Event-driven pipeline using Azure Functions triggered by Event Grid with Cosmos DB backend.",status:"In Progress",tags:["Azure Functions","Event Grid","Cosmos DB"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Infrastructure as Code with Bicep",description:"Provision full Azure environments using Bicep templates.",status:"Planned",tags:["Bicep","ARM","Azure","IaC"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Azure Cost Optimization Audit",description:"Analyze a mock Azure subscription and produce a cost optimization report.",status:"Planned",tags:["Azure Monitor","Cost Management"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"CI/CD Pipeline with Azure DevOps",description:"Complete CI/CD pipeline for a web app with automated testing and deployment stages.",status:"Planned",tags:["Azure DevOps","GitHub Actions","YAML"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()}
+{id:genId(),title:"Multi-Tier Web App on Azure",description:"Deploy a 3-tier web application using Azure App Service, Azure SQL, and VNet peering.",status:"Planned",tags:["Azure","App Service","SQL","[...]
+{id:genId(),title:"Serverless Event Pipeline",description:"Event-driven pipeline using Azure Functions triggered by Event Grid with Cosmos DB backend.",status:"In Progress",tags:["Azure Functions","Ev[...]
+{id:genId(),title:"Infrastructure as Code with Bicep",description:"Provision full Azure environments using Bicep templates.",status:"Planned",tags:["Bicep","ARM","Azure","IaC"],showcase:false,link:"",[...]
+{id:genId(),title:"Azure Cost Optimization Audit",description:"Analyze a mock Azure subscription and produce a cost optimization report.",status:"Planned",tags:["Azure Monitor","Cost Management"],show[...]
+{id:genId(),title:"CI/CD Pipeline with Azure DevOps",description:"Complete CI/CD pipeline for a web app with automated testing and deployment stages.",status:"Planned",tags:["Azure DevOps","GitHub Act[...]
 ],
 linux:[
-{id:genId(),title:"Linux File System & Permissions Lab",description:"Exercises covering file permissions, ownership, and ACLs in a Linux environment.",status:"Complete",tags:["Linux","Bash","chmod","Security"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Shell Scripting Automation",description:"Bash scripts for system monitoring, log rotation, and scheduled backups using cron.",status:"In Progress",tags:["Bash","Scripting","Cron"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Linux Networking Fundamentals",description:"Configure network interfaces, routing tables, and basic firewall rules on Ubuntu Server.",status:"Planned",tags:["Linux","Networking","TCP/IP","iptables"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"LAMP Stack Deployment",description:"Manually configure a full LAMP stack on an Ubuntu VM and host a simple web application.",status:"Planned",tags:["Linux","Apache","MySQL","PHP"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"SSH Hardening & Key Management",description:"Implement SSH key-based authentication, disable password login, and configure fail2ban.",status:"Planned",tags:["SSH","Linux","Security","Keys"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()}
+{id:genId(),title:"Linux File System & Permissions Lab",description:"Exercises covering file permissions, ownership, and ACLs in a Linux environment.",status:"Complete",tags:["Linux","Bash","chmod","S[...]
+{id:genId(),title:"Shell Scripting Automation",description:"Bash scripts for system monitoring, log rotation, and scheduled backups using cron.",status:"In Progress",tags:["Bash","Scripting","Cron"],s[...]
+{id:genId(),title:"Linux Networking Fundamentals",description:"Configure network interfaces, routing tables, and basic firewall rules on Ubuntu Server.",status:"Planned",tags:["Linux","Networking","TC[...]
+{id:genId(),title:"LAMP Stack Deployment",description:"Manually configure a full LAMP stack on an Ubuntu VM and host a simple web application.",status:"Planned",tags:["Linux","Apache","MySQL","PHP"],s[...]
+{id:genId(),title:"SSH Hardening & Key Management",description:"Implement SSH key-based authentication, disable password login, and configure fail2ban.",status:"Planned",tags:["SSH","Linux","Security"[...]
 ],
 azureLabs:[
-{id:genId(),title:"AZ-900 Fundamentals Labs",description:"Completed all Microsoft Learn hands-on labs for the AZ-900 certification track.",status:"Complete",tags:["Azure","AZ-900","Fundamentals"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"AZ-104 Administrator Labs",description:"Working through the AZ-104 lab series covering VMs, storage, networking, and identity.",status:"In Progress",tags:["Azure","AZ-104","VMs","Networking"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Virtual Network Peering Lab",description:"Configure VNet-to-VNet peering and test connectivity across subnets with NSG rules.",status:"Planned",tags:["Azure","VNet","Peering","NSG"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Azure Active Directory & RBAC",description:"Set up users, groups, and role assignments in Microsoft Entra ID with conditional access policies.",status:"Planned",tags:["Azure AD","RBAC","Identity","Entra"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Azure Monitor & Log Analytics",description:"Configure diagnostics, create alerts, and write KQL queries in Log Analytics workspace.",status:"Planned",tags:["Azure Monitor","KQL","Log Analytics"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()}
+{id:genId(),title:"AZ-900 Fundamentals Labs",description:"Completed all Microsoft Learn hands-on labs for the AZ-900 certification track.",status:"Complete",tags:["Azure","AZ-900","Fundamentals"],show[...]
+{id:genId(),title:"AZ-104 Administrator Labs",description:"Working through the AZ-104 lab series covering VMs, storage, networking, and identity.",status:"In Progress",tags:["Azure","AZ-104","VMs","Ne[...]
+{id:genId(),title:"Virtual Network Peering Lab",description:"Configure VNet-to-VNet peering and test connectivity across subnets with NSG rules.",status:"Planned",tags:["Azure","VNet","Peering","NSG"][...]
+{id:genId(),title:"Azure Active Directory & RBAC",description:"Set up users, groups, and role assignments in Microsoft Entra ID with conditional access policies.",status:"Planned",tags:["Azure AD","RB[...]
+{id:genId(),title:"Azure Monitor & Log Analytics",description:"Configure diagnostics, create alerts, and write KQL queries in Log Analytics workspace.",status:"Planned",tags:["Azure Monitor","KQL","Lo[...]
 ],
 aiWork:[
-{id:genId(),title:"QuickBooks AI Integration Analysis",description:"Analyzed AI features within QuickBooks Omni across 5 task modules — automation, categorization, and reporting.",status:"Complete",tags:["AI","Bookkeeping","QuickBooks"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Azure AI Services Lab",description:"Use Azure Cognitive Services (Vision, Language, Speech) to build a demo multi-modal app.",status:"Planned",tags:["Azure AI","Cognitive Services","Python"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"AI-Assisted Data Pipeline",description:"Pipeline that uses Azure AI to classify and route incoming data automatically.",status:"Planned",tags:["Azure AI","Data Factory","Python"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Prompt Engineering for Productivity",description:"Document and test prompting strategies for Copilot and other tools in real work scenarios.",status:"In Progress",tags:["AI","Prompt Engineering","Copilot"],showcase:true,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Azure Machine Learning Workspace",description:"Create an AML workspace, train a simple classification model, and deploy it as an endpoint.",status:"Planned",tags:["Azure ML","Python","Jupyter"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()}
+{id:genId(),title:"QuickBooks AI Integration Analysis",description:"Analyzed AI features within QuickBooks Omni across 5 task modules — automation, categorization, and reporting.",status:"Complete",[...]
+{id:genId(),title:"Azure AI Services Lab",description:"Use Azure Cognitive Services (Vision, Language, Speech) to build a demo multi-modal app.",status:"Planned",tags:["Azure AI","Cognitive Services",[...]
+{id:genId(),title:"AI-Assisted Data Pipeline",description:"Pipeline that uses Azure AI to classify and route incoming data automatically.",status:"Planned",tags:["Azure AI","Data Factory","Python"],sh[...]
+{id:genId(),title:"Prompt Engineering for Productivity",description:"Document and test prompting strategies for Copilot and other tools in real work scenarios.",status:"In Progress",tags:["AI","Prompt[...]
+{id:genId(),title:"Azure Machine Learning Workspace",description:"Create an AML workspace, train a simple classification model, and deploy it as an endpoint.",status:"Planned",tags:["Azure ML","Python[...]
 ],
 cybersecurity:[
-{id:genId(),title:"Network Security Fundamentals",description:"Coursework covering OSI model, common attack vectors, firewall rules, and threat categories.",status:"In Progress",tags:["Networking","Firewalls","TCP/IP","Security"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Azure Security Center Lab",description:"Configure Microsoft Defender for Cloud, review security posture scores, and set up alerts.",status:"Planned",tags:["Azure Defender","Security Center","SIEM"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Identity & Access Management",description:"Design and document a Zero Trust access model for a hypothetical organization using Entra ID.",status:"Planned",tags:["IAM","MFA","Zero Trust","Entra"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Vulnerability Scanning with Nessus",description:"Run a vulnerability scan in a lab environment and produce a remediation report.",status:"Planned",tags:["Nessus","Vulnerability","Scanning"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),title:"Security Compliance Documentation",description:"Map cloud controls to NIST 800-53 and produce a compliance checklist for an Azure environment.",status:"Planned",tags:["Compliance","NIST","Documentation"],showcase:false,link:"",notes:"",createdAt:new Date().toISOString()}
+{id:genId(),title:"Network Security Fundamentals",description:"Coursework covering OSI model, common attack vectors, firewall rules, and threat categories.",status:"In Progress",tags:["Networking","Fi[...]
+{id:genId(),title:"Azure Security Center Lab",description:"Configure Microsoft Defender for Cloud, review security posture scores, and set up alerts.",status:"Planned",tags:["Azure Defender","Security[...]
+{id:genId(),title:"Identity & Access Management",description:"Design and document a Zero Trust access model for a hypothetical organization using Entra ID.",status:"Planned",tags:["IAM","MFA","Zero Tr[...]
+{id:genId(),title:"Vulnerability Scanning with Nessus",description:"Run a vulnerability scan in a lab environment and produce a remediation report.",status:"Planned",tags:["Nessus","Vulnerability","Sc[...]
+{id:genId(),title:"Security Compliance Documentation",description:"Map cloud controls to NIST 800-53 and produce a compliance checklist for an Azure environment.",status:"Planned",tags:["Compliance","[...]
 ]
 };
 }
 
 function getDefaultCSU(){return [
-{id:genId(),code:"ENG 101",title:"Composition I",status:"Complete",credits:2.67,group:"Transfer Credits",degreeTrack:["General Education"],tags:["Transfer","Writing","GE"],description:"Transferred composition credit.",category:"Transfer Credits",platform:"Transfer",startDate:"",endDate:"",showcase:false,link:"",notes:"Transfer credit applied.",createdAt:new Date().toISOString()},
-{id:genId(),code:"TRART 01",title:"TR - Arts and Humanities Elective 1",status:"Complete",credits:2.67,group:"Transfer Credits",degreeTrack:["General Education"],tags:["Transfer","Arts","Humanities","GE"],description:"Transferred arts & humanities credit.",category:"Transfer Credits",platform:"Transfer",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"TRART 02",title:"TR - Arts and Humanities Elective 2",status:"Complete",credits:2.67,group:"Transfer Credits",degreeTrack:["General Education"],tags:["Transfer","Arts","Humanities","GE"],description:"Transferred arts & humanities credit.",category:"Transfer Credits",platform:"Transfer",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"TRSOC 01",title:"TR - Social Science Elective 1",status:"Complete",credits:2.67,group:"Transfer Credits",degreeTrack:["General Education"],tags:["Transfer","Social Science","GE"],description:"Transferred social science credit.",category:"Transfer Credits",platform:"Transfer",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"TRELEC 01",title:"TR - General Elective 01",status:"Complete",credits:4,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elective credit.",category:"Electives",platform:"Transfer",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"TRELEC 02",title:"TR - General Elective 02",status:"Complete",credits:4,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elective credit.",category:"Electives",platform:"Transfer",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"TRELEC 03",title:"TR - General Elective 03",status:"Complete",credits:4,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elective credit.",category:"Electives",platform:"Transfer",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"TRELEC 04",title:"TR - General Elective 04",status:"Complete",credits:1,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elective credit.",category:"Electives",platform:"Transfer",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"TRELEC 05",title:"TR - General Elective 05",status:"Complete",credits:1,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elective credit.",category:"Electives",platform:"Transfer",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"TRELEC 06",title:"TR - General Elective 06",status:"Complete",credits:1,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elective credit.",category:"Electives",platform:"Transfer",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"TRELEC 08",title:"TR - General Elective 08",status:"Complete",credits:2.32,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elective credit.",category:"Electives",platform:"Transfer",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"SOPH 0005",title:"Introduction to Statistics",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Math","Statistics"],description:"Sophia Learning — completes math GE requirement.",category:"General Education",platform:"Sophia Learning",startDate:"2026-04-27",endDate:"",showcase:false,link:"",notes:"Completes Mathematics GE",createdAt:new Date().toISOString()},
-{id:genId(),code:"SOPH 0009",title:"Introduction to Nutrition",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Natural Science"],description:"Sophia Learning — natural science GE.",category:"General Education",platform:"Sophia Learning",startDate:"2026-05-06",endDate:"",showcase:false,link:"",notes:"Natural Science GE (3 of 7, NS)",createdAt:new Date().toISOString()},
-{id:genId(),code:"SOPH 0022",title:"U.S. History I",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","History"],description:"Sophia Learning — completes history GE requirement.",category:"General Education",platform:"Sophia Learning",startDate:"",endDate:"",showcase:false,link:"",notes:"Completes History GE",createdAt:new Date().toISOString()},
-{id:genId(),code:"SOPH 0048",title:"Introduction to Psychology",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Psychology","Social Science"],description:"Sophia Learning — completes social & behavioral sciences GE.",category:"General Education",platform:"Sophia Learning",startDate:"",endDate:"",showcase:false,link:"",notes:"Completes Social & Behavioral Sciences GE",createdAt:new Date().toISOString()},
-{id:genId(),code:"SOPH 0049",title:"Workplace Writing II",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Writing","Communications"],description:"Sophia Learning — completes written communications GE.",category:"General Education",platform:"Sophia Learning",startDate:"",endDate:"",showcase:false,link:"",notes:"Completes Written Communications GE",createdAt:new Date().toISOString()},
-{id:genId(),code:"SOPH 0026",title:"Essentials of Managing Conflict",status:"Planned",credits:1,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Management","Conflict"],description:"Sophia Learning — additional GE.",category:"General Education",platform:"Sophia Learning",startDate:"",endDate:"",showcase:false,link:"",notes:"Additional GE",createdAt:new Date().toISOString()},
-{id:genId(),code:"PHY 101",title:"Intro to Physics w/Lab",status:"Planned",credits:4,group:"General Education",degreeTrack:["General Education"],tags:["CSU","Physics","Lab","Natural Science"],description:"Natural science with lab GE — completes NS requirement.",category:"General Education",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"Natural Science with Lab GE — completes NS requirement",createdAt:new Date().toISOString()},
-{id:genId(),code:"HUM 101",title:"Critical Reasoning",status:"Planned",credits:0,group:"General Education",degreeTrack:["General Education"],tags:["CSU","Humanities","Critical Thinking"],description:"Additional GE requirement.",category:"General Education",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"Forced into Additional GE Requirements — Spring 2030",createdAt:new Date().toISOString()},
-{id:genId(),code:"MGT 300",title:"Principles of Management",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Management","Business"],description:"Foundational management theory and practice.",category:"Major in Agile Project Management",platform:"CSU",startDate:"2026-06-08",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ORG 300",title:"Applying Leadership Principles",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Leadership","Management"],description:"Leadership principles for organizations.",category:"Major in Agile Project Management",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"PJM 405",title:"Fundamentals of Agile Framework",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Agile","Framework"],description:"Introduction to Agile frameworks and methodology.",category:"Major in Agile Project Management",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"PJM 420",title:"Mastering Agile Methodologies",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Agile","Scrum","Kanban"],description:"Deep dive into Agile methodologies.",category:"Major in Agile Project Management",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"PJM 422",title:"Agile Planning, Estimating & Performance Reporting",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Agile","Planning","Estimating"],description:"Agile planning, estimation, and performance tracking.",category:"Major in Agile Project Management",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"PJM 423",title:"Agile Project Execution & Value Delivery",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Agile","Execution","Value"],description:"Agile project execution and value delivery.",category:"Major in Agile Project Management",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"PJM 424",title:"Agile Quality Management",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Agile","Quality"],description:"Quality management in Agile environments.",category:"Major in Agile Project Management",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"PJM 425",title:"Agile Team Leadership & Coaching",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Agile","Leadership","Coaching"],description:"Team leadership and coaching in Agile.",category:"Major in Agile Project Management",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"PJM 426",title:"Managing Risk, Quality & Change in Agile Projects",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Agile","Risk","Change Management"],description:"Risk, quality, and change management in Agile.",category:"Major in Agile Project Management",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"PJM 427",title:"Managing Agile Software Development",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Agile","Software Development"],description:"Managing software development with Agile.",category:"Major in Agile Project Management",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"PJM 428",title:"Integrating Emerging Technologies with Agile",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Agile","Emerging Tech"],description:"Integrating new technologies within Agile frameworks.",category:"Major in Agile Project Management",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"PJM 429",title:"Mastering Scrum Principles & Practices",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Scrum","Agile"],description:"Deep dive into Scrum principles and practices.",category:"Major in Agile Project Management",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"PJM 430",title:"Capstone: Agile Project Management",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Capstone","Agile"],description:"Capstone project for Agile PM major.",category:"Major in Agile Project Management",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"CSC 425",title:"Principles of Machine Learning",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specialization"],tags:["CSU","ML","AI"],description:"Machine learning foundations.",category:"Azure AI Automation Specialization",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"PreReq — needs CSC 410 first",createdAt:new Date().toISOString()},
-{id:genId(),code:"CSC 486",title:"Introduction to Azure & AI Services",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specialization"],tags:["CSU","Azure","AI Services"],description:"Introduction to Azure AI services.",category:"Azure AI Automation Specialization",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"CSC 487",title:"AI Automation with Azure Cognitive Services",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specialization"],tags:["CSU","Azure","Cognitive Services","AI"],description:"AI automation using Azure Cognitive Services.",category:"Azure AI Automation Specialization",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"CSC 488",title:"Automating AI Workflows with Azure and DevOps",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specialization"],tags:["CSU","Azure","DevOps","AI"],description:"AI workflow automation with Azure DevOps.",category:"Azure AI Automation Specialization",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"CSC 489",title:"Building Intelligent Bots with Azure Bot Services",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specialization"],tags:["CSU","Azure","Bots","AI"],description:"Building intelligent bots with Azure Bot Services.",category:"Azure AI Automation Specialization",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"CSC 490",title:"Advanced Topics in AI and Azure",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specialization"],tags:["CSU","Azure","AI","Advanced"],description:"Advanced topics in AI and Azure.",category:"Azure AI Automation Specialization",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ITS 315",title:"Introduction to Networking",status:"Planned",credits:3,group:"Electives",degreeTrack:["Electives"],tags:["CSU","Networking","IT"],description:"Introduction to networking concepts.",category:"Electives",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ITS 320",title:"Basic Programming",status:"Planned",credits:3,group:"Electives",degreeTrack:["Electives"],tags:["CSU","Programming","Code"],description:"Introductory programming concepts and exercises.",category:"Electives",platform:"CSU",startDate:"2026-06-08",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"MIS 300",title:"Information Systems Design and Management",status:"Planned",credits:3,group:"Electives",degreeTrack:["Electives"],tags:["CSU","IS","Management"],description:"Information systems design and management.",category:"Electives",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"CSC 410",title:"Artificial Intelligence",status:"Planned",credits:3,group:"Electives",degreeTrack:["Electives"],tags:["CSU","AI","Computer Science"],description:"Artificial intelligence foundations.",category:"Electives",platform:"CSU",startDate:"",endDate:"",showcase:false,link:"",notes:"PreReq for CSC 425",createdAt:new Date().toISOString()},
-{id:genId(),code:"ISM 501",title:"IT Management",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","IT Management"],description:"IT management foundations.",category:"MS IT Management",platform:"CSU Graduate",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ISM 511",title:"Managing Virtualized and Cloud Systems",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","Cloud","Virtualization"],description:"Managing virtualized and cloud systems.",category:"MS IT Management",platform:"CSU Graduate",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ISM 521",title:"Managing Enterprise Resource Planning (ERP) Systems",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","ERP","Enterprise"],description:"Managing ERP systems.",category:"MS IT Management",platform:"CSU Graduate",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ISM 525",title:"Ethical Considerations in Managing IT",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","Ethics","IT"],description:"Ethical considerations in IT management.",category:"MS IT Management",platform:"CSU Graduate",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ISM 545",title:"Information Technology Auditing and Assurance",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","Auditing","Assurance"],description:"IT auditing and assurance.",category:"MS IT Management",platform:"CSU Graduate",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ISM 550",title:"Information Systems and Security",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","IS","Security"],description:"Information systems and security.",category:"MS IT Management",platform:"CSU Graduate",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ISM 561",title:"Business Continuity and Disaster Recovery",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","BCDR","Disaster Recovery"],description:"Business continuity and disaster recovery.",category:"MS IT Management",platform:"CSU Graduate",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ISM 581",title:"Capstone: IT Management",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","Capstone","IT Management"],description:"Capstone project for MS IT Management.",category:"MS IT Management",platform:"CSU Graduate",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ISM 527",title:"Cybersecurity Management",status:"Planned",credits:3,group:"Cybersecurity Specialization",degreeTrack:["Cybersecurity Specialization"],tags:["CSU Graduate","Cybersecurity","Management"],description:"Cybersecurity management.",category:"Cybersecurity Specialization",platform:"CSU Graduate",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ISM 529",title:"Emerging Cyber Tech Threats & Defense",status:"Planned",credits:3,group:"Cybersecurity Specialization",degreeTrack:["Cybersecurity Specialization"],tags:["CSU Graduate","Cybersecurity","Threats"],description:"Emerging cyber threats and defense.",category:"Cybersecurity Specialization",platform:"CSU Graduate",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ISM 530",title:"Enterprise Cybersecurity",status:"Planned",credits:3,group:"Cybersecurity Specialization",degreeTrack:["Cybersecurity Specialization"],tags:["CSU Graduate","Cybersecurity","Enterprise"],description:"Enterprise cybersecurity.",category:"Cybersecurity Specialization",platform:"CSU Graduate",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()},
-{id:genId(),code:"ISM 531",title:"Cybersecurity Defense & Countermeasures",status:"Planned",credits:3,group:"Cybersecurity Specialization",degreeTrack:["Cybersecurity Specialization"],tags:["CSU Graduate","Cybersecurity","Defense"],description:"Cybersecurity defense and countermeasures.",category:"Cybersecurity Specialization",platform:"CSU Graduate",startDate:"",endDate:"",showcase:false,link:"",notes:"",createdAt:new Date().toISOString()}
+{id:genId(),code:"ENG 101",title:"Composition I",status:"Complete",credits:2.67,group:"Transfer Credits",degreeTrack:["General Education"],tags:["Transfer","Writing","GE"],description:"Transferred com[...]
+{id:genId(),code:"TRART 01",title:"TR - Arts and Humanities Elective 1",status:"Complete",credits:2.67,group:"Transfer Credits",degreeTrack:["General Education"],tags:["Transfer","Arts","Humanities","[...]
+{id:genId(),code:"TRART 02",title:"TR - Arts and Humanities Elective 2",status:"Complete",credits:2.67,group:"Transfer Credits",degreeTrack:["General Education"],tags:["Transfer","Arts","Humanities","[...]
+{id:genId(),code:"TRSOC 01",title:"TR - Social Science Elective 1",status:"Complete",credits:2.67,group:"Transfer Credits",degreeTrack:["General Education"],tags:["Transfer","Social Science","GE"],des[...]
+{id:genId(),code:"TRELEC 01",title:"TR - General Elective 01",status:"Complete",credits:4,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elec[...]
+{id:genId(),code:"TRELEC 02",title:"TR - General Elective 02",status:"Complete",credits:4,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elec[...]
+{id:genId(),code:"TRELEC 03",title:"TR - General Elective 03",status:"Complete",credits:4,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elec[...]
+{id:genId(),code:"TRELEC 04",title:"TR - General Elective 04",status:"Complete",credits:1,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elec[...]
+{id:genId(),code:"TRELEC 05",title:"TR - General Elective 05",status:"Complete",credits:1,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elec[...]
+{id:genId(),code:"TRELEC 06",title:"TR - General Elective 06",status:"Complete",credits:1,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general elec[...]
+{id:genId(),code:"TRELEC 08",title:"TR - General Elective 08",status:"Complete",credits:2.32,group:"Electives",degreeTrack:["Electives"],tags:["Transfer","Elective"],description:"Transferred general e[...]
+{id:genId(),code:"SOPH 0005",title:"Introduction to Statistics",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Math","Statistics"],description:"[...]
+{id:genId(),code:"SOPH 0009",title:"Introduction to Nutrition",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Natural Science"],description:"Sop[...]
+{id:genId(),code:"SOPH 0022",title:"U.S. History I",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","History"],description:"Sophia Learning — co[...]
+{id:genId(),code:"SOPH 0048",title:"Introduction to Psychology",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Psychology","Social Science"],des[...]
+{id:genId(),code:"SOPH 0049",title:"Workplace Writing II",status:"Planned",credits:3,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Writing","Communications"],description:[...]
+{id:genId(),code:"SOPH 0026",title:"Essentials of Managing Conflict",status:"Planned",credits:1,group:"General Education",degreeTrack:["General Education"],tags:["Sophia","Management","Conflict"],desc[...]
+{id:genId(),code:"PHY 101",title:"Intro to Physics w/Lab",status:"Planned",credits:4,group:"General Education",degreeTrack:["General Education"],tags:["CSU","Physics","Lab","Natural Science"],descript[...]
+{id:genId(),code:"HUM 101",title:"Critical Reasoning",status:"Planned",credits:0,group:"General Education",degreeTrack:["General Education"],tags:["CSU","Humanities","Critical Thinking"],description:"[...]
+{id:genId(),code:"MGT 300",title:"Principles of Management",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Manageme[...]
+{id:genId(),code:"ORG 300",title:"Applying Leadership Principles",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Le[...]
+{id:genId(),code:"PJM 405",title:"Fundamentals of Agile Framework",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","A[...]
+{id:genId(),code:"PJM 420",title:"Mastering Agile Methodologies",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Agi[...]
+{id:genId(),code:"PJM 422",title:"Agile Planning, Estimating & Performance Reporting",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Manageme[...]
+{id:genId(),code:"PJM 423",title:"Agile Project Execution & Value Delivery",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:[...]
+{id:genId(),code:"PJM 424",title:"Agile Quality Management",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","Agile","[...]
+{id:genId(),code:"PJM 425",title:"Agile Team Leadership & Coaching",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU","[...]
+{id:genId(),code:"PJM 426",title:"Managing Risk, Quality & Change in Agile Projects",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Managemen[...]
+{id:genId(),code:"PJM 427",title:"Managing Agile Software Development",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU[...]
+{id:genId(),code:"PJM 428",title:"Integrating Emerging Technologies with Agile",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],t[...]
+{id:genId(),code:"PJM 429",title:"Mastering Scrum Principles & Practices",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["[...]
+{id:genId(),code:"PJM 430",title:"Capstone: Agile Project Management",status:"Planned",credits:3,group:"Major in Agile Project Management",degreeTrack:["Major in Agile Project Management"],tags:["CSU[...]
+{id:genId(),code:"CSC 425",title:"Principles of Machine Learning",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specialization"],tags:["CSU","[...]
+{id:genId(),code:"CSC 486",title:"Introduction to Azure & AI Services",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specialization"],tags:["C[...]
+{id:genId(),code:"CSC 487",title:"AI Automation with Azure Cognitive Services",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specializati[...]
+{id:genId(),code:"CSC 488",title:"Automating AI Workflows with Azure and DevOps",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specializa[...]
+{id:genId(),code:"CSC 489",title:"Building Intelligent Bots with Azure Bot Services",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specia[...]
+{id:genId(),code:"CSC 490",title:"Advanced Topics in AI and Azure",status:"Planned",credits:3,group:"Azure AI Automation Specialization",degreeTrack:["Azure AI Automation Specialization"],tags:["CSU",[...]
+{id:genId(),code:"ITS 315",title:"Introduction to Networking",status:"Planned",credits:3,group:"Electives",degreeTrack:["Electives"],tags:["CSU","Networking","IT"],description:"Introduction to network[...]
+{id:genId(),code:"ITS 320",title:"Basic Programming",status:"Planned",credits:3,group:"Electives",degreeTrack:["Electives"],tags:["CSU","Programming","Code"],description:"Introductory programming conc[...]
+{id:genId(),code:"MIS 300",title:"Information Systems Design and Management",status:"Planned",credits:3,group:"Electives",degreeTrack:["Electives"],tags:["CSU","IS","Management"],description:"Informat[...]
+{id:genId(),code:"CSC 410",title:"Artificial Intelligence",status:"Planned",credits:3,group:"Electives",degreeTrack:["Electives"],tags:["CSU","AI","Computer Science"],description:"Artificial intellige[...]
+{id:genId(),code:"ISM 501",title:"IT Management",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","IT Management"],description:"IT management f[...]
+{id:genId(),code:"ISM 511",title:"Managing Virtualized and Cloud Systems",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","Cloud","Virtualizat[...]
+{id:genId(),code:"ISM 521",title:"Managing Enterprise Resource Planning (ERP) Systems",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","ERP","[...]
+{id:genId(),code:"ISM 525",title:"Ethical Considerations in Managing IT",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","Ethics","IT"],descri[...]
+{id:genId(),code:"ISM 545",title:"Information Technology Auditing and Assurance",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","Auditing","A[...]
+{id:genId(),code:"ISM 550",title:"Information Systems and Security",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","IS","Security"],descripti[...]
+{id:genId(),code:"ISM 561",title:"Business Continuity and Disaster Recovery",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","BCDR","Disaster [...]
+{id:genId(),code:"ISM 581",title:"Capstone: IT Management",status:"Planned",credits:3,group:"MS IT Management",degreeTrack:["MS IT Management"],tags:["CSU Graduate","Capstone","IT Management"],descrip[...]
+{id:genId(),code:"ISM 527",title:"Cybersecurity Management",status:"Planned",credits:3,group:"Cybersecurity Specialization",degreeTrack:["Cybersecurity Specialization"],tags:["CSU Graduate","Cybersecu[...]
+{id:genId(),code:"ISM 529",title:"Emerging Cyber Tech Threats & Defense",status:"Planned",credits:3,group:"Cybersecurity Specialization",degreeTrack:["Cybersecurity Specialization"],tags:["CSU Graduat[...]
+{id:genId(),code:"ISM 530",title:"Enterprise Cybersecurity",status:"Planned",credits:3,group:"Cybersecurity Specialization",degreeTrack:["Cybersecurity Specialization"],tags:["CSU Graduate","Cybersecu[...]
+{id:genId(),code:"ISM 531",title:"Cybersecurity Defense & Countermeasures",status:"Planned",credits:3,group:"Cybersecurity Specialization",degreeTrack:["Cybersecurity Specialization"],tags:["CSU Gradu[...]
 ];}
 
-function getDefaultProfile(){return {name:"Carla Bailey",title:"Azure Solutions Architect Candidate",location:"Cortez, CO",email:"carla.bailey0314@outlook.com",phone:"",linkedin:"https://www.linkedin.com/in/carla0314/",github:"https://github.com/cbailey0314",website:"",aboutMe:"I'm an IT professional and CSU student pursuing a career as an Azure Solutions Architect. My background spans cloud infrastructure, Linux systems, AI integration, and agile project management. I'm passionate about building scalable, secure cloud solutions and continuously expanding my technical skill set.",targetRole:"Azure Solutions Architect",targetTimeline:"2027",currentFocus:"AZ-104 Certification \u00B7 CSU Coursework \u00B7 Portfolio Building",avatarPhoto:"",certifications:[{id:1,name:"AZ-900: Azure Fundamentals",issuer:"Microsoft",date:"",status:"Planned"},{id:2,name:"AZ-104: Azure Administrator",issuer:"Microsoft",date:"",status:"Planned"},{id:3,name:"AZ-305: Azure Solutions Architect Expert",issuer:"Microsoft",date:"",status:"Planned"},{id:4,name:"Linux+ (CompTIA)",issuer:"CompTIA",date:"",status:"Planned"}],skills:["Azure","Linux","Bash","Python","Networking","SQL","IaC / Bicep","Azure DevOps","AI/ML","Agile / Scrum","Cost Management","Azure Monitor","KQL","Entra ID / RBAC","TCP/IP","Git","GitHub"]};}
+function getDefaultProfile(){return {name:"Carla Bailey",title:"Azure Solutions Architect Candidate",location:"Cortez, CO",email:"carla.bailey0314@outlook.com",phone:"",linkedin:"https://www.linkedin.[...]
 
 function getDefaultEducation(){return [
-  {id:genId(),institution:"Colorado State University",degree:"B.S. Computer Information Systems",fieldOfStudy:"Azure Solutions Architect Track",startYear:2025,endYear:null,isPresent:true,status:"In Progress",notes:"BS with dual specialization in Azure AI and Agile Project Management."},
-  {id:genId(),institution:"Colorado State University",degree:"M.S. IT Management",fieldOfStudy:"Cybersecurity & AI Specialization",startYear:2026,endYear:null,isPresent:true,status:"Planned",notes:"Graduate program following BS completion."},
-  {id:genId(),institution:"Arizona State University",degree:"Intro to Python",fieldOfStudy:"Non-degree",startYear:2026,endYear:2026,isPresent:false,status:"Complete",notes:"Introductory Python programming course through ASU."}
+  {id:genId(),institution:"Colorado State University",degree:"B.S. Computer Information Systems",fieldOfStudy:"Azure Solutions Architect Track",startYear:2025,endYear:null,isPresent:true,status:"In Pr[...]
+  {id:genId(),institution:"Colorado State University",degree:"M.S. IT Management",fieldOfStudy:"Cybersecurity & AI Specialization",startYear:2026,endYear:null,isPresent:true,status:"Planned",notes:"Gr[...]
+  {id:genId(),institution:"Arizona State University",degree:"Intro to Python",fieldOfStudy:"Non-degree",startYear:2026,endYear:2026,isPresent:false,status:"Complete",notes:"Introductory Python program[...]
 ];}
 
 function getDefaultGoals(){return {
@@ -770,7 +796,7 @@ if(i===8&&ngUnlocked)mb.style.background=currentTab===8?'linear-gradient(135deg,
 mt.appendChild(mb);
 });
 dt.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{currentTab=parseInt(b.dataset.tab);portfolioMode=false;render();}));
-mt.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{currentTab=parseInt(b.dataset.tab);portfolioMode=false;document.getElementById('mobile-menu').classList.add('hidden');render();}));
+mt.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{currentTab=parseInt(b.dataset.tab);portfolioMode=false;document.getElementById('mobile-menu').classList.add('hidden');render([...]
 }
 
 // ============ CREDIT CALCULATOR ============
@@ -845,8 +871,8 @@ html+='<h2 class="text-xl md:text-2xl font-bold text-white mb-6 flex items-cente
 
 html+=`<div class="credit-summary-card mb-6">`;
 html+=`<div class="flex flex-col md:flex-row md:items-center gap-4 mb-4">`;
-html+=`<div class="flex-1"><div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4 text-azure-400"></i> Degree Credit Progress</span></div>`;
-html+=`<div class="flex items-center gap-3 mb-2"><span class="text-2xl font-bold text-white">${cr.totalEarned.toFixed(1)}</span><span class="text-sm text-slate-400">/ ${TOTAL_CREDIT_GOAL} credits earned</span><span class="text-sm font-semibold text-azure-400">${earnedPct}%</span></div>`;
+html+=`<div class="flex-1"><div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4 te[...]
+html+=`<div class="flex items-center gap-3 mb-2"><span class="text-2xl font-bold text-white">${cr.totalEarned.toFixed(1)}</span><span class="text-sm text-slate-400">/ ${TOTAL_CREDIT_GOAL} credits earn[...]
 html+=`<div class="h-4 rounded-full overflow-hidden flex" style="background:rgba(255,255,255,0.1)">`;
 html+=`<div class="credit-bar-segment" style="width:${Math.min(earnedPct,100)}%;background:#22c55e" data-target="${earnedPct}"></div>`;
 html+=`<div class="credit-bar-segment" style="width:${Math.min(inProgPct,100-earnedPct)}%;background:#f59e0b" data-target="${inProgPct}"></div>`;
@@ -854,12 +880,12 @@ html+=`<div class="credit-bar-segment" style="width:${Math.min(plannedPct,100-ea
 html+=`</div>`;
 html+=`</div></div>`;
 html+=`<div class="grid grid-cols-2 md:grid-cols-4 gap-3">`;
-html+=`<div class="p-3 rounded-lg" style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2)"><div class="text-xs text-slate-400 mb-1">General Education</div><div class="text-lg font-bold" style="color:#a78bfa">${geEarned.toFixed(1)}</div><div class="text-xs text-slate-500">/ ${goals['General Education']} cr goal</div></div>`;
-html+=`<div class="p-3 rounded-lg" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2)"><div class="text-xs text-slate-400 mb-1">Agile Major</div><div class="text-lg font-bold" style="color:#34d399">${majorEarned.toFixed(1)}</div><div class="text-xs text-slate-500">/ ${goals['Major in Agile Project Management']} cr goal</div></div>`;
-html+=`<div class="p-3 rounded-lg" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2)"><div class="text-xs text-slate-400 mb-1">Electives</div><div class="text-lg font-bold" style="color:#fbbf24">${electEarned.toFixed(1)}</div><div class="text-xs text-slate-500">/ ${goals['Electives']} cr goal</div></div>`;
-html+=`<div class="p-3 rounded-lg" style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2)"><div class="text-xs text-slate-400 mb-1">Azure AI Spec</div><div class="text-lg font-bold" style="color:#818cf8">${specEarned.toFixed(1)}</div><div class="text-xs text-slate-500">/ ${goals['Azure AI Automation Specialization']} cr goal</div></div>`;
+html+=`<div class="p-3 rounded-lg" style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2)"><div class="text-xs text-slate-400 mb-1">General Education</div><div class="text-lg f[...]
+html+=`<div class="p-3 rounded-lg" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2)"><div class="text-xs text-slate-400 mb-1">Agile Major</div><div class="text-lg font-bold[...]
+html+=`<div class="p-3 rounded-lg" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2)"><div class="text-xs text-slate-400 mb-1">Electives</div><div class="text-lg font-bold" [...]
+html+=`<div class="p-3 rounded-lg" style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2)"><div class="text-xs text-slate-400 mb-1">Azure AI Spec</div><div class="text-lg fo[...]
 html+=`</div>`;
-html+=`<div class="flex flex-wrap gap-4 mt-3 text-xs text-slate-400"><span class="flex items-center gap-1"><span class="w-3 h-2 rounded inline-block" style="background:#22c55e"></span> Earned</span><span class="flex items-center gap-1"><span class="w-3 h-2 rounded inline-block" style="background:#f59e0b"></span> In Progress</span><span class="flex items-center gap-1"><span class="w-3 h-2 rounded inline-block" style="background:#475569"></span> Planned</span></div>`;
+html+=`<div class="flex flex-wrap gap-4 mt-3 text-xs text-slate-400"><span class="flex items-center gap-1"><span class="w-3 h-2 rounded inline-block" style="background:#22c55e"></span> Earned</sp[...]
 html+=`</div>`;
 
 html+='<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">';
@@ -876,10 +902,10 @@ totalShowcase+=items.filter(e=>e.showcase&&e.status==='Complete').length;
 const accent=DOMAIN_ACCENT_COLORS[i];
 const accentBg=accent+'20';
 const tabTarget=allTabIndices[i];
-html+=`<div class="dash-domain-card clickable-card p-5" data-tab-target="${tabTarget}" data-accent="${accent}" style="border-left:4px solid ${accent}!important"><div class="flex items-center gap-3 mb-3"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:${accentBg}"><i data-lucide="${allIcons[i]}" class="w-5 h-5" style="color:${accent}"></i></div><span class="font-semibold text-white">${allNames[i]}</span><span class="ml-auto text-xs font-medium" style="color:${accent}">${pct}%</span></div>`;
+html+=`<div class="dash-domain-card clickable-card p-5" data-tab-target="${tabTarget}" data-accent="${accent}" style="border-left:4px solid ${accent}!important"><div class="flex items-center gap-3 mb-[...]
 html+=`<div class="dash-progress-bar mb-3"><div class="progress-fill" style="width:0%;background:${accent}" data-target="${pct}"></div></div>`;
-html+=`<div class="flex gap-4 text-xs"><span class="flex items-center gap-1 text-slate-300"><span class="w-2 h-2 rounded-full inline-block" style="background:#94a3b8"></span> ${planned} Planned</span><span class="flex items-center gap-1 text-slate-300"><span class="w-2 h-2 rounded-full inline-block" style="background:#f59e0b"></span> ${inProg} In Progress</span><span class="flex items-center gap-1 text-slate-300"><span class="w-2 h-2 rounded-full inline-block" style="background:#22c55e"></span> ${complete} Complete</span></div>`;
-html+=`<div class="flex justify-end mt-3 pt-2 border-t" style="border-color:rgba(255,255,255,0.06)"><span class="view-all-link text-xs font-medium flex items-center gap-1" style="color:${accent}">View all <i data-lucide="arrow-right" class="w-3 h-3"></i></span></div>`;
+html+=`<div class="flex gap-4 text-xs"><span class="flex items-center gap-1 text-slate-300"><span class="w-2 h-2 rounded-full inline-block" style="background:#94a3b8"></span> ${planned} Planned</span>[...]
+html+=`<div class="flex justify-end mt-3 pt-2 border-t" style="border-color:rgba(255,255,255,0.06)"><span class="view-all-link text-xs font-medium flex items-center gap-1" style="color:${accent}"[...]
 html+=`</div>`;
 });
 html+='</div>';
@@ -889,7 +915,7 @@ if(totalPct>=25&&totalPct<50)quote='Momentum is building.';
 else if(totalPct>=50&&totalPct<75)quote="You're becoming the architect.";
 else if(totalPct>=75&&totalPct<100)quote='Almost there — polish and publish.';
 else if(totalPct>=100)quote='Portfolio complete. Go get that role.';
-html+=`<div class="dash-glass-card p-5 mb-6"><div class="flex flex-col md:flex-row md:items-center gap-4"><div class="flex-1"><div class="flex items-center justify-between mb-1"><span class="text-sm font-semibold text-white">Total Portfolio Progress</span><span class="text-sm font-bold text-azure-400">${totalPct}%</span></div><div class="dash-progress-bar"><div class="progress-fill" style="width:0%;background:#0078D4" data-target="${totalPct}"></div></div></div><div class="flex items-center gap-4"><span class="badge" style="background:rgba(245,158,11,0.15);color:#fbbf24"><i data-lucide="star" class="w-3 h-3 inline"></i> Showcase Ready: ${totalShowcase}</span><span class="text-sm italic" style="color:#94a3b8">"${quote}"</span></div></div></div>`;
+html+=`<div class="dash-glass-card p-5 mb-6"><div class="flex flex-col md:flex-row md:items-center gap-4"><div class="flex-1"><div class="flex items-center justify-between mb-1"><span class="text-sm f[...]
 html+=renderConstellation();
 html+=renderNextChapter();
 // Secret Ng trigger heart
@@ -898,771 +924,6 @@ html+=`<div style="text-align:center;margin-top:8px;opacity:${heartOpacity};curs
 html+='</div></div>';
 return html;
 }
-function renderConstellation(){
-const entries=getEntries();
-const csu=entries.csu||[];
-const goals=getGoals();
-
-let html=`<div class="relative">`;
-html+=`<div class="relative z-10"><div class="mb-6"><h3 class="text-white font-bold text-lg"><i data-lucide="orbit" class="w-5 h-5 inline text-violet-400"></i> Degree Constellation</h3><p class="text-slate-400 text-sm">Track your credits across each program</p></div>`;
-html+=`<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">`;
-let totalLogged=0;
-DEGREE_TRACKS.forEach((track,i)=>{
-const goal=goals[track]||0;
-let earned=0,inProg=0,planned=0;
-csu.forEach(c=>{if((c.degreeTrack||[]).includes(track)){if(c.status==='Complete')earned+=c.credits||0;else if(c.status==='In Progress')inProg+=c.credits||0;else planned+=c.credits||0;}});
-totalLogged+=earned+inProg+planned;
-const pct=goal?Math.min(100,Math.round(earned/goal*100)):0;
-const r=28,circ=2*Math.PI*r,offset=circ-(pct/100)*circ;
-html+=`<div class="constellation-card"><div class="flex items-center gap-2 mb-3"><span class="text-xl">${DEGREE_TRACK_ICONS[i]}</span><div class="flex-1 min-w-0"><div class="text-white font-semibold text-sm truncate">${track}</div><div class="text-azure-300 text-xs font-medium">${earned.toFixed(1)} / ${goal} cr</div></div></div>`;
-html+=`<div class="flex justify-center mb-3"><svg width="70" height="70" class="credit-ring"><circle cx="35" cy="35" r="${r}" stroke="#1e293b" stroke-width="5" fill="none"/><circle cx="35" cy="35" r="${r}" stroke="#0078D4" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="${circ}" stroke-dashoffset="${offset}" transform="rotate(-90 35 35)"/><text x="35" y="38" text-anchor="middle" fill="white" font-size="13" font-weight="bold">${pct}%</text></svg></div>`;
-const eW=goal?(earned/goal*100):0,iW=goal?(inProg/goal*100):0,pW=goal?(planned/goal*100):0;
-html+=`<div class="h-2 rounded-full overflow-hidden flex mb-2" style="background:#1e293b"><div style="width:${Math.min(eW,100)}%;background:#22c55e" class="h-full"></div><div style="width:${Math.min(iW,100-eW)}%;background:#f59e0b" class="h-full"></div><div style="width:${Math.min(pW,100-eW-iW)}%;background:#475569" class="h-full"></div></div>`;
-html+=`<div class="text-xs text-slate-400">${earned.toFixed(1)} earned \u00B7 ${inProg.toFixed(1)} in progress \u00B7 ${planned.toFixed(1)} planned</div>`;
-html+=`<div class="mt-2 flex items-center gap-1 text-xs"><span class="text-slate-400"><i data-lucide="target" class="w-3 h-3 inline"></i> Goal:</span><span class="text-white font-medium goal-val" data-track="${track}">${goal} cr</span><button class="text-azure-400 hover:text-azure-300 ml-1 edit-goal-btn" data-track="${track}" title="Edit goal"><i data-lucide="pencil" class="w-3 h-3"></i></button></div>`;
-html+=`</div>`;
-});
-html+=`</div>`;
-html+=`<p class="text-center text-slate-500 text-sm mt-6">Total Credits Logged: ${totalLogged.toFixed(1)} cr across all programs</p>`;
-html+=`</div></div>`;
-return html;
-}
-
-// ============ COLOR KEY LEGEND ============
-function renderColorKeyLegend(){
-let html=`<div class="color-key-legend">`;
-html+=`<div class="legend-title"><i data-lucide="palette" class="w-4 h-4" style="color:#a78bfa"></i> Color Key</div>`;
-html+=`<div class="legend-items">`;
-COLOR_KEY_ITEMS.forEach(item=>{
-html+=`<span class="color-key-swatch" style="background:${item.bgColor};border-color:${item.borderColor}"><span class="swatch-dot" style="background:${item.color};box-shadow:0 0 6px ${item.color}40"></span><span style="color:${item.color};font-weight:600">${item.label}</span></span>`;
-});
-html+=`</div></div>`;
-return html;
-}
-
-// ============ DOMAIN TAB ============
-function renderDomainTab(domainIdx){
-const slug=DOMAIN_SLUGS[domainIdx];
-const name=DOMAIN_NAMES[domainIdx];
-const icon=DOMAIN_ICONS[domainIdx];
-const desc=DOMAIN_DESCS[domainIdx];
-const entries=getEntries();
-const items=entries[slug]||[];
-let html=`<div class="max-w-7xl mx-auto px-4 md:px-6 py-6">`;
-html+=backToDashBtn();
-html+=`<div class="flex flex-col md:flex-row md:items-center gap-3 mb-6"><div class="flex items-center gap-3"><i data-lucide="${icon}" class="w-6 h-6 text-azure-400"></i><div><h2 class="text-xl md:text-2xl font-bold text-white">${name}</h2><p class="text-sm text-slate-400">${desc}</p></div></div><button class="btn-primary flex items-center gap-1 ml-auto add-entry-btn" data-domain="${slug}"><i data-lucide="plus" class="w-4 h-4"></i> Add Entry</button></div>`;
-html+=`<div id="form-area-${slug}"></div>`;
-if(!items.length){
-html+=`<div class="card p-12 text-center"><i data-lucide="inbox" class="w-12 h-12 text-slate-500 mx-auto mb-3"></i><p class="text-slate-400">No entries yet — add your first ${name.toLowerCase()} entry!</p></div>`;
-}else{
-html+=`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
-items.forEach(e=>{html+=renderEntryCard(e,slug);});
-html+=`</div>`;
-}
-html+=`</div>`;
-return html;
-}
-function renderEntryCard(e,domain){
-let html=`<div class="card entry-card p-4" data-status="${e.status}"><div class="flex items-start justify-between mb-2"><h3 class="font-semibold text-white text-sm">${esc(e.title)}</h3><button class="showcase-star ${e.showcase?'active':''}" data-id="${e.id}" data-domain="${domain}" title="Toggle showcase"><i data-lucide="star" class="w-4 h-4"></i></button></div>`;
-html+=`<p class="text-xs text-slate-400 mb-3">${esc(e.description)}</p>`;
-html+=`<div class="flex flex-wrap items-center gap-2 mb-3">${statusBadge(e.status)}</div>`;
-if(e.tags&&e.tags.length)html+=`<div class="flex flex-wrap gap-1 mb-3">${tagPills(e.tags)}</div>`;
-if(e.link)html+=`<div class="text-xs mb-2"><a href="${esc(e.link)}" target="_blank" class="text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="external-link" class="w-3 h-3"></i> ${esc(e.link)}</a></div>`;
-if(e.notes)html+=`<details class="mb-2"><summary class="text-xs text-slate-400 cursor-pointer">Notes</summary><p class="text-xs text-slate-400 mt-1">${esc(e.notes)}</p></details>`;
-html+=`<div class="flex gap-2 mt-2 pt-2 border-t" style="border-color:rgba(255,255,255,0.08)"><button class="btn-secondary text-xs py-1 px-3 edit-entry-btn" data-id="${e.id}" data-domain="${domain}"><i data-lucide="pencil" class="w-3 h-3 inline"></i> Edit</button><button class="btn-danger text-xs py-1 px-3 del-entry-btn" data-id="${e.id}" data-domain="${domain}"><i data-lucide="trash-2" class="w-3 h-3 inline"></i> Delete</button></div></div>`;
-return html;
-}
-
-// ============ ENTRY FORM ============
-function showEntryForm(domain,entry=null){
-const area=document.getElementById('form-area-'+domain);
-if(!area)return;
-const e=entry||{title:'',description:'',status:'Planned',tags:[],link:'',notes:'',showcase:false};
-area.innerHTML=`<div class="card p-5 mb-6 border-l-4" style="border-left-color:#0078D4"><h3 class="font-semibold text-white mb-4">${entry?'Edit':'Add'} Entry</h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Title</label><input class="form-input" id="ef-title" value="${esc(e.title)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Status</label><select class="form-input" id="ef-status"><option ${e.status==='Planned'?'selected':''}>Planned</option><option ${e.status==='In Progress'?'selected':''}>In Progress</option><option ${e.status==='Complete'?'selected':''}>Complete</option></select></div></div>
-<div class="mb-4"><label class="text-xs font-medium text-slate-400 mb-1 block">Description</label><textarea class="form-input" id="ef-desc" rows="2">${esc(e.description)}</textarea></div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Tags (comma-separated)</label><input class="form-input" id="ef-tags" value="${(e.tags||[]).join(', ')}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Link (URL)</label><input class="form-input" id="ef-link" value="${esc(e.link)}"></div></div>
-<div class="mb-4"><label class="text-xs font-medium text-slate-400 mb-1 block">Notes</label><textarea class="form-input" id="ef-notes" rows="2">${esc(e.notes)}</textarea></div>
-<div class="flex items-center gap-2 mb-4"><label class="text-xs font-medium text-slate-400">Showcase</label><input type="checkbox" id="ef-showcase" ${e.showcase?'checked':''}></div>
-<div class="flex gap-2"><button class="btn-primary" id="ef-save">Save</button><button class="btn-secondary" id="ef-cancel">Cancel</button></div></div>`;
-document.getElementById('ef-save').addEventListener('click',()=>{
-const entries=getEntries();
-const list=entries[domain]||[];
-const newE={id:entry?entry.id:genId(),title:document.getElementById('ef-title').value,description:document.getElementById('ef-desc').value,status:document.getElementById('ef-status').value,tags:document.getElementById('ef-tags').value.split(',').map(t=>t.trim()).filter(Boolean),link:document.getElementById('ef-link').value,notes:document.getElementById('ef-notes').value,showcase:document.getElementById('ef-showcase').checked,createdAt:entry?entry.createdAt:new Date().toISOString()};
-if(entry){const idx=list.findIndex(x=>x.id===entry.id);if(idx>=0)list[idx]=newE;}else list.push(newE);
-entries[domain]=list;save('portfolioEntries',entries);render();
-});
-document.getElementById('ef-cancel').addEventListener('click',()=>{area.innerHTML='';});
-}
-
-// ============ CSU TAB ============
-function renderCSU(){
-const entries=getEntries();
-const csu=entries.csu||[];
-const complete=csu.filter(e=>e.status==='Complete').length;
-const inProg=csu.filter(e=>e.status==='In Progress').length;
-const planned=csu.filter(e=>e.status==='Planned').length;
-const cr=calcCredits();
-let html=`<div class="max-w-7xl mx-auto px-4 md:px-6 py-6">`;
-html+=backToDashBtn();
-html+=`<div class="flex flex-col md:flex-row md:items-center gap-3 mb-4"><div class="flex items-center gap-3"><i data-lucide="graduation-cap" class="w-6 h-6 text-azure-400"></i><div><h2 class="text-xl md:text-2xl font-bold text-white"><i data-lucide="graduation-cap" class="w-5 h-5 inline text-azure-400"></i> CSU Course Tracker</h2><p class="text-sm text-slate-400">${csu.length} courses \u00B7 ${cr.totalEarned.toFixed(1)} / ${TOTAL_CREDIT_GOAL} credits earned</p></div></div><button class="btn-primary flex items-center gap-1 ml-auto add-csu-btn"><i data-lucide="plus" class="w-4 h-4"></i> Add Course</button></div>`;
-html+=`<div class="flex flex-wrap gap-3 mb-4 text-sm"><span class="badge badge-planned">Total: ${csu.length}</span><span class="badge badge-complete"><i data-lucide="check" class="w-3 h-3 inline"></i> Complete: ${complete}</span><span class="badge badge-progress"><i data-lucide="loader" class="w-3 h-3 inline"></i> In Progress: ${inProg}</span><span class="badge badge-planned"><i data-lucide="clipboard" class="w-3 h-3 inline"></i> Planned: ${planned}</span></div>`;
-html+=`<div class="flex flex-wrap gap-2 mb-6"><label class="text-xs font-medium text-slate-400 mr-2 self-center">View:</label><button class="filter-pill active csu-sort-btn" data-sort="group">By Group</button><button class="filter-pill csu-sort-btn" data-sort="status">By Status</button><button class="filter-pill csu-sort-btn" data-sort="startDate">By Start Date</button></div>`;
-html+=`<div id="csu-form-area"></div>`;
-html+=renderColorKeyLegend();
-html+=`<div id="csu-list"></div></div>`;
-return html;
-}
-function renderCSUList(sortBy='group'){
-const entries=getEntries();
-let csu=[...(entries.csu||[])];
-const container=document.getElementById('csu-list');
-if(!container)return;
-let html='';
-
-if(sortBy==='group'){
-  CSU_GROUPS.forEach(grp=>{
-    const items=csu.filter(c=>(c.group||c.category)===grp.key);
-    if(!items.length)return;
-    const completeCount=items.filter(c=>c.status==='Complete').length;
-    html+=`<div class="mb-8">`;
-    html+=`<div class="group-header" style="border-left:3px solid ${grp.color}"><span class="group-icon">${grp.icon}</span><span class="group-title">${grp.key}</span><span class="group-count">${completeCount}/${items.length} complete</span></div>`;
-    html+=`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
-    items.forEach(c=>{html+=renderCSUCard(c);});
-    html+=`</div></div>`;
-  });
-}else if(sortBy==='status'){
-  const so={Complete:0,'In Progress':1,Planned:2};
-  csu.sort((a,b)=>so[a.status]-so[b.status]);
-  html+=`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
-  csu.forEach(c=>{html+=renderCSUCard(c);});
-  html+=`</div>`;
-}else if(sortBy==='startDate'){
-  csu.sort((a,b)=>(a.startDate||'9').localeCompare(b.startDate||'9'));
-  html+=`<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
-  csu.forEach(c=>{html+=renderCSUCard(c);});
-  html+=`</div>`;
-}
-
-container.innerHTML=html;
-lucide.createIcons();
-bindCSUEvents();
-}
-function renderCSUCard(c){
-const grpObj=CSU_GROUPS.find(g=>g.key===(c.group||c.category));
-const grpColor=grpObj?grpObj.color:'#94a3b8';
-let html=`<div class="card entry-card p-4" data-status="${c.status}" style="border-left-color:${grpColor}"><div class="flex items-start justify-between mb-2"><div class="flex-1 min-w-0"><div class="flex items-center gap-2 flex-wrap"><span class="text-xs font-mono px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.08);color:#cbd5e1">${esc(c.code)}</span><h3 class="font-semibold text-white text-sm">${esc(c.title)}</h3></div></div><button class="showcase-star ${c.showcase?'active':''}" data-id="${c.id}" data-domain="csu" title="Toggle showcase"><i data-lucide="star" class="w-4 h-4"></i></button></div>`;
-html+=`<p class="text-xs text-slate-400 mb-2">${esc(c.description)}</p>`;
-html+=`<div class="flex flex-wrap items-center gap-2 mb-2">${statusBadge(c.status)}`;
-if(c.credits>0)html+=`<span class="badge" style="background:rgba(0,120,212,0.15);color:#66b0ff">${(c.credits||0).toFixed(c.credits%1?2:0)} cr</span>`;
-if(c.platform)html+=`<span class="badge" style="background:rgba(255,255,255,0.06);color:#94a3b8">${esc(c.platform)}</span>`;
-html+=`</div>`;
-if(c.degreeTrack&&c.degreeTrack.length)html+=`<div class="flex flex-wrap gap-1 mb-2">${c.degreeTrack.map(t=>`<span class="degree-pill">${DEGREE_TRACK_ABBREV[t]||t}</span>`).join('')}</div>`;
-if(c.tags&&c.tags.length)html+=`<div class="flex flex-wrap gap-1 mb-2">${tagPills(c.tags)}</div>`;
-if(c.startDate||c.endDate){
-html+=`<div class="text-xs text-slate-400 mb-2 flex items-center gap-2 flex-wrap"><i data-lucide="calendar" class="w-3 h-3 inline"></i> ${fmtDate(c.startDate)}${c.endDate?' \u2192 '+fmtDate(c.endDate):''}</div>`;
-}
-if(c.notes)html+=`<details class="mb-2"><summary class="text-xs text-slate-500 cursor-pointer">Notes</summary><p class="text-xs text-slate-400 mt-1">${esc(c.notes)}</p></details>`;
-html+=`<div class="flex gap-2 mt-2 pt-2 border-t" style="border-color:rgba(255,255,255,0.08)"><button class="btn-secondary text-xs py-1 px-3 edit-csu-btn" data-id="${c.id}"><i data-lucide="pencil" class="w-3 h-3 inline"></i> Edit</button><button class="btn-danger text-xs py-1 px-3 del-csu-btn" data-id="${c.id}"><i data-lucide="trash-2" class="w-3 h-3 inline"></i> Delete</button></div></div>`;
-return html;
-}
-function showCSUForm(entry=null){
-const area=document.getElementById('csu-form-area');
-if(!area)return;
-const e=entry||{code:'',title:'',description:'',status:'Planned',credits:3,degreeTrack:[],tags:[],link:'',notes:'',showcase:false,group:'Electives',platform:'CSU',startDate:'',endDate:''};
-let trackChecks='';
-DEGREE_TRACKS.forEach(t=>{
-const checked=(e.degreeTrack||[]).includes(t);
-trackChecks+=`<label class="check-pill ${checked?'checked':''}" data-track="${t}"><input type="checkbox" class="hidden dt-check" value="${t}" ${checked?'checked':''}> ${DEGREE_TRACK_ABBREV[t]||t}</label>`;
-});
-let groupOptions='';
-CSU_GROUPS.forEach(g=>{groupOptions+=`<option ${(e.group||e.category)===g.key?'selected':''}>${g.key}</option>`;});
-area.innerHTML=`<div class="card p-5 mb-6 border-l-4" style="border-left-color:#0078D4"><h3 class="font-semibold text-white mb-4">${entry?'Edit':'Add'} Course</h3>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Course Code</label><input class="form-input" id="cf-code" value="${esc(e.code)}"></div><div class="md:col-span-2"><label class="text-xs font-medium text-slate-400 mb-1 block">Title</label><input class="form-input" id="cf-title" value="${esc(e.title)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Group</label><select class="form-input" id="cf-group">${groupOptions}</select></div></div>
-<div class="mb-4"><label class="text-xs font-medium text-slate-400 mb-1 block">Description</label><textarea class="form-input" id="cf-desc" rows="2">${esc(e.description)}</textarea></div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Status</label><select class="form-input" id="cf-status"><option ${e.status==='Planned'?'selected':''}>Planned</option><option ${e.status==='In Progress'?'selected':''}>In Progress</option><option ${e.status==='Complete'?'selected':''}>Complete</option></select></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Platform</label><input class="form-input" id="cf-platform" value="${esc(e.platform||'')}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Credits</label><div class="flex items-center gap-1"><input type="number" class="form-input" id="cf-credits" value="${e.credits}" step="0.01" min="0" max="20"><span class="text-xs text-slate-400">cr</span></div></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Tags (comma-sep)</label><input class="form-input" id="cf-tags" value="${(e.tags||[]).join(', ')}"></div></div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Start Date</label><div class="relative"><input type="date" class="form-input pr-8" id="cf-start" value="${e.startDate||''}"><button class="date-clear" id="cf-start-clear" style="${e.startDate?'':'display:none'}">&times;</button></div></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">End Date</label><div class="relative"><input type="date" class="form-input pr-8" id="cf-end" value="${e.endDate||''}"><button class="date-clear" id="cf-end-clear" style="${e.endDate?'':'display:none'}">&times;</button></div></div></div>
-<div class="mb-4"><label class="text-xs font-medium text-slate-400 mb-1 block">Applies To (Degree Track)</label><div class="flex flex-wrap gap-2" id="cf-tracks">${trackChecks}</div></div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Link</label><input class="form-input" id="cf-link" value="${esc(e.link)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Notes</label><input class="form-input" id="cf-notes" value="${esc(e.notes)}"></div></div>
-<div class="flex items-center gap-2 mb-4"><label class="text-xs font-medium text-slate-400">Showcase</label><input type="checkbox" id="cf-showcase" ${e.showcase?'checked':''}></div>
-<div class="flex gap-2"><button class="btn-primary" id="cf-save">Save</button><button class="btn-secondary" id="cf-cancel">Cancel</button></div></div>`;
-document.getElementById('cf-start').addEventListener('input',function(){document.getElementById('cf-start-clear').style.display=this.value?'':'none';});
-document.getElementById('cf-end').addEventListener('input',function(){document.getElementById('cf-end-clear').style.display=this.value?'':'none';});
-document.getElementById('cf-start-clear').addEventListener('click',function(){document.getElementById('cf-start').value='';this.style.display='none';});
-document.getElementById('cf-end-clear').addEventListener('click',function(){document.getElementById('cf-end').value='';this.style.display='none';});
-document.querySelectorAll('#cf-tracks .check-pill').forEach(pill=>{
-pill.addEventListener('click',function(ev){
-if(ev.target.tagName==='INPUT')return;
-const cb=this.querySelector('input');cb.checked=!cb.checked;this.classList.toggle('checked',cb.checked);
-});
-});
-document.getElementById('cf-save').addEventListener('click',()=>{
-const entries=getEntries();
-const csu=entries.csu||[];
-const tracks=[];document.querySelectorAll('#cf-tracks .dt-check:checked').forEach(cb=>tracks.push(cb.value));
-const grp=document.getElementById('cf-group').value;
-const newC={id:entry?entry.id:genId(),code:document.getElementById('cf-code').value,title:document.getElementById('cf-title').value,description:document.getElementById('cf-desc').value,status:document.getElementById('cf-status').value,group:grp,category:grp,platform:document.getElementById('cf-platform').value,credits:parseFloat(document.getElementById('cf-credits').value)||0,degreeTrack:tracks,tags:document.getElementById('cf-tags').value.split(',').map(t=>t.trim()).filter(Boolean),link:document.getElementById('cf-link').value,notes:document.getElementById('cf-notes').value,showcase:document.getElementById('cf-showcase').checked,startDate:document.getElementById('cf-start').value,endDate:document.getElementById('cf-end').value,createdAt:entry?entry.createdAt:new Date().toISOString()};
-if(entry){const idx=csu.findIndex(x=>x.id===entry.id);if(idx>=0)csu[idx]=newC;}else csu.push(newC);
-entries.csu=csu;save('portfolioEntries',entries);render();
-});
-document.getElementById('cf-cancel').addEventListener('click',()=>{area.innerHTML='';});
-}
-
-// ============ EDUCATION CARD (Display) ============
-function renderEducationCard(e){
-const sb=e.status==='Complete'?'badge-complete':e.status==='In Progress'?'badge-progress':'badge-planned';
-const statusColor=e.status==='Complete'?'#22c55e':e.status==='In Progress'?'#f59e0b':'#94a3b8';
-const yearStr=e.startYear?(e.isPresent?e.startYear+' \u2013 Present':(e.endYear?e.startYear+' \u2013 '+e.endYear:e.startYear+'')):'';
-let html=`<div class="edu-card mb-3" id="edu-display-${e.id}">`;
-html+=`<div class="flex items-start justify-between gap-3">`;
-html+=`<div class="flex items-start gap-3 flex-1 min-w-0">`;
-html+=`<div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(0,120,212,0.15));border:1px solid rgba(124,58,237,0.25)"><i data-lucide="graduation-cap" class="w-5 h-5" style="color:#a78bfa"></i></div>`;
-html+=`<div class="flex-1 min-w-0">`;
-html+=`<h4 class="text-sm font-semibold text-white">${esc(e.institution)}</h4>`;
-html+=`<p class="text-xs text-azure-400 font-medium">${esc(e.degree)}</p>`;
-if(e.fieldOfStudy)html+=`<p class="text-xs text-slate-400">${esc(e.fieldOfStudy)}</p>`;
-html+=`<div class="flex flex-wrap items-center gap-2 mt-1.5">`;
-if(yearStr)html+=`<span class="text-xs text-slate-500 flex items-center gap-1"><i data-lucide="calendar" class="w-3 h-3"></i> ${yearStr}</span>`;
-html+=`<span class="${sb} badge text-xs">${e.status}</span>`;
-html+=`</div>`;
-if(e.notes)html+=`<p class="text-xs text-slate-500 mt-1.5 leading-relaxed">${esc(e.notes)}</p>`;
-html+=`</div></div>`;
-html+=`<div class="flex items-center gap-1 flex-shrink-0">`;
-html+=`<button class="p-1.5 rounded-md text-slate-500 hover:text-azure-400 hover:bg-white/5 transition-colors edit-edu-inline-btn" data-id="${e.id}" title="Edit"><i data-lucide="pencil" class="w-3.5 h-3.5"></i></button>`;
-html+=`<button class="p-1.5 rounded-md text-slate-500 hover:text-red-400 hover:bg-white/5 transition-colors del-edu-inline-btn" data-id="${e.id}" title="Delete"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>`;
-html+=`</div>`;
-html+=`</div>`;
-html+=`<div id="edu-form-slot-${e.id}"></div>`;
-html+=`</div>`;
-return html;
-}
-
-// ============ EDUCATION INLINE FORM ============
-function showEducationInlineForm(targetId,entry=null){
-const e=entry||{institution:'',degree:'',fieldOfStudy:'',startYear:'',endYear:'',isPresent:false,status:'Planned',notes:''};
-const slotId=entry?'edu-form-slot-'+entry.id:'edu-add-form-area';
-const slot=document.getElementById(slotId);
-if(!slot)return;
-const formId='eduform-'+(entry?entry.id:'new');
-slot.innerHTML=`<div class="edu-form-inline" id="${formId}">
-<h4 class="text-sm font-semibold text-white mb-3 flex items-center gap-2"><i data-lucide="${entry?'pencil':'plus-circle'}" class="w-4 h-4 text-azure-400"></i> ${entry?'Edit':'Add'} Education</h4>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
-<div><label class="text-xs font-medium text-slate-400 mb-1 block">Institution Name</label><input class="form-input" id="${formId}-inst" value="${esc(e.institution)}" placeholder="e.g. Colorado State University"></div>
-<div><label class="text-xs font-medium text-slate-400 mb-1 block">Degree / Program</label><input class="form-input" id="${formId}-degree" value="${esc(e.degree)}" placeholder="e.g. B.S. Computer Information Systems"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
-<div><label class="text-xs font-medium text-slate-400 mb-1 block">Field of Study</label><input class="form-input" id="${formId}-field" value="${esc(e.fieldOfStudy)}" placeholder="e.g. Azure Solutions Architect Track"></div>
-<div><label class="text-xs font-medium text-slate-400 mb-1 block">Status</label><select class="form-input" id="${formId}-status"><option ${e.status==='Planned'?'selected':''}>Planned</option><option ${e.status==='In Progress'?'selected':''}>In Progress</option><option ${e.status==='Complete'?'selected':''}>Complete</option></select></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
-<div><label class="text-xs font-medium text-slate-400 mb-1 block">Start Year</label><input type="number" class="form-input" id="${formId}-start" value="${e.startYear||''}" placeholder="2025" min="1990" max="2040"></div>
-<div><label class="text-xs font-medium text-slate-400 mb-1 block">End Year</label><input type="number" class="form-input" id="${formId}-end" value="${e.endYear||''}" placeholder="2027" min="1990" max="2040" ${e.isPresent?'disabled':''}></div>
-<div class="flex items-end pb-2"><label class="check-pill ${e.isPresent?'checked':''} cursor-pointer" id="${formId}-present-pill"><input type="checkbox" class="hidden" id="${formId}-present" ${e.isPresent?'checked':''}> Present</label></div>
-</div>
-<div class="mb-3"><label class="text-xs font-medium text-slate-400 mb-1 block">Notes</label><textarea class="form-input" id="${formId}-notes" rows="2" placeholder="Additional details...">${esc(e.notes)}</textarea></div>
-<div class="flex gap-2">
-<button class="btn-primary text-xs" id="${formId}-save"><i data-lucide="check" class="w-3 h-3 inline"></i> Save</button>
-<button class="btn-secondary text-xs" id="${formId}-cancel"><i data-lucide="x" class="w-3 h-3 inline"></i> Cancel</button>
-</div>
-</div>`;
-lucide.createIcons();
-
-const presentPill=document.getElementById(formId+'-present-pill');
-const presentCb=document.getElementById(formId+'-present');
-const endInput=document.getElementById(formId+'-end');
-presentPill.addEventListener('click',function(ev){
-  if(ev.target.tagName==='INPUT')return;
-  presentCb.checked=!presentCb.checked;
-  presentPill.classList.toggle('checked',presentCb.checked);
-  endInput.disabled=presentCb.checked;
-  if(presentCb.checked)endInput.value='';
-});
-presentCb.addEventListener('change',function(){
-  presentPill.classList.toggle('checked',this.checked);
-  endInput.disabled=this.checked;
-  if(this.checked)endInput.value='';
-});
-
-document.getElementById(formId+'-save').addEventListener('click',function(){
-  var eduList=getEducation()||[];
-  var newE={
-    id:entry?entry.id:genId(),
-    institution:document.getElementById(formId+'-inst').value.trim(),
-    degree:document.getElementById(formId+'-degree').value.trim(),
-    fieldOfStudy:document.getElementById(formId+'-field').value.trim(),
-    startYear:parseInt(document.getElementById(formId+'-start').value)||null,
-    endYear:presentCb.checked?null:(parseInt(document.getElementById(formId+'-end').value)||null),
-    isPresent:presentCb.checked,
-    status:document.getElementById(formId+'-status').value,
-    notes:document.getElementById(formId+'-notes').value.trim()
-  };
-  if(!newE.institution&&!newE.degree){slot.innerHTML='';return;}
-  if(entry){
-    var idx=eduList.findIndex(x=>x.id===entry.id);
-    if(idx>=0)eduList[idx]=newE;
-  }else{
-    eduList.push(newE);
-  }
-  saveEducation(eduList);
-  render();
-});
-
-document.getElementById(formId+'-cancel').addEventListener('click',function(){
-  slot.innerHTML='';
-});
-}
-
-// ============ PROFILE TAB ============
-function renderProfile(){
-const p=getProfile();
-const eduList=getEducation()||[];
-let html=`<div class="max-w-6xl mx-auto px-4 md:px-6 py-6">`;
-html+=backToDashBtn();
-html+=`<div class="grid grid-cols-1 lg:grid-cols-5 gap-6">`;
-html+=`<div class="lg:col-span-3 space-y-6">`;
-html+=`<div class="card p-6" id="profile-identity"><div class="flex flex-col sm:flex-row items-center sm:items-start gap-5">`;
-html+=`<div class="avatar-circle flex-shrink-0" id="avatar-area">`;
-if(p.avatarPhoto){html+=`<img src="${p.avatarPhoto}" class="w-full h-full object-cover" alt="Avatar">`;}
-else{html+=`<div class="w-full h-full flex items-center justify-center text-white text-2xl font-bold" style="background:linear-gradient(135deg,#0078D4,#4f46e5)">CB</div>`;}
-html+=`<div class="overlay"><i data-lucide="camera" class="w-5 h-5"></i><span>Change Photo</span></div><input type="file" accept="image/*" class="hidden" id="avatar-input"></div>`;
-html+=`<div class="flex-1 text-center sm:text-left"><h2 class="text-xl font-bold text-white">${esc(p.name)}</h2><p class="text-azure-400 font-medium text-sm">${esc(p.title)}</p>`;
-if(p.location)html+=`<span class="badge badge-planned mt-1"><i data-lucide="map-pin" class="w-3 h-3 inline"></i> ${esc(p.location)}</span>`;
-html+=`<div class="flex flex-wrap gap-3 mt-3 justify-center sm:justify-start">`;
-if(p.email)html+=`<a href="mailto:${esc(p.email)}" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="mail" class="w-3 h-3"></i> ${esc(p.email)}</a>`;
-if(p.linkedin)html+=`<a href="${esc(p.linkedin)}" target="_blank" rel="noopener" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="linkedin" class="w-3 h-3"></i> LinkedIn</a>`;
-if(p.github)html+=`<a href="${esc(p.github)}" target="_blank" rel="noopener" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="github" class="w-3 h-3"></i> GitHub</a>`;
-if(p.website)html+=`<a href="${esc(p.website)}" target="_blank" rel="noopener" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="globe" class="w-3 h-3"></i> Website</a>`;
-html+=`</div></div><button class="self-start text-slate-500 hover:text-azure-400" id="edit-identity-btn"><i data-lucide="pencil" class="w-4 h-4"></i></button></div>`;
-if(p.avatarPhoto)html+=`<button class="text-xs mt-2" id="remove-avatar-btn" style="color:#c4b5fd">Remove photo</button>`;
-html+=`<div id="identity-form" class="hidden mt-4"></div></div>`;
-html+=`<div class="card p-6"><div class="flex items-center justify-between mb-3"><h3 class="font-semibold text-white">About Me</h3><button class="text-slate-500 hover:text-azure-400 edit-about-btn"><i data-lucide="pencil" class="w-4 h-4"></i></button></div><div id="about-display"><p class="text-sm text-slate-300 leading-relaxed">${esc(p.aboutMe)}</p></div><div id="about-form" class="hidden"></div></div>`;
-html+=`<div class="card p-6"><div class="flex items-center justify-between mb-3"><h3 class="font-semibold text-white"><i data-lucide="target" class="w-4 h-4 inline text-azure-400"></i> Career Goals</h3><button class="text-slate-500 hover:text-azure-400 edit-goals-btn"><i data-lucide="pencil" class="w-4 h-4"></i></button></div><div id="goals-display"><div class="space-y-2"><div class="flex justify-between text-sm"><span class="text-slate-400">Target Role</span><span class="font-medium text-slate-200">${esc(p.targetRole)}</span></div><div class="flex justify-between text-sm"><span class="text-slate-400">Target Timeline</span><span class="font-medium text-slate-200">${esc(p.targetTimeline)}</span></div><div class="flex justify-between text-sm"><span class="text-slate-400">Current Focus</span><span class="font-medium text-slate-200">${esc(p.currentFocus)}</span></div></div></div><div id="goals-form" class="hidden"></div></div>`;
-html+=`</div>`;
-html+=`<div class="lg:col-span-2 space-y-6">`;
-html+=`<div class="card p-6"><h3 class="font-semibold text-white mb-4"><i data-lucide="award" class="w-4 h-4 inline text-azure-400"></i> Certifications & Credentials</h3><div id="certs-list" class="space-y-3">`;
-(p.certifications||[]).forEach(c=>{
-const sb=c.status==='Earned'?'badge-complete':c.status==='In Progress'?'badge-progress':'badge-planned';
-html+=`<div class="flex items-center justify-between p-2 rounded-lg" style="background:rgba(255,255,255,0.05)"><div class="flex-1 min-w-0"><p class="text-sm font-medium text-slate-200 truncate">${esc(c.name)}</p><p class="text-xs text-slate-400">${esc(c.issuer)}${c.date?' \u00B7 '+esc(c.date):''}</p></div><span class="${sb} badge text-xs">${c.status}</span><button class="ml-2 del-cert-btn" data-id="${c.id}" style="color:#c4b5fd">&times;</button></div>`;
-});
-html+=`</div><div id="cert-form-area" class="mt-3"></div><button class="btn-secondary text-xs mt-3 add-cert-btn"><i data-lucide="plus" class="w-3 h-3 inline"></i> Add Certification</button></div>`;
-html+=`<div class="card p-6"><div class="flex items-center justify-between mb-4"><h3 class="font-semibold text-white"><i data-lucide="zap" class="w-4 h-4 inline text-azure-400"></i> Technical Skills</h3><button class="text-slate-500 hover:text-azure-400 toggle-skill-edit-btn"><i data-lucide="pencil" class="w-4 h-4"></i></button></div><div id="skills-display" class="flex flex-wrap gap-2">`;
-(p.skills||[]).forEach(s=>{html+=`<span class="tag-pill skill-tag">${esc(s)}<button class="ml-1 hidden del-skill-btn" data-skill="${esc(s)}" style="font-size:10px;color:#c4b5fd">&times;</button></span>`;});
-html+=`</div><div id="skill-add" class="hidden mt-3 flex gap-2"><input class="form-input flex-1" id="new-skill-input" placeholder="Add skill..."><button class="btn-primary text-xs" id="add-skill-btn"><i data-lucide="plus" class="w-3 h-3 inline"></i></button></div></div>`;
-
-html+=`<div class="card p-6"><div class="flex items-center justify-between mb-4"><h3 class="font-semibold text-white"><i data-lucide="graduation-cap" class="w-4 h-4 inline" style="color:#a78bfa"></i> Education</h3><span class="text-xs text-slate-500">${eduList.length} ${eduList.length===1?'entry':'entries'}</span></div>`;
-html+=`<div id="edu-list-profile" class="space-y-0">`;
-eduList.forEach(e=>{html+=renderEducationCard(e);});
-html+=`</div>`;
-html+=`<div id="edu-add-form-area" class="mt-3"></div>`;
-html+=`<button class="btn-secondary text-xs mt-3 add-edu-profile-btn flex items-center gap-1"><i data-lucide="plus" class="w-3 h-3"></i> Add Education</button>`;
-html+=`</div>`;
-
-html+=`</div></div></div>`;
-return html;
-}
-
-// ============ NG FANGIRL TAB ============
-function renderNgFangirl(){
-var courses=getNgCourses();
-var completedCount=courses.filter(function(c){return c.completed;}).length;
-var totalCount=courses.length;
-var pct=totalCount?Math.round(completedCount/totalCount*100):0;
-
-var html='<div class="ng-tab-bg">';
-html+='<div class="max-w-7xl mx-auto px-4 md:px-6 py-6">';
-html+=backToDashBtn();
-
-// Banner
-html+='<div class="ng-banner mb-8">';
-html+='<div class="ng-banner-title mb-2">\uD83D\uDC9C Ng Fangirl Universe \uD83D\uDC9C</div>';
-html+='<p class="text-sm mb-3" style="color:#f9a8d4">"Because Andrew Ng is literally the GOAT of AI education"</p>';
-html+='<div class="flex flex-wrap justify-center gap-2 mb-4">';
-html+='<span class="badge" style="background:rgba(168,85,247,0.2);color:#d8b4fe;border:1px solid rgba(168,85,247,0.3)">\uD83C\uDF93 DeepLearning.AI Devotee</span>';
-html+='<span class="badge" style="background:rgba(236,72,153,0.2);color:#f9a8d4;border:1px solid rgba(236,72,153,0.3)">\u2B50 Coursera Completionist in Progress</span>';
-html+='</div>';
-html+='</div>';
-
-// Quote card
-html+='<div class="ng-quote-card mb-8">';
-html+='"The best time to start learning AI was yesterday. The second best time is now. \uD83D\uDCDA\u2728"';
-html+='<div class="mt-2 text-xs" style="color:#a855f7;font-style:normal">\u2014 The spirit of Andrew Ng</div>';
-html+='</div>';
-
-// Progress bar
-html+='<div class="mb-8">';
-html+='<div class="flex items-center justify-between mb-2">';
-html+='<span class="text-sm font-semibold" style="color:#d8b4fe">Course Progress</span>';
-html+='<span class="text-sm font-bold" style="color:#ec4899" id="ng-progress-text">'+completedCount+' / '+totalCount+' complete \u2014 '+pct+'%</span>';
-html+='</div>';
-html+='<div class="ng-progress-bar"><div class="ng-progress-fill" id="ng-progress-fill" style="width:0%" data-target="'+pct+'"></div></div>';
-html+='</div>';
-
-// Course cards grid
-html+='<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">';
-courses.forEach(function(c){
-var platformColor=c.platform.includes('DeepLearning')?'#ec4899':'#3b82f6';
-var platformBg=c.platform.includes('DeepLearning')?'rgba(236,72,153,0.2)':'rgba(59,130,246,0.2)';
-html+='<div class="ng-course-card">';
-html+='<div class="flex items-center gap-2 mb-3">';
-html+='<span class="text-xs font-mono px-2 py-0.5 rounded" style="background:rgba(168,85,247,0.25);color:#d8b4fe">'+esc(c.code)+'</span>';
-html+='<span class="badge text-xs" style="background:'+platformBg+';color:'+platformColor+'">'+esc(c.platform)+'</span>';
-html+='</div>';
-html+='<h3 class="text-white font-bold text-sm mb-2">'+esc(c.title)+'</h3>';
-html+='<p class="text-xs mb-3" style="color:#94a3b8">'+esc(c.notes)+'</p>';
-if(c.startDate)html+='<div class="text-xs mb-2" style="color:#a78bfa"><i data-lucide="calendar" class="w-3 h-3 inline"></i> '+fmtDate(c.startDate)+'</div>';
-html+='<div class="flex items-center gap-2 flex-wrap">';
-html+='<button class="ng-complete-btn '+(c.completed?'completed':'')+'" data-ng-id="'+c.id+'">'+(c.completed?'\u2705 Complete':'\u2B1C Not Yet')+'</button>';
-html+='<a href="'+esc(c.url)+'" target="_blank" rel="noopener" class="text-xs font-medium px-3 py-1.5 rounded-full inline-flex items-center gap-1" style="background:rgba(236,72,153,0.15);color:#f9a8d4;border:1px solid rgba(236,72,153,0.3);text-decoration:none"><i data-lucide="external-link" class="w-3 h-3"></i> Open Course</a>';
-html+='</div>';
-html+='<p class="text-xs mt-3 italic" style="color:#a78bfa">'+esc(c.micro)+'</p>';
-html+='</div>';
-});
-html+='</div>';
-
-// Fun footer
-html+='<div class="ng-footer-card">';
-html+='<p class="text-sm mb-3" style="color:#f9a8d4">"In Andrew Ng we trust. \uD83D\uDE4F Keep shipping those courses, Carla \u2014 the AI architect era is loading... \uD83D\uDC9C"</p>';
-html+='<span class="badge" style="background:rgba(168,85,247,0.2);color:#d8b4fe;border:1px solid rgba(168,85,247,0.3)">\u26A1 Powered by Fangirl Energy</span>';
-html+='</div>';
-
-html+='</div></div>';
-return html;
-}
-
-// ============ PORTFOLIO VIEW ============
-function renderPortfolioView(){
-const p=getProfile();
-const entries=getEntries();
-const eduList=getEducation()||[];
-const td=new Date('2026-05-12').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
-let html=`<div class="max-w-4xl mx-auto px-4 md:px-8 py-8">`;
-html+=backToDashBtn();
-html+=`<div class="flex justify-end mb-4 no-print"><button class="btn-primary flex items-center gap-1" id="print-btn"><i data-lucide="printer" class="w-4 h-4"></i> Print</button></div>`;
-html+=`<div class="card p-8 mb-8"><div class="flex flex-col sm:flex-row items-center gap-5 mb-5">`;
-if(p.avatarPhoto){html+=`<div class="w-20 h-20 rounded-full overflow-hidden flex-shrink-0"><img src="${p.avatarPhoto}" class="w-full h-full object-cover" alt="Avatar"></div>`;}
-else{html+=`<div class="w-20 h-20 rounded-full flex items-center justify-center text-white text-xl font-bold flex-shrink-0" style="background:linear-gradient(135deg,#0078D4,#4f46e5)">CB</div>`;}
-html+=`<div class="text-center sm:text-left"><h1 class="text-2xl font-bold text-white">${esc(p.name)}</h1><p class="text-azure-400 font-medium">${esc(p.title)}</p>`;
-html+=`<div class="flex flex-wrap gap-3 mt-2 justify-center sm:justify-start">`;
-if(p.email)html+=`<a href="mailto:${esc(p.email)}" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="mail" class="w-3 h-3"></i> ${esc(p.email)}</a>`;
-if(p.linkedin)html+=`<a href="${esc(p.linkedin)}" target="_blank" rel="noopener" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="linkedin" class="w-3 h-3"></i> LinkedIn</a>`;
-if(p.github)html+=`<a href="${esc(p.github)}" target="_blank" rel="noopener" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="github" class="w-3 h-3"></i> GitHub</a>`;
-if(p.website)html+=`<a href="${esc(p.website)}" target="_blank" rel="noopener" class="text-xs text-azure-400 hover:underline flex items-center gap-1"><i data-lucide="globe" class="w-3 h-3"></i> Website</a>`;
-html+=`</div></div></div>`;
-if(p.aboutMe)html+=`<p class="text-sm text-slate-300 leading-relaxed mb-4">${esc(p.aboutMe)}</p>`;
-html+=`<div class="flex flex-wrap gap-3"><span class="badge" style="background:rgba(0,120,212,0.15);color:#66b0ff"><i data-lucide="target" class="w-3 h-3 inline"></i> ${esc(p.targetRole)}</span><span class="badge badge-progress"><i data-lucide="pin" class="w-3 h-3 inline"></i> ${esc(p.currentFocus)}</span></div>`;
-html+=`<p class="text-xs text-slate-500 mt-4 text-right">Azure Solutions Architect Portfolio \u00B7 ${td}</p></div>`;
-
-if(eduList.length){
-html+=`<div class="mb-8"><h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2"><i data-lucide="graduation-cap" class="w-5 h-5" style="color:#a78bfa"></i>Education</h2>`;
-html+=`<div class="grid grid-cols-1 md:grid-cols-2 gap-4">`;
-eduList.forEach(e=>{
-const sb=e.status==='Complete'?'badge-complete':e.status==='In Progress'?'badge-progress':'badge-planned';
-const yearStr=e.startYear?(e.isPresent?e.startYear+' \u2013 Present':(e.endYear?e.startYear+' \u2013 '+e.endYear:e.startYear+'')):'';
-html+=`<div class="card p-4" style="border-left:4px solid #7C3AED"><div class="flex items-start gap-3">`;
-html+=`<div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(0,120,212,0.15))"><i data-lucide="graduation-cap" class="w-5 h-5" style="color:#a78bfa"></i></div>`;
-html+=`<div><h3 class="font-semibold text-white text-sm">${esc(e.institution)}</h3><p class="text-xs text-azure-400 font-medium">${esc(e.degree)}</p>`;
-if(e.fieldOfStudy)html+=`<p class="text-xs text-slate-400">${esc(e.fieldOfStudy)}</p>`;
-html+=`<div class="flex gap-2 mt-1"><span class="${sb} badge text-xs">${e.status}</span>${yearStr?`<span class="text-xs text-slate-500">${yearStr}</span>`:''}</div>`;
-html+=`</div></div></div>`;
-});
-html+=`</div></div>`;
-}
-
-const allDomains=[...DOMAIN_SLUGS,'csu'];
-const allNames=[...DOMAIN_NAMES,'CSU'];
-const allIcons=[...DOMAIN_ICONS,'graduation-cap'];
-allDomains.forEach((slug,i)=>{
-const items=(slug==='csu'?(entries.csu||[]):(entries[slug]||[])).filter(e=>e.showcase);
-if(!items.length)return;
-html+=`<div class="mb-8"><h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2"><i data-lucide="${allIcons[i]}" class="w-5 h-5 text-azure-400"></i>${allNames[i]}</h2>`;
-html+=`<div class="grid grid-cols-1 md:grid-cols-2 gap-4">`;
-items.forEach(e=>{
-html+=`<div class="card p-4 entry-card" data-status="${e.status}"><h3 class="font-semibold text-white text-sm mb-1">${esc(e.title)}</h3><p class="text-xs text-slate-400 mb-2">${esc(e.description)}</p>`;
-if(e.tags&&e.tags.length)html+=`<div class="flex flex-wrap gap-1">${tagPills(e.tags)}</div>`;
-if(e.link)html+=`<a href="${esc(e.link)}" target="_blank" class="text-xs text-azure-400 mt-2 inline-block">View Project \u2192</a>`;
-html+=`</div>`;
-});
-html+=`</div></div>`;
-});
-html+=`</div>`;
-return html;
-}
-
-// ============ MAIN RENDER ============
-function render(){
-clearDashSparkles();
-
-buildNav();
-const main=document.getElementById('app-main');
-main.style.background='transparent';
-main.style.minHeight='calc(100vh - 64px)';
-if(portfolioMode){
-main.innerHTML=renderPortfolioView();
-}else if(currentTab===0){
-main.innerHTML=renderDashboard();
-}else if(currentTab>=1&&currentTab<=5){
-main.innerHTML=renderDomainTab(currentTab-1);
-}else if(currentTab===6){
-main.innerHTML=renderCSU();
-}else if(currentTab===7){
-main.innerHTML=renderProfile();
-}else if(currentTab===8){
-main.innerHTML=renderNgFangirl();
-}
-lucide.createIcons();
-bindEvents();
-setTimeout(()=>{
-document.querySelectorAll('.progress-fill[data-target]').forEach(el=>{el.style.width=el.dataset.target+'%';});
-// Ng progress bar
-var ngFill=document.getElementById('ng-progress-fill');
-if(ngFill)ngFill.style.width=ngFill.dataset.target+'%';
-},50);
-
-if(currentTab===0&&!portfolioMode){
-  setTimeout(initDashSparkles,50);
-}
-}
-
-// ============ EVENT BINDING ============
-function bindEvents(){
-document.querySelectorAll('#portfolio-btn,#portfolio-btn-mobile').forEach(b=>b.addEventListener('click',()=>{portfolioMode=!portfolioMode;document.getElementById('mobile-menu').classList.add('hidden');render();}));
-document.querySelectorAll('#download-app-btn,#download-app-btn-mobile').forEach(b=>b.addEventListener('click',()=>{document.getElementById('mobile-menu').classList.add('hidden');downloadApp();}));
-const mmb=document.getElementById('mobile-menu-btn');if(mmb)mmb.addEventListener('click',()=>document.getElementById('mobile-menu').classList.remove('hidden'));
-const mmc=document.getElementById('mobile-menu-close');if(mmc)mmc.addEventListener('click',()=>document.getElementById('mobile-menu').classList.add('hidden'));
-
-var backBtn=document.getElementById('back-to-dash');
-if(backBtn)backBtn.addEventListener('click',function(){currentTab=0;portfolioMode=false;render();window.scrollTo({top:0,behavior:'smooth'});});
-
-// Ng secret trigger
-var ngTrigger=document.getElementById('ng-secret-trigger');
-if(ngTrigger){
-  ngTrigger.addEventListener('click',function(){
-    if(ngUnlocked){
-      // Already unlocked — navigate to tab
-      currentTab=8;
-      portfolioMode=false;
-      render();
-      window.scrollTo({top:0,behavior:'smooth'});
-      return;
-    }
-    ngClickCount++;
-    if(ngClickCount>=3){
-      ngUnlocked=true;
-      localStorage.setItem('ngUnlocked','true');
-      ngClickCount=0;
-      showNgToast('\u2728 Ng Fangirl Universe unlocked! Check the nav... \uD83D\uDC9C');
-      render();
-    }
-  });
-}
-
-document.querySelectorAll('.showcase-star').forEach(s=>s.addEventListener('click',function(){
-const id=this.dataset.id,domain=this.dataset.domain;
-const entries=getEntries();const list=entries[domain]||[];const e=list.find(x=>x.id===id);if(e){e.showcase=!e.showcase;save('portfolioEntries',entries);}
-this.classList.toggle('active');
-this.style.transform='scale(1.4)';setTimeout(()=>{this.style.transform=this.classList.contains('active')?'scale(1.2)':'scale(1)';},200);
-}));
-document.querySelectorAll('.add-entry-btn').forEach(b=>b.addEventListener('click',()=>showEntryForm(b.dataset.domain)));
-document.querySelectorAll('.edit-entry-btn').forEach(b=>b.addEventListener('click',()=>{
-const entries=getEntries();const item=(entries[b.dataset.domain]||[]).find(e=>e.id===b.dataset.id);if(item)showEntryForm(b.dataset.domain,item);
-}));
-document.querySelectorAll('.del-entry-btn').forEach(b=>b.addEventListener('click',()=>{
-if(!confirm('Delete this entry?'))return;
-const entries=getEntries();entries[b.dataset.domain]=(entries[b.dataset.domain]||[]).filter(e=>e.id!==b.dataset.id);save('portfolioEntries',entries);render();
-}));
-
-bindDashboardCardNavigation();
-
-if(currentTab===6)bindCSUTab();
-if(currentTab===7)bindProfileTab();
-if(currentTab===8)bindNgTab();
-const pb=document.getElementById('print-btn');if(pb)pb.addEventListener('click',()=>window.print());
-document.querySelectorAll('.edit-goal-btn').forEach(b=>b.addEventListener('click',function(){
-const track=this.dataset.track;
-const valEl=this.parentElement.querySelector('.goal-val');
-const goals=getGoals();
-const current=goals[track]||0;
-valEl.innerHTML=`<input type="number" class="text-xs bg-transparent border-b border-azure-400 text-white w-12 outline-none goal-input" value="${current}" min="0" max="200" step="0.01">`;
-const inp=valEl.querySelector('.goal-input');
-inp.focus();
-const saveGoal=()=>{const v=parseFloat(inp.value)||0;goals[track]=v;save('degreeGoals',goals);render();};
-inp.addEventListener('blur',saveGoal);
-inp.addEventListener('keydown',e=>{if(e.key==='Enter')saveGoal();});
-}));
-}
-
-// ============ NG TAB BINDING ============
-function bindNgTab(){
-  document.querySelectorAll('.ng-complete-btn').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var id=this.dataset.ngId;
-      var courses=getNgCourses();
-      var c=courses.find(function(x){return x.id===id;});
-      if(!c)return;
-      c.completed=!c.completed;
-      saveNgCourses(courses);
-
-      // Update button in-place
-      if(c.completed){
-        this.classList.add('completed');
-        this.textContent='\u2705 Complete';
-      }else{
-        this.classList.remove('completed');
-        this.textContent='\u2B1C Not Yet';
-      }
-
-      // Update progress bar in-place
-      var completedCount=courses.filter(function(x){return x.completed;}).length;
-      var totalCount=courses.length;
-      var pct=totalCount?Math.round(completedCount/totalCount*100):0;
-      var fill=document.getElementById('ng-progress-fill');
-      if(fill){fill.style.width=pct+'%';fill.dataset.target=pct;}
-      var txt=document.getElementById('ng-progress-text');
-      if(txt)txt.textContent=completedCount+' / '+totalCount+' complete \u2014 '+pct+'%';
-    });
-  });
-}
-
-// ============ DASHBOARD CARD NAVIGATION ============
-function bindDashboardCardNavigation(){
-document.querySelectorAll('.dash-domain-card[data-tab-target]').forEach(card=>{
-  card.addEventListener('click',function(e){
-    if(e.target.closest('button')||e.target.closest('a')||e.target.closest('input')){return;}
-    const target=parseInt(this.dataset.tabTarget);
-    if(!isNaN(target)){
-      currentTab=target;
-      portfolioMode=false;
-      render();
-      window.scrollTo({top:0,behavior:'smooth'});
-    }
-  });
-
-  const accent=card.dataset.accent;
-  card.addEventListener('mouseenter',function(){
-    this.style.borderColor=accent+'80';
-    this.style.boxShadow=`0 8px 28px ${accent}25, 0 0 0 1px ${accent}30`;
-  });
-  card.addEventListener('mouseleave',function(){
-    this.style.borderColor='';
-    this.style.boxShadow='';
-  });
-});
-}
-
-function bindCSUTab(){
-const addBtn=document.querySelector('.add-csu-btn');
-if(addBtn)addBtn.addEventListener('click',()=>showCSUForm());
-document.querySelectorAll('.csu-sort-btn').forEach(b=>b.addEventListener('click',function(){
-document.querySelectorAll('.csu-sort-btn').forEach(x=>x.classList.remove('active'));
-this.classList.add('active');
-renderCSUList(this.dataset.sort);
-}));
-renderCSUList('group');
-}
-function bindCSUEvents(){
-document.querySelectorAll('.edit-csu-btn').forEach(b=>b.addEventListener('click',()=>{
-const entries=getEntries();const c=(entries.csu||[]).find(x=>x.id===b.dataset.id);if(c)showCSUForm(c);
-}));
-document.querySelectorAll('.del-csu-btn').forEach(b=>b.addEventListener('click',()=>{
-if(!confirm('Delete this course?'))return;
-const entries=getEntries();entries.csu=(entries.csu||[]).filter(x=>x.id!==b.dataset.id);save('portfolioEntries',entries);render();
-}));
-document.querySelectorAll('.showcase-star[data-domain="csu"]').forEach(s=>s.addEventListener('click',function(){
-const id=this.dataset.id;const entries=getEntries();const c=(entries.csu||[]).find(x=>x.id===id);if(c){c.showcase=!c.showcase;save('portfolioEntries',entries);}
-this.classList.toggle('active');this.style.transform='scale(1.4)';setTimeout(()=>{this.style.transform=this.classList.contains('active')?'scale(1.2)':'scale(1)';},200);
-}));
-}
-function bindProfileTab(){
-const p=getProfile();
-const avatarArea=document.getElementById('avatar-area');
-const avatarInput=document.getElementById('avatar-input');
-if(avatarArea)avatarArea.addEventListener('click',()=>avatarInput.click());
-if(avatarInput)avatarInput.addEventListener('change',function(){
-const file=this.files[0];if(!file)return;
-const reader=new FileReader();reader.onload=function(ev){const pr=getProfile();pr.avatarPhoto=ev.target.result;save('portfolioProfile',pr);render();};reader.readAsDataURL(file);
-});
-const removeAvBtn=document.getElementById('remove-avatar-btn');
-if(removeAvBtn)removeAvBtn.addEventListener('click',()=>{const pr=getProfile();pr.avatarPhoto='';save('portfolioProfile',pr);render();});
-const editIdBtn=document.getElementById('edit-identity-btn');
-if(editIdBtn)editIdBtn.addEventListener('click',()=>{
-const pr=getProfile();
-const form=document.getElementById('identity-form');
-form.classList.remove('hidden');
-form.innerHTML=`<div class="grid grid-cols-1 md:grid-cols-2 gap-3"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Full Name</label><input class="form-input" id="pi-name" value="${esc(pr.name)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Career Title</label><input class="form-input" id="pi-title" value="${esc(pr.title)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Location</label><input class="form-input" id="pi-location" value="${esc(pr.location)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Email</label><input class="form-input" id="pi-email" value="${esc(pr.email)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Phone</label><input class="form-input" id="pi-phone" value="${esc(pr.phone)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">LinkedIn URL</label><input class="form-input" id="pi-linkedin" value="${esc(pr.linkedin)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">GitHub URL</label><input class="form-input" id="pi-github" value="${esc(pr.github)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Website</label><input class="form-input" id="pi-website" value="${esc(pr.website)}"></div></div><div class="flex gap-2 mt-3"><button class="btn-primary" id="pi-save">Save</button><button class="btn-secondary" id="pi-cancel">Cancel</button></div>`;
-document.getElementById('pi-save').addEventListener('click',()=>{
-const pr=getProfile();pr.name=document.getElementById('pi-name').value;pr.title=document.getElementById('pi-title').value;pr.location=document.getElementById('pi-location').value;pr.email=document.getElementById('pi-email').value;pr.phone=document.getElementById('pi-phone').value;pr.linkedin=document.getElementById('pi-linkedin').value;pr.github=document.getElementById('pi-github').value;pr.website=document.getElementById('pi-website').value;save('portfolioProfile',pr);render();
-});
-document.getElementById('pi-cancel').addEventListener('click',()=>{form.classList.add('hidden');form.innerHTML='';});
-});
-const editAboutBtn=document.querySelector('.edit-about-btn');
-if(editAboutBtn)editAboutBtn.addEventListener('click',()=>{
-const pr=getProfile();
-document.getElementById('about-display').classList.add('hidden');
-const form=document.getElementById('about-form');form.classList.remove('hidden');
-form.innerHTML=`<textarea class="form-input" id="pa-text" rows="5" maxlength="600">${esc(pr.aboutMe)}</textarea><div class="flex items-center justify-between mt-2"><span class="text-xs text-slate-500" id="pa-count">${(pr.aboutMe||'').length} / 600</span><div class="flex gap-2"><button class="btn-primary" id="pa-save">Save</button><button class="btn-secondary" id="pa-cancel">Cancel</button></div></div>`;
-document.getElementById('pa-text').addEventListener('input',function(){document.getElementById('pa-count').textContent=this.value.length+' / 600';});
-document.getElementById('pa-save').addEventListener('click',()=>{const pr=getProfile();pr.aboutMe=document.getElementById('pa-text').value;save('portfolioProfile',pr);render();});
-document.getElementById('pa-cancel').addEventListener('click',()=>{document.getElementById('about-display').classList.remove('hidden');form.classList.add('hidden');form.innerHTML='';});
-});
-const editGoalsBtn=document.querySelector('.edit-goals-btn');
-if(editGoalsBtn)editGoalsBtn.addEventListener('click',()=>{
-const pr=getProfile();
-document.getElementById('goals-display').classList.add('hidden');
-const form=document.getElementById('goals-form');form.classList.remove('hidden');
-form.innerHTML=`<div class="space-y-3"><div><label class="text-xs font-medium text-slate-400 mb-1 block">Target Role</label><input class="form-input" id="pg-role" value="${esc(pr.targetRole)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Target Timeline</label><input class="form-input" id="pg-timeline" value="${esc(pr.targetTimeline)}"></div><div><label class="text-xs font-medium text-slate-400 mb-1 block">Current Focus</label><input class="form-input" id="pg-focus" value="${esc(pr.currentFocus)}"></div></div><div class="flex gap-2 mt-3"><button class="btn-primary" id="pg-save">Save</button><button class="btn-secondary" id="pg-cancel">Cancel</button></div>`;
-document.getElementById('pg-save').addEventListener('click',()=>{const pr=getProfile();pr.targetRole=document.getElementById('pg-role').value;pr.targetTimeline=document.getElementById('pg-timeline').value;pr.currentFocus=document.getElementById('pg-focus').value;save('portfolioProfile',pr);render();});
-document.getElementById('pg-cancel').addEventListener('click',()=>{document.getElementById('goals-display').classList.remove('hidden');form.classList.add('hidden');form.innerHTML='';});
-});
-document.querySelectorAll('.del-cert-btn').forEach(b=>b.addEventListener('click',()=>{
-const pr=getProfile();pr.certifications=pr.certifications.filter(c=>c.id!=b.dataset.id);save('portfolioProfile',pr);render();
-}));
-const addCertBtn=document.querySelector('.add-cert-btn');
-if(addCertBtn)addCertBtn.addEventListener('click',()=>{
-const area=document.getElementById('cert-form-area');
-area.innerHTML=`<div class="p-3 rounded-lg" style="background:rgba(255,255,255,0.05)"><div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2"><input class="form-input text-sm" id="nc-name" placeholder="Certification name"><input class="form-input text-sm" id="nc-issuer" placeholder="Issuer"></div><div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2"><input class="form-input text-sm" id="nc-date" placeholder="Date (e.g. 2026)"><select class="form-input text-sm" id="nc-status"><option>Planned</option><option>In Progress</option><option>Earned</option></select></div><div class="flex gap-2"><button class="btn-primary text-xs" id="nc-save">Save</button><button class="btn-secondary text-xs" id="nc-cancel">Cancel</button></div></div>`;
-document.getElementById('nc-save').addEventListener('click',()=>{
-const pr=getProfile();pr.certifications.push({id:Date.now(),name:document.getElementById('nc-name').value,issuer:document.getElementById('nc-issuer').value,date:document.getElementById('nc-date').value,status:document.getElementById('nc-status').value});save('portfolioProfile',pr);render();
-});
-document.getElementById('nc-cancel').addEventListener('click',()=>{area.innerHTML='';});
-});
-let skillEditMode=false;
-const toggleSkillBtn=document.querySelector('.toggle-skill-edit-btn');
-if(toggleSkillBtn)toggleSkillBtn.addEventListener('click',()=>{
-skillEditMode=!skillEditMode;
-document.querySelectorAll('.del-skill-btn').forEach(b=>b.classList.toggle('hidden',!skillEditMode));
-document.getElementById('skill-add').classList.toggle('hidden',!skillEditMode);
-});
-document.querySelectorAll('.del-skill-btn').forEach(b=>b.addEventListener('click',function(ev){
-ev.stopPropagation();const pr=getProfile();pr.skills=pr.skills.filter(s=>s!==this.dataset.skill);save('portfolioProfile',pr);render();
-}));
-const addSkillBtn=document.getElementById('add-skill-btn');
-if(addSkillBtn)addSkillBtn.addEventListener('click',()=>{
-const inp=document.getElementById('new-skill-input');if(!inp.value.trim())return;
-const pr=getProfile();pr.skills.push(inp.value.trim());save('portfolioProfile',pr);render();
-});
-
-document.querySelectorAll('.edit-edu-inline-btn').forEach(b=>b.addEventListener('click',function(){
-  const id=this.dataset.id;
-  const eduList=getEducation()||[];
-  const entry=eduList.find(x=>x.id===id);
-  if(entry)showEducationInlineForm(id,entry);
-}));
-document.querySelectorAll('.del-edu-inline-btn').forEach(b=>b.addEventListener('click',function(){
-  if(!confirm('Delete this education entry?'))return;
-  const id=this.dataset.id;
-  var eduList=(getEducation()||[]).filter(x=>x.id!==id);
-  saveEducation(eduList);
-  render();
-}));
-const addEduProfileBtn=document.querySelector('.add-edu-profile-btn');
-if(addEduProfileBtn)addEduProfileBtn.addEventListener('click',()=>{
-  showEducationInlineForm(null,null);
-});
-}
-
-// ============ INIT ============
-initData();
-render();
 </script>
 </body>
 </html>
