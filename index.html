@@ -4,112 +4,783 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Carla's Portfolio</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/lucide@1.8.0/dist/umd/lucide.min.js"></script>
-<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']},colors:{navy:{900:'#0f172a',800:'#1e293b',700:'#334155'},azure:{50:'#e6f2ff',100:'#cce5ff',200:'#99cbff',300:'#66b0ff',400:'#33a0ff'}}}}}</script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif']
+      },
+      colors: {
+        navy: {
+          900: '#0f172a',
+          800: '#1e293b',
+          700: '#334155'
+        },
+        azure: {
+          50: '#e6f2ff',
+          100: '#cce5ff',
+          200: '#99cbff',
+          300: '#66b0ff',
+          400: '#33a0ff'
+        }
+      }
+    }
+  }
+}
+</script>
+
 <style>
-:root{--navy:#0f172a;--azure:#0078D4;--azure-hover:#0063b1;--planned:#94a3b8;--progress:#f59e0b;--complete:#22c55e;--violet:#7C3AED}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:radial-gradient(ellipse at center,#0d1b2a 0%,#050a0f 100%);color:#e2e8f0;min-height:100vh}
-#global-starfield{position:fixed;inset:0;z-index:0;pointer-events:none}.star-layer{position:absolute;inset:0}
-.card{background:rgba(13,27,42,0.85);backdrop-filter:blur(8px);border:1px solid rgba(0,120,212,0.2);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform .2s,box-shadow .2s}
-.card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,120,212,0.15)}
-.badge{display:inline-flex;align-items:center;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500}
-.badge-planned{background:rgba(148,163,184,0.15);color:#94a3b8}.badge-progress{background:rgba(245,158,11,0.15);color:#fbbf24}.badge-complete{background:rgba(34,197,94,0.15);color:#4ade80}
-.tag-pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:500;background:rgba(0,120,212,0.2);color:#66b0ff}
-.tab-btn{padding:6px 16px;border-radius:9999px;font-size:13px;font-weight:500;color:#cbd5e1;cursor:pointer;white-space:nowrap;border:none;background:transparent;transition:background .15s,color .15s}
-.tab-btn.active{background:#0078D4;color:#fff}.tab-btn:hover:not(.active){background:rgba(255,255,255,0.1);color:#fff}
-.nav-header{position:fixed;top:0;left:0;right:0;z-index:100;background:#0f172a;height:56px;display:flex;align-items:center;padding:0 16px;border-bottom:1px solid rgba(255,255,255,0.06)}
-.main-content{padding-top:64px;position:relative;z-index:1}
-.form-input{width:100%;padding:8px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;background:rgba(255,255,255,0.07);color:#f1f5f9;transition:border .15s}
-.form-input:focus{outline:none;border-color:#0078D4;box-shadow:0 0 0 3px rgba(0,120,212,0.25)}
-.btn-primary{background:#0078D4;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s}
-.btn-primary:hover{background:#0063b1}
-.download-app-btn{border:1px solid rgba(255,255,255,0.4);color:#fff;background:transparent;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
-.download-app-btn:hover{background:rgba(255,255,255,0.1)}
-.portfolio-view-btn{border:1px solid rgba(255,255,255,0.4);color:#fff;background:transparent;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
-.portfolio-view-btn:hover{background:rgba(255,255,255,0.1)}
-.mobile-tabs-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.mobile-tabs-scroll::-webkit-scrollbar{display:none}
-.dash-domain-card{background:rgba(13,27,42,0.85)!important;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.08)!important;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform .2s,box-shadow .2s}
-.dash-domain-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.35)}
-.dash-progress-bar{height:8px;border-radius:9999px;background:rgba(255,255,255,0.1);overflow:hidden}
-.progress-fill{height:100%;border-radius:9999px;transition:width 1s ease;background:#22c55e}
-footer{position:relative;z-index:1}
-@media print{.no-print{display:none!important}}
+:root {
+  --navy: #0f172a;
+  --azure: #0078D4;
+  --azure-hover: #0063b1;
+  --planned: #94a3b8;
+  --progress: #f59e0b;
+  --complete: #22c55e;
+  --violet: #7C3AED;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(ellipse at center, #0d1b2a 0%, #050a0f 100%);
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+#global-starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.star-layer {
+  position: absolute;
+  inset: 0;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: .4; }
+  50% { opacity: 1; }
+}
+
+.card {
+  background: rgba(13, 27, 42, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 120, 212, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,120,212,0.15);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.badge-planned {
+  background: rgba(148,163,184,0.15);
+  color: #94a3b8;
+}
+
+.badge-progress {
+  background: rgba(245,158,11,0.15);
+  color: #fbbf24;
+}
+
+.badge-complete {
+  background: rgba(34,197,94,0.15);
+  color: #4ade80;
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 500;
+  background: rgba(0,120,212,0.2);
+  color: #66b0ff;
+}
+
+.tab-btn {
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #cbd5e1;
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
+  background: transparent;
+  transition: background .15s, color .15s;
+}
+
+.tab-btn.active {
+  background: #0078D4;
+  color: #fff;
+}
+
+.tab-btn:hover:not(.active) {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #0f172a;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.main-content {
+  padding-top: 64px;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-primary {
+  background: #0078D4;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: background .15s;
+}
+
+.btn-primary:hover {
+  background: #0063b1;
+}
+
+.download-app-btn,
+.portfolio-view-btn {
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  background: transparent;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all .15s;
+}
+
+.download-app-btn:hover,
+.portfolio-view-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.mobile-tabs-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.mobile-tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.dash-domain-card {
+  background: rgba(13,27,42,0.85) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.dash-domain-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+.dash-progress-bar {
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 1s ease;
+  background: #22c55e;
+}
+
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .card,
+  .dash-domain-card {
+    background: white !important;
+    color: black !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+}
 </style>
 </head>
+
 <body>
 <div id="global-starfield"></div>
+
 <header class="nav-header no-print" id="main-header">
   <div class="flex items-center gap-2 flex-shrink-0">
     <span class="text-white font-bold text-base">⭐ Carla's Portfolio</span>
   </div>
+
   <div class="flex-1 flex justify-center mx-4">
     <div class="mobile-tabs-scroll hidden md:flex items-center gap-1" id="desktop-tabs"></div>
   </div>
+
   <div class="flex items-center gap-2 flex-shrink-0">
-    <button class="download-app-btn hidden md:inline-flex items-center gap-1" id="download-app-btn"><i data-lucide="download" class="w-4 h-4"></i> Download App</button>
-    <button class="portfolio-view-btn hidden md:inline-flex items-center gap-1" id="portfolio-btn"><i data-lucide="clipboard-list" class="w-4 h-4"></i> Portfolio View</button>
-    <button class="md:hidden p-2 text-white" id="mobile-menu-btn"><i data-lucide="menu" class="w-6 h-6"></i></button>
+    <button class="download-app-btn hidden md:inline-flex items-center gap-1" id="download-app-btn">
+      <i data-lucide="download" class="w-4 h-4"></i> Download App
+    </button>
+    <button class="portfolio-view-btn hidden md:inline-flex items-center gap-1" id="portfolio-btn">
+      <i data-lucide="clipboard-list" class="w-4 h-4"></i> Portfolio View
+    </button>
+    <button class="md:hidden p-2 text-white" id="mobile-menu-btn">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
   </div>
 </header>
+
 <nav id="mobile-menu" class="hidden fixed inset-0 bg-navy-900 z-[200] flex flex-col p-4 no-print" style="background:#0f172a">
   <div class="flex justify-between items-center mb-6">
     <span class="text-white font-bold">⭐ Carla's Portfolio</span>
-    <button id="mobile-menu-close" class="p-2 text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+    <button id="mobile-menu-close" class="p-2 text-white">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
   </div>
+
   <div class="flex flex-col gap-2" id="mobile-tabs"></div>
-  <button class="download-app-btn mt-4 w-full text-center" id="download-app-btn-mobile"><i data-lucide="download" class="w-4 h-4 inline"></i> Download App</button>
-  <button class="portfolio-view-btn mt-2 w-full text-center" id="portfolio-btn-mobile"><i data-lucide="clipboard-list" class="w-4 h-4 inline"></i> Portfolio View</button>
+
+  <button class="download-app-btn mt-4 w-full text-center" id="download-app-btn-mobile">
+    <i data-lucide="download" class="w-4 h-4 inline"></i> Download App
+  </button>
+
+  <button class="portfolio-view-btn mt-2 w-full text-center" id="portfolio-btn-mobile">
+    <i data-lucide="clipboard-list" class="w-4 h-4 inline"></i> Portfolio View
+  </button>
 </nav>
+
 <main class="main-content pb-8" id="app-main"></main>
+
 <footer class="py-6 text-center no-print">
-  <p class="text-xs text-surface-500">© 2026 Nightfield LLC. All rights reserved.</p>
+  <p class="text-xs text-slate-500">© 2026 Nightfield LLC. All rights reserved.</p>
 </footer>
+
 <script>
-lucide.createIcons();
-const DATA_VERSION='v13';
-const TABS=['Dashboard','Cloud Projects','Linux','Azure Labs','AI Work','Cybersecurity','CSU','👤 Profile'];
-const DOMAIN_SLUGS=['cloudProjects','linux','azureLabs','aiWork','cybersecurity'];
-const DOMAIN_NAMES=['Cloud Projects','Linux','Azure Labs','AI Work','Cybersecurity'];
-const DOMAIN_ACCENT_COLORS=['#0078D4','#f97316','#6366f1','#f59e0b','#7C3AED'];
-const TOTAL_CREDIT_GOAL=120;
-let currentTab=0,portfolioMode=false;
+const DATA_VERSION = 'v14';
 
-function initGlobalStarfield(){const c=document.getElementById('global-starfield');let s='';for(let i=0;i<150;i++){const x=Math.random()*100,y=Math.random()*100,sz=Math.random()>0.93?3:Math.random()>0.8?2:1,o=(Math.random()*0.6+0.3).toFixed(2);s+=`${x}vw ${y}vh 0 ${sz-1}px rgba(255,255,255,${o}),`;}s=s.slice(0,-1);let b='';for(let i=0;i<8;i++){const x=Math.random()*90+5,y=Math.random()*80+10;b+=`${x}vw ${y}vh 0 2px rgba(255,255,255,0.8),`;}b=b.slice(0,-1);c.innerHTML=`<div class="star-layer" style="box-shadow:${s}"></div><div class="star-layer" style="box-shadow:${b};animation:twinkle 4s ease-in-out infinite"></div>`;}
-function downloadApp(){const h='<!DOCTYPE html>\n'+document.documentElement.outerHTML,blob=new Blob([h],{type:'text/html'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='cloud-portfolio.html';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);}
-function initPasswordProtection(){const PWD='carla',btn1=document.getElementById('download-app-btn'),btn2=document.getElementById('download-app-btn-mobile'),req=()=>{const i=prompt('Enter password to access Download App:');return i===PWD;};[btn1,btn2].forEach(b=>{if(!b)return;b.addEventListener('click',e=>{if(!req()){alert('Incorrect password. This feature is private.');return;}downloadApp();});});}
-function genId(){return Math.random().toString(36).substr(2,9)}
-function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
-function load(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}
-function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+const TABS = [
+  'Dashboard',
+  'Cloud Projects',
+  'Linux',
+  'Azure Labs',
+  'AI Work',
+  'Cybersecurity',
+  'CSU',
+  '👤 Profile'
+];
 
-function getEntries(){let d=load('portfolioEntries');if(!d){d={cloudProjects:[{id:genId(),title:"Multi-Tier Web App on Azure",description:"Deploy 3-tier web app using Azure App Service, SQL, VNet.",status:"Planned",tags:["Azure","App Service"]},{id:genId(),title:"Serverless Event Pipeline",description:"Event-driven pipeline with Azure Functions & Event Grid.",status:"In Progress",tags:["Azure Functions","Event Grid"]}],linux:[{id:genId(),title:"Linux File System Lab",description:"File permissions, ownership, ACLs in Linux.",status:"Complete",tags:["Linux","Bash"]},{id:genId(),title:"Shell Scripting",description:"Bash scripts for monitoring, backups, cron jobs.",status:"In Progress",tags:["Bash","Scripting"]}],azureLabs:[{id:genId(),title:"AZ-900 Labs",description:"Microsoft Learn hands-on labs for AZ-900.",status:"Complete",tags:["Azure","AZ-900"]},{id:genId(),title:"AZ-104 Labs",description:"Azure Administrator labs.",status:"In Progress",tags:["Azure","AZ-104"]}],aiWork:[{id:genId(),title:"QuickBooks AI Analysis",description:"AI features in QuickBooks Omni.",status:"Complete",tags:["AI","Analysis"]}],cybersecurity:[{id:genId(),title:"Network Security",description:"OSI model, attack vectors, firewall rules.",status:"In Progress",tags:["Networking","Security"]}],csu:[]};save('portfolioEntries',d);}return d;}
+const DOMAIN_SLUGS = [
+  'cloudProjects',
+  'linux',
+  'azureLabs',
+  'aiWork',
+  'cybersecurity'
+];
 
-function renderDashboard(){const e=getEntries();let h='<div class="max-w-7xl mx-auto px-4 md:px-6 py-6"><h2 class="text-2xl font-bold text-white mb-6">📊 Dashboard</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">';DOMAIN_NAMES.forEach((n,i)=>{const slug=DOMAIN_SLUGS[i],items=e[slug]||[],comp=items.filter(it=>it.status==='Complete').length,prog=items.filter(it=>it.status==='In Progress').length,plan=items.filter(it=>it.status==='Planned').length,acc=DOMAIN_ACCENT_COLORS[i],pct=items.length?Math.round(comp/items.length*100):0;h+=`<div class="dash-domain-card p-5" style="border-left:4px solid ${acc}!important"><h3 class="text-lg font-bold text-white mb-3">${n}</h3><div class="dash-progress-bar mb-3"><div class="progress-fill" style="width:${pct}%;background:${acc}"></div></div><div class="flex gap-4 text-xs"><span class="text-slate-300">✓ ${comp}</span><span class="text-slate-300">⏳ ${prog}</span><span class="text-slate-300">📋 ${plan}</span></div></div>`;});h+='</div></div>';return h;}
+const DOMAIN_NAMES = [
+  'Cloud Projects',
+  'Linux',
+  'Azure Labs',
+  'AI Work',
+  'Cybersecurity'
+];
 
-function renderCloudProjects(){const e=getEntries(),items=e.cloudProjects||[];let h='<div class="max-w-7xl mx-auto px-4 md:px-6 py-6"><h2 class="text-2xl font-bold text-white mb-6">☁️ Cloud Projects</h2>';items.forEach(it=>{h+=`<div class="card p-5 mb-4"><h3 class="text-lg font-bold text-white">${esc(it.title)}</h3><p class="text-sm text-slate-300 mb-3">${esc(it.description)}</p><span class="badge ${it.status==='Complete'?'badge-complete':it.status==='In Progress'?'badge-progress':'badge-planned'}">${it.status}</span></div>`;});h+='</div>';return h;}
+const DOMAIN_ACCENT_COLORS = [
+  '#0078D4',
+  '#f97316',
+  '#6366f1',
+  '#f59e0b',
+  '#7C3AED'
+];
 
-function renderLinux(){const e=getEntries(),items=e.linux||[];let h='<div class="max-w-7xl mx-auto px-4 md:px-6 py-6"><h2 class="text-2xl font-bold text-white mb-6">🐧 Linux</h2>';items.forEach(it=>{h+=`<div class="card p-5 mb-4"><h3 class="text-lg font-bold text-white">${esc(it.title)}</h3><p class="text-sm text-slate-300 mb-3">${esc(it.description)}</p><span class="badge ${it.status==='Complete'?'badge-complete':it.status==='In Progress'?'badge-progress':'badge-planned'}">${it.status}</span></div>`;});h+='</div>';return h;}
+let currentTab = 0;
+let portfolioMode = false;
 
-function renderAzureLabs(){const e=getEntries(),items=e.azureLabs||[];let h='<div class="max-w-7xl mx-auto px-4 md:px-6 py-6"><h2 class="text-2xl font-bold text-white mb-6">⚗️ Azure Labs</h2>';items.forEach(it=>{h+=`<div class="card p-5 mb-4"><h3 class="text-lg font-bold text-white">${esc(it.title)}</h3><p class="text-sm text-slate-300 mb-3">${esc(it.description)}</p><span class="badge ${it.status==='Complete'?'badge-complete':it.status==='In Progress'?'badge-progress':'badge-planned'}">${it.status}</span></div>`;});h+='</div>';return h;}
+function safeCreateIcons() {
+  if (window.lucide && typeof lucide.createIcons === 'function') {
+    lucide.createIcons();
+  }
+}
 
-function renderAiWork(){const e=getEntries(),items=e.aiWork||[];let h='<div class="max-w-7xl mx-auto px-4 md:px-6 py-6"><h2 class="text-2xl font-bold text-white mb-6">🧠 AI Work</h2>';items.forEach(it=>{h+=`<div class="card p-5 mb-4"><h3 class="text-lg font-bold text-white">${esc(it.title)}</h3><p class="text-sm text-slate-300 mb-3">${esc(it.description)}</p><span class="badge ${it.status==='Complete'?'badge-complete':it.status==='In Progress'?'badge-progress':'badge-planned'}">${it.status}</span></div>`;});h+='</div>';return h;}
+function initGlobalStarfield() {
+  const container = document.getElementById('global-starfield');
+  let smallStars = '';
 
-function renderCybersecurity(){const e=getEntries(),items=e.cybersecurity||[];let h='<div class="max-w-7xl mx-auto px-4 md:px-6 py-6"><h2 class="text-2xl font-bold text-white mb-6">🛡️ Cybersecurity</h2>';items.forEach(it=>{h+=`<div class="card p-5 mb-4"><h3 class="text-lg font-bold text-white">${esc(it.title)}</h3><p class="text-sm text-slate-300 mb-3">${esc(it.description)}</p><span class="badge ${it.status==='Complete'?'badge-complete':it.status==='In Progress'?'badge-progress':'badge-planned'}">${it.status}</span></div>`;});h+='</div>';return h;}
+  for (let i = 0; i < 150; i++) {
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    const size = Math.random() > 0.93 ? 3 : Math.random() > 0.8 ? 2 : 1;
+    const opacity = (Math.random() * 0.6 + 0.3).toFixed(2);
+    smallStars += `${x}vw ${y}vh 0 ${size - 1}px rgba(255,255,255,${opacity}),`;
+  }
 
-function renderCSU(){const e=getEntries(),items=e.csu||[];let h='<div class="max-w-7xl mx-auto px-4 md:px-6 py-6"><h2 class="text-2xl font-bold text-white mb-6">🎓 CSU Courses</h2>';if(!items.length)h+='<p class="text-slate-300">No courses added yet.</p>';items.forEach(it=>{h+=`<div class="card p-5 mb-4"><h3 class="text-lg font-bold text-white">${esc(it.code)}: ${esc(it.title)}</h3><p class="text-sm text-slate-300 mb-2">${esc(it.description||'')}</p><span class="badge ${it.status==='Complete'?'badge-complete':it.status==='In Progress'?'badge-progress':'badge-planned'}">${it.status}</span><span class="tag-pill ml-2">${it.credits} credits</span></div>`;});h+='</div>';return h;}
+  smallStars = smallStars.slice(0, -1);
 
-function renderProfile(){let h='<div class="max-w-2xl mx-auto px-4 md:px-6 py-6"><h2 class="text-2xl font-bold text-white mb-6">👤 Profile</h2><div class="card p-6"><h3 class="text-xl font-bold text-white mb-2">Carla Bailey</h3><p class="text-sm text-slate-300 mb-4">Azure Solutions Architect Candidate</p><p class="text-sm text-slate-400">📍 Cortez, CO</p><p class="text-sm text-slate-400">📧 carla.bailey0314@outlook.com</p><p class="text-sm text-slate-400 mt-4"><strong>Education:</strong></p><p class="text-sm text-slate-400">B.S. Computer Information Systems - Colorado State University (2025)</p><p class="text-sm text-slate-400">M.S. IT Management - Colorado State University (2026)</p></div></div>';return h;}
+  let brightStars = '';
 
-function render(){const m=document.getElementById('app-main');let c='';switch(currentTab){case 0:c=renderDashboard();break;case 1:c=renderCloudProjects();break;case 2:c=renderLinux();break;case 3:c=renderAzureLabs();break;case 4:c=renderAiWork();break;case 5:c=renderCybersecurity();break;case 6:c=renderCSU();break;case 7:c=renderProfile();break;default:c=renderDashboard();}m.innerHTML=c;lucide.createIcons();buildNav();}
+  for (let i = 0; i < 8; i++) {
+    const x = Math.random() * 90 + 5;
+    const y = Math.random() * 80 + 10;
+    brightStars += `${x}vw ${y}vh 0 2px rgba(255,255,255,0.8),`;
+  }
 
-function buildNav(){const dt=document.getElementById('desktop-tabs'),mt=document.getElementById('mobile-tabs');dt.innerHTML='';mt.innerHTML='';TABS.forEach((t,i)=>{const b=document.createElement('button');b.className='tab-btn'+(i===currentTab?' active':'');b.textContent=t;b.onclick=()=>{currentTab=i;portfolioMode=false;render();};dt.appendChild(b);const mb=document.createElement('button');mb.className='tab-btn w-full text-left py-3'+(i===currentTab?' active':'');mb.textContent=t;mb.onclick=()=>{currentTab=i;portfolioMode=false;document.getElementById('mobile-menu').classList.add('hidden');render();};mt.appendChild(mb);});}
+  brightStars = brightStars.slice(0, -1);
 
-document.addEventListener('DOMContentLoaded',()=>{if(localStorage.getItem('portfolioDataVersion')!==DATA_VERSION)localStorage.clear();localStorage.setItem('portfolioDataVersion',DATA_VERSION);initGlobalStarfield();initPasswordProtection();const mOpen=document.getElementById('mobile-menu-btn'),mClose=document.getElementById('mobile-menu-close'),mMenu=document.getElementById('mobile-menu');if(mOpen)mOpen.addEventListener('click',()=>mMenu.classList.remove('hidden'));if(mClose)mClose.addEventListener('click',()=>mMenu.classList.add('hidden'));render();});
+  container.innerHTML = `
+    <div class="star-layer" style="box-shadow:${smallStars}"></div>
+    <div class="star-layer" style="box-shadow:${brightStars};animation:twinkle 4s ease-in-out infinite"></div>
+  `;
+}
+
+function downloadApp() {
+  const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  const blob = new Blob([html], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+
+  link.href = url;
+  link.download = 'cloud-portfolio.html';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  URL.revokeObjectURL(url);
+}
+
+function initPasswordProtection() {
+  const password = 'carla';
+  const buttons = [
+    document.getElementById('download-app-btn'),
+    document.getElementById('download-app-btn-mobile')
+  ];
+
+  buttons.forEach(button => {
+    if (!button) return;
+
+    button.addEventListener('click', () => {
+      const entered = prompt('Enter password to access Download App:');
+
+      if (entered !== password) {
+        alert('Incorrect password. This feature is private.');
+        return;
+      }
+
+      downloadApp();
+    });
+  });
+}
+
+function initPortfolioButtons() {
+  const buttons = [
+    document.getElementById('portfolio-btn'),
+    document.getElementById('portfolio-btn-mobile')
+  ];
+
+  buttons.forEach(button => {
+    if (!button) return;
+
+    button.addEventListener('click', () => {
+      portfolioMode = !portfolioMode;
+      currentTab = 0;
+
+      const menu = document.getElementById('mobile-menu');
+      if (menu) menu.classList.add('hidden');
+
+      render();
+    });
+  });
+}
+
+function genId() {
+  return Math.random().toString(36).substr(2, 9);
+}
+
+function save(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+function load(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key));
+  } catch (error) {
+    return null;
+  }
+}
+
+function esc(value) {
+  if (!value) return '';
+  const div = document.createElement('div');
+  div.textContent = value;
+  return div.innerHTML;
+}
+
+function getEntries() {
+  let data = load('portfolioEntries');
+
+  if (!data) {
+    data = {
+      cloudProjects: [
+        {
+          id: genId(),
+          title: 'Multi-Tier Web App on Azure',
+          description: 'Deploy a 3-tier web app using Azure App Service, SQL, and VNet.',
+          status: 'Planned',
+          tags: ['Azure', 'App Service']
+        },
+        {
+          id: genId(),
+          title: 'Serverless Event Pipeline',
+          description: 'Event-driven pipeline using Azure Functions and Event Grid.',
+          status: 'In Progress',
+          tags: ['Azure Functions', 'Event Grid']
+        }
+      ],
+      linux: [
+        {
+          id: genId(),
+          title: 'Linux File System Lab',
+          description: 'File permissions, ownership, and ACLs in Linux.',
+          status: 'Complete',
+          tags: ['Linux', 'Bash']
+        },
+        {
+          id: genId(),
+          title: 'Shell Scripting',
+          description: 'Bash scripts for monitoring, backups, and cron jobs.',
+          status: 'In Progress',
+          tags: ['Bash', 'Scripting']
+        }
+      ],
+      azureLabs: [
+        {
+          id: genId(),
+          title: 'AZ-900 Labs',
+          description: 'Microsoft Learn hands-on labs for AZ-900.',
+          status: 'Complete',
+          tags: ['Azure', 'AZ-900']
+        },
+        {
+          id: genId(),
+          title: 'AZ-104 Labs',
+          description: 'Azure Administrator labs.',
+          status: 'In Progress',
+          tags: ['Azure', 'AZ-104']
+        }
+      ],
+      aiWork: [
+        {
+          id: genId(),
+          title: 'QuickBooks AI Analysis',
+          description: 'Analysis of AI features in QuickBooks Omni.',
+          status: 'Complete',
+          tags: ['AI', 'Analysis']
+        }
+      ],
+      cybersecurity: [
+        {
+          id: genId(),
+          title: 'Network Security',
+          description: 'OSI model, attack vectors, and firewall rules.',
+          status: 'In Progress',
+          tags: ['Networking', 'Security']
+        }
+      ],
+      csu: []
+    };
+
+    save('portfolioEntries', data);
+  }
+
+  return data;
+}
+
+function statusBadgeClass(status) {
+  if (status === 'Complete') return 'badge-complete';
+  if (status === 'In Progress') return 'badge-progress';
+  return 'badge-planned';
+}
+
+function renderDashboard() {
+  const entries = getEntries();
+
+  let html = `
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-6">
+      <h2 class="text-2xl font-bold text-white mb-2">📊 Dashboard</h2>
+      <p class="text-sm text-slate-400 mb-6">
+        ${portfolioMode ? 'Portfolio View is on. This is the clean overview mode.' : 'Track learning, projects, labs, and technical growth.'}
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  `;
+
+  DOMAIN_NAMES.forEach((name, index) => {
+    const slug = DOMAIN_SLUGS[index];
+    const items = entries[slug] || [];
+    const complete = items.filter(item => item.status === 'Complete').length;
+    const progress = items.filter(item => item.status === 'In Progress').length;
+    const planned = items.filter(item => item.status === 'Planned').length;
+    const accent = DOMAIN_ACCENT_COLORS[index];
+    const percent = items.length ? Math.round((complete / items.length) * 100) : 0;
+
+    html += `
+      <div class="dash-domain-card p-5" style="border-left:4px solid ${accent}!important">
+        <h3 class="text-lg font-bold text-white mb-3">${name}</h3>
+        <div class="dash-progress-bar mb-3">
+          <div class="progress-fill" style="width:${percent}%;background:${accent}"></div>
+        </div>
+        <div class="flex gap-4 text-xs">
+          <span class="text-slate-300">✓ ${complete}</span>
+          <span class="text-slate-300">⏳ ${progress}</span>
+          <span class="text-slate-300">📋 ${planned}</span>
+        </div>
+      </div>
+    `;
+  });
+
+  html += `
+      </div>
+    </div>
+  `;
+
+  return html;
+}
+
+function renderSection(title, emoji, slug) {
+  const entries = getEntries();
+  const items = entries[slug] || [];
+
+  let html = `
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-6">
+      <h2 class="text-2xl font-bold text-white mb-6">${emoji} ${title}</h2>
+  `;
+
+  if (!items.length) {
+    html += `<p class="text-slate-300">No items added yet.</p>`;
+  }
+
+  items.forEach(item => {
+    html += `
+      <div class="card p-5 mb-4">
+        <h3 class="text-lg font-bold text-white">${esc(item.title)}</h3>
+        <p class="text-sm text-slate-300 mb-3">${esc(item.description)}</p>
+        <span class="badge ${statusBadgeClass(item.status)}">${esc(item.status)}</span>
+        ${(item.tags || []).map(tag => `<span class="tag-pill ml-2">${esc(tag)}</span>`).join('')}
+      </div>
+    `;
+  });
+
+  html += `</div>`;
+  return html;
+}
+
+function renderCSU() {
+  const entries = getEntries();
+  const items = entries.csu || [];
+
+  let html = `
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-6">
+      <h2 class="text-2xl font-bold text-white mb-6">🎓 CSU Courses</h2>
+  `;
+
+  if (!items.length) {
+    html += `<p class="text-slate-300">No courses added yet.</p>`;
+  }
+
+  items.forEach(item => {
+    html += `
+      <div class="card p-5 mb-4">
+        <h3 class="text-lg font-bold text-white">${esc(item.code)}: ${esc(item.title)}</h3>
+        <p class="text-sm text-slate-300 mb-2">${esc(item.description || '')}</p>
+        <span class="badge ${statusBadgeClass(item.status)}">${esc(item.status)}</span>
+        <span class="tag-pill ml-2">${esc(item.credits)} credits</span>
+      </div>
+    `;
+  });
+
+  html += `</div>`;
+  return html;
+}
+
+function renderProfile() {
+  return `
+    <div class="max-w-2xl mx-auto px-4 md:px-6 py-6">
+      <h2 class="text-2xl font-bold text-white mb-6">👤 Profile</h2>
+
+      <div class="card p-6">
+        <h3 class="text-xl font-bold text-white mb-2">Carla Bailey</h3>
+        <p class="text-sm text-slate-300 mb-4">Cloud, systems, finance, and product-focused learner</p>
+
+        <p class="text-sm text-slate-400">📍 Cortez, CO</p>
+        <p class="text-sm text-slate-400">📧 carla.bailey0314@outlook.com</p>
+
+        <p class="text-sm text-slate-400 mt-4"><strong>Focus Areas:</strong></p>
+        <p class="text-sm text-slate-400">Azure • Linux • AI • Cybersecurity • Agile Project Management • Financial Systems</p>
+
+        <p class="text-sm text-slate-400 mt-4"><strong>Education:</strong></p>
+        <p class="text-sm text-slate-400">CSU Global — Agile Project Management path</p>
+      </div>
+    </div>
+  `;
+}
+
+function render() {
+  const main = document.getElementById('app-main');
+  let content = '';
+
+  switch (currentTab) {
+    case 0:
+      content = renderDashboard();
+      break;
+    case 1:
+      content = renderSection('Cloud Projects', '☁️', 'cloudProjects');
+      break;
+    case 2:
+      content = renderSection('Linux', '🐧', 'linux');
+      break;
+    case 3:
+      content = renderSection('Azure Labs', '⚗️', 'azureLabs');
+      break;
+    case 4:
+      content = renderSection('AI Work', '🧠', 'aiWork');
+      break;
+    case 5:
+      content = renderSection('Cybersecurity', '🛡️', 'cybersecurity');
+      break;
+    case 6:
+      content = renderCSU();
+      break;
+    case 7:
+      content = renderProfile();
+      break;
+    default:
+      content = renderDashboard();
+  }
+
+  main.innerHTML = content;
+  buildNav();
+  safeCreateIcons();
+}
+
+function buildNav() {
+  const desktopTabs = document.getElementById('desktop-tabs');
+  const mobileTabs = document.getElementById('mobile-tabs');
+
+  desktopTabs.innerHTML = '';
+  mobileTabs.innerHTML = '';
+
+  TABS.forEach((tab, index) => {
+    const desktopButton = document.createElement('button');
+    desktopButton.className = 'tab-btn' + (index === currentTab ? ' active' : '');
+    desktopButton.textContent = tab;
+    desktopButton.onclick = () => {
+      currentTab = index;
+      render();
+    };
+    desktopTabs.appendChild(desktopButton);
+
+    const mobileButton = document.createElement('button');
+    mobileButton.className = 'tab-btn w-full text-left py-3' + (index === currentTab ? ' active' : '');
+    mobileButton.textContent = tab;
+    mobileButton.onclick = () => {
+      currentTab = index;
+      document.getElementById('mobile-menu').classList.add('hidden');
+      render();
+    };
+    mobileTabs.appendChild(mobileButton);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('portfolioDataVersion') !== DATA_VERSION) {
+    localStorage.clear();
+  }
+
+  localStorage.setItem('portfolioDataVersion', DATA_VERSION);
+
+  initGlobalStarfield();
+  initPasswordProtection();
+  initPortfolioButtons();
+
+  const menuOpen = document.getElementById('mobile-menu-btn');
+  const menuClose = document.getElementById('mobile-menu-close');
+  const menu = document.getElementById('mobile-menu');
+
+  if (menuOpen) {
+    menuOpen.addEventListener('click', () => menu.classList.remove('hidden'));
+  }
+
+  if (menuClose) {
+    menuClose.addEventListener('click', () => menu.classList.add('hidden'));
+  }
+
+  render();
+});
 </script>
 </body>
 </html>
